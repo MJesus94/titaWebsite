@@ -14,7 +14,7 @@ function Navbars() {
 
   return (
     <header>
-      <h3>Logo</h3>
+      <img className ="logo" src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683732465/titaWebsite/345753260_556282476419009_5163430452511384756_n_sznx4x.jpg" alt="Logo Fonzie"/>
       <nav ref={navRef}>
         <a href="/#">Home</a>
         <a href="/#">Linhas</a>
