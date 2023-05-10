@@ -9,7 +9,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import Navbars from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
