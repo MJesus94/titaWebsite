@@ -1,0 +1,158 @@
+/* .slideContainer {
+  height: 100%;
+  position: relative;
+}
+
+.leftArrow {
+  position: absolute;
+  top: 44%;
+  transform: translate(0 -50%);
+  left: 5%;
+  font-size: 45px;
+  color: #fff;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.rightArrow {
+  position: absolute;
+  top: 44%;
+  transform: translate(0 -50%);
+  right: 5%;
+  font-size: 45px;
+  color: #fff;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.dashContainer {
+  position: absolute;
+  bottom: 5%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.dashes {
+  margin: 0 3px;
+  cursor: pointer;
+  font-size: 40px;
+  color: #fff;
+}
+
+.slideShowContainer {
+  height: 100%;
+  display: flex;
+  transition: ease-out 0.3s;
+
+}
+
+.slideShow {
+  width: 75vw;
+  background-position: center;
+  background-size: cover;
+}
+
+.slides {
+  width: 75vw;
+  height: 100%;
+}
+
+.title {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  left: 0;
+  top: 40%;
+  margin-right: auto;
+  margin-left: auto;
+  color: #fff;
+  font-weight: 600;
+  font-size: 3.5rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+ */
+
+.slideContainer {
+  height: 100%;
+  position: relative;
+}
+
+.leftArrow {
+  position: absolute;
+  top: 44%;
+  transform: translate(0 -50%);
+  left: 5%;
+  font-size: 45px;
+  color: #fff;
+  z-index: 2;
+  cursor: pointer;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.rightArrow {
+  position: absolute;
+  top: 44%;
+  transform: translate(0 -50%);
+  right: 5%;
+  font-size: 45px;
+  color: #fff;
+  z-index: 2;
+  cursor: pointer;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.dashContainer {
+  position: absolute;
+  bottom: 5%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.dashes {
+  margin: 0 3px;
+  cursor: pointer;
+  font-size: 40px;
+  color: #fff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.slideShow {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-position: center;
+  background-size: cover;
+}
+
+.title {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    left: 0;
+    top: 40%;
+    margin-right: auto;
+    margin-left: auto;
+    color: #fff;
+    font-weight: 600;
+    font-size: 3.5rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+
+.slideOverflow {
+  overflow: hidden;
+  height: 100%;
+}
+
+.slideShowContainer {
+  height: 100%;
+  display: flex;
+  transition: ease-out 1.5s;
+}
