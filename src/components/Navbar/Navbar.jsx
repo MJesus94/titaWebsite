@@ -1,7 +1,4 @@
 import "./Navbar.css";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRef } from "react";
 
