@@ -13,10 +13,6 @@ function HomePage() {
       title: "Pincéis",
     },
     {
-      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683721650/titaWebsite/481d85ea8b291d27e85d38b6e07f1c1d_v6g3di.jpg",
-      title: "Pincéis",
-    },
-    {
       url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683720591/titaWebsite/WhatsApp_Image_2023-05-10_at_12.38.30_eutwp0.jpg",
       title: "Panelas",
     },
