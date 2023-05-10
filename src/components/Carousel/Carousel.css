@@ -83,7 +83,7 @@
 
 .leftArrow {
   position: absolute;
-  top: 44%;
+  top: 42%;
   transform: translate(0 -50%);
   left: 5%;
   font-size: 45px;
@@ -95,7 +95,7 @@
 
 .rightArrow {
   position: absolute;
-  top: 44%;
+  top: 42%;
   transform: translate(0 -50%);
   right: 5%;
   font-size: 45px;
