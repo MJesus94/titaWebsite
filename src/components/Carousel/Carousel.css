@@ -155,3 +155,23 @@
   display: flex;
   transition: ease-out 1.5s;
 }
+
+@media only screen and (max-width: 375px) {
+  .slideContainer{
+    height: 18vh;
+  }
+
+  .leftArrow, .rightArrow, .dashes {
+    font-size: 23px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .logo{
+    width: 15vw;
+  }
+
+  
+}

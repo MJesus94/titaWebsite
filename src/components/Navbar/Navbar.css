@@ -8,7 +8,8 @@
 }
 
 :root {
-  --mainColor: rgba(255, 255, 255, 0);
+  --mainColor: rgb(255, 255, 255);
+  --main2Color:rgba(255, 255, 255, 0);
   --mainColorLight: #5369c2;
   --secondaryColor: #db2b39;
   --textColor: #000000;
@@ -20,7 +21,7 @@ header {
   justify-content: space-between;
   height: 7.5vh;
   padding: 0 2rem;
-  background-color: var(--mainColor);
+  background-color: var(--main2Color);
   color: var(--textColor);
   border-bottom: 1px solid #ccc;
 }
@@ -88,4 +89,15 @@ header .nav-btn {
   nav a {
     font-size: 1.5rem;
   }
+}
+@media only screen and (max-width: 375px) {
+  header{
+    height: 7.5vh;
+  }
+  
+  .logo{
+    width: 15vw;
+  }
+
+  
 }
