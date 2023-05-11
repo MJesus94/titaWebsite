@@ -60,10 +60,7 @@ function Carousel({ slides }) {
     let containerTransform = "";
     const viewportWidth = window.innerWidth;
 
-    if (viewportWidth < 376) {
-      containerWidth = `${slides.length * viewportWidth}px`;
-      containerTransform = `translateX(${-(currentIndex * viewportWidth)}px)`;
-    } else if (viewportWidth >= 768 && viewportWidth < 1024) {
+    if (viewportWidth < 1024) {
       containerWidth = `${slides.length * viewportWidth}px`;
       containerTransform = `translateX(${-(currentIndex * viewportWidth)}px)`;
     } else {
