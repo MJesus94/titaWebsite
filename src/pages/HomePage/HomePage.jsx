@@ -23,6 +23,11 @@ function HomePage() {
       <div className="containerCarousel">
         <Carousel slides={slides} />
       </div>
+      <hr />
+
+      <div className="mainContainer">
+
+      </div>
     </section>
   );
 }

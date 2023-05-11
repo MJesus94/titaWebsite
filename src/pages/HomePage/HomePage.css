@@ -1,5 +1,17 @@
 .containerCarousel{
-max-width: 75vw;
+max-width: 60vw;
 height: 50vh;
-margin: 0 auto;
+margin: 0 auto 50px auto;
+}
+
+hr{
+    max-width: 60vw;
+    margin: 0 auto;
+}
+
+.mainContainer{
+    max-width: 60vw;
+    margin: 50px auto 0 auto;
+    background-color: antiquewhite;
+    height: 50vh;
 }
