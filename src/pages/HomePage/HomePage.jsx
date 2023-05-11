@@ -25,9 +25,50 @@ function HomePage() {
       </div>
       <hr />
 
-      <div className="mainContainer">
+      <section className="mainContainer">
+          <div className="mainTextDiv">
+            <h2>Crochet para todos os gostos</h2>
+          </div>
+          <div className="thematicDiv">
+            <img
+              className="thematicPic"
+              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568960/titaWebsite/20230506_083326808_iOS_lce8d6.jpg"
+              alt="Small Bag"
+            ></img>
+          </div>
+        
+        <div className="productPromo">
+          <div className="productCard">
+            <img
+              className="productPic"
+              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
+              alt="Basket"
+            ></img>
+            <h6>Basket</h6>
+            <h6>€ 10.00</h6>
+          </div>
+          <div className="productCard">
+            <img
+              className="productPic"
+              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
+              alt="Basket"
+            ></img>
+            <h6>Basket</h6>
+            <h6>€ 10.00</h6>
+          </div>
+          <div className="productCard">
+            <img
+              className="productPic"
+              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
+              alt="Basket"
+            ></img>
+            <h6>Basket</h6>
+            <h6>€ 10.00</h6>
+          </div>
+          <div className="buttonCollection"><h4>Ver Coleção</h4></div>
+        </div>
 
-      </div>
+      </section>
     </section>
   );
 }
