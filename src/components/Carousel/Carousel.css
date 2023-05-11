@@ -158,7 +158,7 @@
 
 @media only screen and (max-width: 375px) {
   .slideContainer{
-    height: 18vh;
+    width: 100vw;
   }
 
   .leftArrow, .rightArrow, .dashes {
@@ -166,7 +166,7 @@
   }
 
   .title {
-    padding-bottom: 15px;
+    top: 32%;
     font-size: 2rem;
   }
 

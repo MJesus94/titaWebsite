@@ -134,5 +134,8 @@ footer > ul {
 }
 
 @media only screen and (max-width: 375px) {
-
+.containerCarousel{
+    margin:0 0;
+    height: 35vh;
+}
 }
