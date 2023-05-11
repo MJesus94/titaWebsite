@@ -19,13 +19,14 @@ function HomePage() {
   ];
 
   return (
-    <section>
-      <div className="containerCarousel">
-        <Carousel slides={slides} />
-      </div>
-      <hr />
+    <>
+      <section>
+        <div className="containerCarousel">
+          <Carousel slides={slides} />
+        </div>
+        <hr />
 
-      <section className="mainContainer">
+        <section className="mainContainer">
           <div className="mainTextDiv">
             <h2>Crochet para todos os gostos</h2>
           </div>
@@ -36,40 +37,58 @@ function HomePage() {
               alt="Small Bag"
             ></img>
           </div>
-        
-        <div className="productPromo">
-          <div className="productCard">
-            <img
-              className="productPic"
-              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
-              alt="Basket"
-            ></img>
-            <h6>Basket</h6>
-            <h6>€ 10.00</h6>
-          </div>
-          <div className="productCard">
-            <img
-              className="productPic"
-              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
-              alt="Basket"
-            ></img>
-            <h6>Basket</h6>
-            <h6>€ 10.00</h6>
-          </div>
-          <div className="productCard">
-            <img
-              className="productPic"
-              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
-              alt="Basket"
-            ></img>
-            <h6>Basket</h6>
-            <h6>€ 10.00</h6>
-          </div>
-          <div className="buttonCollection"><h4>Ver Coleção</h4></div>
-        </div>
 
+          <div className="productPromo">
+            <div className="productCard">
+              <img
+                className="productPic"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
+                alt="Basket"
+              ></img>
+              <h6>Basket</h6>
+              <h6>€ 10.00</h6>
+            </div>
+            <div className="productCard">
+              <img
+                className="productPic"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
+                alt="Basket"
+              ></img>
+              <h6>Basket</h6>
+              <h6>€ 10.00</h6>
+            </div>
+            <div className="productCard">
+              <img
+                className="productPic"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
+                alt="Basket"
+              ></img>
+              <h6>Basket</h6>
+              <h6>€ 10.00</h6>
+            </div>
+            <div className="buttonCollection">
+              <h4>Ver Coleção</h4>
+            </div>
+          </div>
+        </section>
       </section>
-    </section>
+      <footer>
+        <ul>
+          <li>
+            <h2>Quem nós somos</h2>
+          </li>
+          <li>
+            <h2>Contactos</h2>
+          </li>
+        </ul>
+        <div className="copyrightDiv">
+          <div>
+            <h6>Developed by Miguel Jesus</h6>
+            <h6>Copyright ©2023 Fonzie</h6>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }
 
