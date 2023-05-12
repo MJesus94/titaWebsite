@@ -11,7 +11,7 @@
         
 
         .mainContainer{
-            max-width: 98.8vw;
+            max-width: 100vw;
             height: 40vh;
             margin: 0 0;
             padding: 10px;
@@ -19,7 +19,7 @@
     
         .mainTextDiv{
             height:calc(20vh - 10px);
-            width: calc(49.4vw - 10px);
+            width: calc(50vw - 10px);
             padding: 34px 13px 13px 13px;
         }
     
@@ -28,13 +28,13 @@
         }
     
         hr{
-            width: 92.5vw;
+            width: 100vw;
             margin: 15px 0;
         }
     
         .thematicDiv{
             height:calc(20vh - 10px);
-            width: calc(49.4vw - 10px);
+            width: calc(50vw - 10px);
         }
     
         .thematicPic{
@@ -78,14 +78,14 @@
     
         footer{
             padding: 5px 0 0 0;
-            width: 98.8vw;
+            width: 100vw;
             height: 6.5vh;
             background-color: black;
             
         }
     
         footer > ul {
-            max-width: 92.5vw;
+            max-width: 100vw;
             margin: 0 auto;
             list-style: none;
             padding-bottom: 5px;
