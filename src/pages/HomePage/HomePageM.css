@@ -39,6 +39,11 @@
             padding-right:10px;
         }
 
+        hr{
+            width: 100vw;
+            margin: 15px auto;
+        }
+
         .promoZone{
             display: flex;
             overflow-x: scroll;
