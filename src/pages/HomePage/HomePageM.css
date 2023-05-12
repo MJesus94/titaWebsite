@@ -41,7 +41,7 @@
 
         hr{
             width: 100vw;
-            margin: 15px auto;
+            margin: 50px auto 0 auto;
         }
 
         .promoZone{
@@ -141,7 +141,12 @@
                 font-weight: 700;
                 padding-right:10px;
             }
-    
+            
+            hr{
+                width: 100vw;
+                margin: 50px auto 0 auto;
+            }
+
             .promoZone{
                 display: flex;
                 overflow-x: scroll;
@@ -193,7 +198,7 @@
             .copyrightDiv{
                 font-size: 0.5rem;
                 width: 100vw;
-                height: 3vh;
+                height: 3.2vh;
             }
             
             .copyrightDiv > div{
