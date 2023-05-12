@@ -1,0 +1,251 @@
+@media only screen and (max-width: 1024px) {
+    .containerCarousel{
+        margin: 0 0 0 0!important;
+        height: 35vh;
+        max-width: 100vw;
+    }
+    }
+    
+    @media only screen and (max-width: 375px) {
+
+        
+
+        .mainContainer{
+            max-width: 98.8vw;
+            height: 40vh;
+            margin: 0 0;
+            padding: 10px;
+        }
+    
+        .mainTextDiv{
+            height:calc(20vh - 10px);
+            width: calc(49.4vw - 10px);
+            padding: 34px 13px 13px 13px;
+        }
+    
+        .mainTextDiv > h2{
+            font-size: 1.4rem;
+        }
+    
+        hr{
+            width: 92.5vw;
+            margin: 15px 0;
+        }
+    
+        .thematicDiv{
+            height:calc(20vh - 10px);
+            width: calc(49.4vw - 10px);
+        }
+    
+        .thematicPic{
+            width: 100%;
+            height: 100%;
+        }
+    
+        .productPromo{
+            padding: 15px 10px 10px;
+            width: calc(100vw - 14px);
+            height: calc(21vh - 15px);
+        }
+    
+        .productCard{
+        padding: 0 5px;
+        height: 10vh;
+        width: 27.27vw;
+        }
+    
+        .productPic{
+            width: 100%
+        }
+    
+        .productCard > h6{
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+    
+        .buttonCollection{
+            width: calc(92.5vw - 50px);
+            height: 3vh;
+            padding: 0 27vw;
+        }
+        
+        .buttonCollection > h4{
+            border: 2px solid black;
+            font-size: 0.7rem;
+            padding: 0 0 ;
+            height: 3vh
+        }
+    
+        footer{
+            padding: 5px 0 0 0;
+            width: 98.8vw;
+            height: 6.5vh;
+            background-color: black;
+            
+        }
+    
+        footer > ul {
+            max-width: 92.5vw;
+            margin: 0 auto;
+            list-style: none;
+            padding-bottom: 5px;
+        }
+
+        footer > ul > li > h2{ 
+            font-size: 0.8rem;
+        }
+        
+        .servicesDiv{
+            margin: 0 auto;
+        }
+        
+        .copyrightDiv{
+            font-size: 0.5rem;
+            width: 100vw;
+            height: 2vh;
+        }
+        
+        .copyrightDiv > div{
+            display: flex;
+            justify-content:space-around;
+            flex-wrap: wrap;
+            align-content: center;
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+        }
+    }
+      
+      @media only screen and (max-width: 425px) and (min-width: 376px){
+        .mainContainer{
+            max-width: 92.5vw;
+            height: 40vh;
+            margin: 0 0;
+            padding: 10px;
+        }
+    
+        .mainTextDiv{
+            height:calc(20vh - 10px);
+            width: calc(46.25vw - 10px);
+        }
+    
+        .mainTextDiv > h2{
+            font-size: 1.2rem;
+        }
+    
+        hr{
+            width: 92.5vw;
+            margin: 15px 0;
+        }
+    
+        .thematicDiv{
+            height:calc(20vh - 10px);
+            width: calc(46.25vw - 10px);
+        }
+    
+        .thematicPic{
+            width: 100%;
+            height: 100%;
+        }
+    
+        .productPromo{
+            padding: 15px 10px 10px;
+            width: calc(92.5vw - 14px);
+            height: calc(21vh - 15px);
+        }
+    
+        .productCard{
+        padding: 0 5px;
+        height: 10vh;
+        width: 27.27vw;
+        }
+    
+        .productPic{
+            width: 100%
+        }
+    
+        .productCard > h6{
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+    
+        .buttonCollection{
+            width: calc(92.5vw - 50px);
+            height: 3vh;
+            padding: 0 27vw;
+        }
+        
+        .buttonCollection > h4{
+            border: 2px solid black;
+            font-size: 0.7rem;
+            padding: 0 0 ;
+            height: 3vh
+        }
+      }
+      
+      @media only screen and (max-width: 768px) and (min-width: 426px){
+        .mainContainer{
+            max-width: 92.5vw;
+            height: 40vh;
+            margin: 0 0;
+            padding: 10px;
+        }
+    
+        .mainTextDiv{
+            height:calc(20vh - 10px);
+            width: calc(46.25vw - 10px);
+        }
+    
+        .mainTextDiv > h2{
+            font-size: 1.2rem;
+        }
+    
+        hr{
+            width: 92.5vw;
+            margin: 15px 0;
+        }
+    
+        .thematicDiv{
+            height:calc(20vh - 10px);
+            width: calc(46.25vw - 10px);
+        }
+    
+        .thematicPic{
+            width: 100%;
+            height: 100%;
+        }
+    
+        .productPromo{
+            padding: 15px 10px 10px;
+            width: calc(92.5vw - 14px);
+            height: calc(21vh - 15px);
+        }
+    
+        .productCard{
+        padding: 0 5px;
+        height: 10vh;
+        width: 27.27vw;
+        }
+    
+        .productPic{
+            width: 100%
+        }
+    
+        .productCard > h6{
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+    
+        .buttonCollection{
+            width: calc(92.5vw - 50px);
+            height: 3vh;
+            padding: 0 27vw;
+        }
+        
+        .buttonCollection > h4{
+            border: 2px solid black;
+            font-size: 0.7rem;
+            padding: 0 0 ;
+            height: 3vh
+        }
+      }
