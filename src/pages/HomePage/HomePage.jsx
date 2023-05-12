@@ -1,5 +1,6 @@
 import "./HomePage.css";
 import "./HomePageM.css";
+import "./HomePageL.css";
 import React from "react";
 import Carousel from "../../components/Carousel/Carousel";
 
@@ -39,7 +40,7 @@ function HomePage() {
     },
   ];
 
-  if (viewportWidth <= 375) {
+  if (viewportWidth <= 425) {
     return (
       <>
         <section>
@@ -48,7 +49,7 @@ function HomePage() {
           </div>
           <hr />
           <section className="promoCode">
-          
+
             <div className="categoryCrochet">
               <h4>Novo por aqui</h4>
               <span>Ver coleções</span>
@@ -87,56 +88,7 @@ function HomePage() {
         </footer>
       </>
     );
-  } else if (viewportWidth <= 425) {
-    return (
-      <>
-
-        <section>
-          <div className="containerCarousel">
-            <Carousel slides={slides} />
-          </div>
-          <hr />
-
-          <section className="promoCode">
-            <div className="categoryCrochet">
-              <h4>Novo por aqui</h4>
-              <span>Ver coleções</span>
-            </div>
-            <div className="promoZone">
-              {crochet.map((crochet, crochetIndex) => (
-                <div className="itemCard" key={crochetIndex}>
-                  <img
-                    className="productImg"
-                    src={crochet.url}
-                    alt={crochet.title}
-                  ></img>
-
-                  <h2>{crochet.title}</h2>
-                  <h5>{crochet.price}</h5>
-                </div>
-              ))}
-            </div>
-          </section>
-        </section>
-        <footer>
-          <ul>
-            <li>
-              <h2>Quem nós somos</h2>
-            </li>
-            <li>
-              <h2>Contactos</h2>
-            </li>
-          </ul>
-          <div className="copyrightDiv">
-            <div>
-              <h6>Developed by Miguel Jesus</h6>
-              <h6>Copyright ©2023 Fonzie</h6>
-            </div>
-          </div>
-        </footer>
-      </>
-    );
-  } else if (viewportWidth <= 768) {
+  }  else if (viewportWidth <= 768) {
     return <></>;
   } else {
     return (
