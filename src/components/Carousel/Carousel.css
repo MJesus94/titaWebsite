@@ -164,9 +164,9 @@
   .leftArrow, .rightArrow, .dashes {
     font-size: 23px;
   }
-  
+
   .leftArrow, .rightArrow {
-    top: 35%
+    top: 45%
   }
 
   .title {
