@@ -23,17 +23,17 @@ function HomePage() {
 
   const crochet = [
     {
-      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683648593/titaWebsite/WhatsApp_Image_2023-05-09_at_16.32.24_cvbvgr.jpg",
+      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg",
       title: "O que quiser",
       price: "€ 10.00",
     },
     {
-      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683725736/titaWebsite/anna-kolosyuk-D5nh6mCW52c-unsplash_wxxqrp.jpg",
+      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683568960/titaWebsite/20230506_083326808_iOS_lce8d6.jpg",
       title: "O que quiser",
       price: "€ 10.00",
     },
     {
-      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683720591/titaWebsite/WhatsApp_Image_2023-05-10_at_12.38.30_eutwp0.jpg",
+      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083350950_iOS_utfuxm.jpg",
       title: "O que quiser",
       price: "€ 10.00",
     },
@@ -50,8 +50,8 @@ function HomePage() {
 
           <section className="promoCode">
             <div className="categoryCrochet">
-              <h4>Crochet para todos os gostos</h4>
-              <span>Ver coleção</span>
+              <h4>Novo por aqui</h4>
+              <span>Ver coleções</span>
             </div>
             <div className="promoZone">
               {crochet.map((crochet, crochetIndex) => (
@@ -87,9 +87,10 @@ function HomePage() {
         </footer>
       </>
     );
-  } else if (viewportWidth <= 420) {
+  } else if (viewportWidth <= 425) {
     return (
       <>
+
         <section>
           <div className="containerCarousel">
             <Carousel slides={slides} />
@@ -98,8 +99,8 @@ function HomePage() {
 
           <section className="promoCode">
             <div className="categoryCrochet">
-              <h4>Crochet para todos os gostos</h4>
-              <span>Ver coleção</span>
+              <h4>Novo por aqui</h4>
+              <span>Ver coleções</span>
             </div>
             <div className="promoZone">
               {crochet.map((crochet, crochetIndex) => (
