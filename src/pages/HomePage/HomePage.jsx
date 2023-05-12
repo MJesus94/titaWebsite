@@ -20,6 +20,25 @@ function HomePage() {
       title: "Panelas",
     },
   ];
+
+  const crochet = [
+    {
+      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683648593/titaWebsite/WhatsApp_Image_2023-05-09_at_16.32.24_cvbvgr.jpg",
+      title: "O que quiser",
+      price: "€ 10.00",
+    },
+    {
+      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683725736/titaWebsite/anna-kolosyuk-D5nh6mCW52c-unsplash_wxxqrp.jpg",
+      title: "O que quiser",
+      price: "€ 10.00",
+    },
+    {
+      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683720591/titaWebsite/WhatsApp_Image_2023-05-10_at_12.38.30_eutwp0.jpg",
+      title: "O que quiser",
+      price: "€ 10.00",
+    },
+  ];
+
   if (viewportWidth <= 375) {
     return (
       <>
@@ -33,6 +52,20 @@ function HomePage() {
             <div className="categoryCrochet">
               <h4>Crochet para todos os gostos</h4>
               <span>Ver coleção</span>
+            </div>
+            <div className="promoZone">
+              {crochet.map((crochet, crochetIndex) => (
+                <div className="itemCard" key={crochetIndex}>
+                  <img
+                    className="productImg"
+                    src={crochet.url}
+                    alt={crochet.title}
+                  ></img>
+
+                  <h2>{crochet.title}</h2>
+                  <h5>{crochet.price}</h5>
+                </div>
+              ))}
             </div>
           </section>
         </section>
@@ -55,7 +88,53 @@ function HomePage() {
       </>
     );
   } else if (viewportWidth <= 420) {
-    return <></>;
+    return (
+      <>
+        <section>
+          <div className="containerCarousel">
+            <Carousel slides={slides} />
+          </div>
+          <hr />
+
+          <section className="promoCode">
+            <div className="categoryCrochet">
+              <h4>Crochet para todos os gostos</h4>
+              <span>Ver coleção</span>
+            </div>
+            <div className="promoZone">
+              {crochet.map((crochet, crochetIndex) => (
+                <div className="itemCard" key={crochetIndex}>
+                  <img
+                    className="productImg"
+                    src={crochet.url}
+                    alt={crochet.title}
+                  ></img>
+
+                  <h2>{crochet.title}</h2>
+                  <h5>{crochet.price}</h5>
+                </div>
+              ))}
+            </div>
+          </section>
+        </section>
+        <footer>
+          <ul>
+            <li>
+              <h2>Quem nós somos</h2>
+            </li>
+            <li>
+              <h2>Contactos</h2>
+            </li>
+          </ul>
+          <div className="copyrightDiv">
+            <div>
+              <h6>Developed by Miguel Jesus</h6>
+              <h6>Copyright ©2023 Fonzie</h6>
+            </div>
+          </div>
+        </footer>
+      </>
+    );
   } else if (viewportWidth <= 768) {
     return <></>;
   } else {
