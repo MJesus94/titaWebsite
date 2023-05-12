@@ -47,9 +47,8 @@ function HomePage() {
             <Carousel slides={slides} />
           </div>
           <hr />
-
           <section className="promoCode">
-          
+
             <div className="categoryCrochet">
               <h4>Novo por aqui</h4>
               <span>Ver coleções</span>
