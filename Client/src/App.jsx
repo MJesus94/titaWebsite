@@ -5,6 +5,9 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import Linhas from "./pages/Linhas/Linhas";
+import Pinceis from "./pages/Pincéis/Pinceis";
+import Panelas from "./pages/Panelas/Panelas";
 
 import Navbars from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -27,7 +30,7 @@ function App() {
         />
 
         <Route
-          path="/signup"
+          path="/Signup"
           element={
             <IsAnon>
               <SignupPage />
@@ -35,15 +38,17 @@ function App() {
           }
         />
         <Route
-          path="/login"
+          path="/Login"
           element={
             <IsAnon>
               <LoginPage />
             </IsAnon>
           }
         />
+        <Route path="/Linhas" element={<Linhas />} />
+        <Route path="/Pinceis" element={<Pinceis />} />
+        <Route path="/Panelas" element={<Panelas />} />
       </Routes>
-
     </div>
   );
 }
