@@ -98,10 +98,10 @@ function HomePage() {
             <Carousel slides={slides} />
           </div>
           <hr />
-
+          
           <section className="mainContainer">
             <div className="mainTextDiv">
-              <h2>Crochet para todos os gostos</h2>
+              <h2>Novo por aqui</h2>
             </div>
             <div className="thematicDiv">
               <img
@@ -110,38 +110,19 @@ function HomePage() {
                 alt="Small Bag"
               ></img>
             </div>
-
             <div className="productPromo">
-              <div className="productCard">
-                <img
-                  className="productPic"
-                  src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
-                  alt="Basket"
-                ></img>
-                <h6>Basket</h6>
-                <h6>€ 10.00</h6>
-              </div>
-              <div className="productCard">
-                <img
-                  className="productPic"
-                  src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
-                  alt="Basket"
-                ></img>
-                <h6>Basket</h6>
-                <h6>€ 10.00</h6>
-              </div>
-              <div className="productCard">
-                <img
-                  className="productPic"
-                  src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg"
-                  alt="Basket"
-                ></img>
-                <h6>Basket</h6>
-                <h6>€ 10.00</h6>
-              </div>
-              <div className="buttonCollection">
-                <h4>Ver Coleção</h4>
-              </div>
+            {crochet.map((crochet, crochetIndex) => (
+                <div className="productCard" key={crochetIndex}>
+                  <img
+                    className="productPic"
+                    src={crochet.url}
+                    alt={crochet.title}
+                  ></img>
+
+                  <h6>{crochet.title}</h6>
+                  <h6>{crochet.price}</h6>
+                </div>
+              ))}
             </div>
           </section>
         </section>
