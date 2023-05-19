@@ -7,17 +7,17 @@ import { Link } from "react-router-dom";
 function Signup({ toggleHiddenL, toggleHiddenH }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handleUserame = (e) => setUsername(e.target.value);
+  const handleName = (e) => setName(e.target.value);
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
     // Create an object representing the request body
-    const requestBody = { email, password, username };
+    const requestBody = { email, password, name };
 
     // Send a request to the server using axios
     try {
@@ -74,7 +74,7 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
               className="input"
               type="text"
               name="name"
-              onChange={handleUserame}
+              onChange={handleName}
             />
           </div>
           <button class="button-56" type="submit">
