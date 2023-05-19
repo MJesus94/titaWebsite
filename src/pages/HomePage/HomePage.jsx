@@ -2,9 +2,11 @@ import "./HomePage.css";
 import "./HomePageM.css";
 import "./HomePageL.css";
 import React from "react";
+
+
 import Carousel from "../../components/Carousel/Carousel";
 
-function HomePage() {
+function HomePage({ hiddenS, hiddenL, toggleHiddenL, toggleHiddenS, toggleHiddenH }) {
   const viewportWidth = window.innerWidth;
 
   const slides = [
@@ -43,7 +45,9 @@ function HomePage() {
   if (viewportWidth <= 425) {
     return (
       <>
+      
         <section>
+
           <div className="containerCarousel">
             <Carousel slides={slides} />
           </div>

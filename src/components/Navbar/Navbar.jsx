@@ -1,12 +1,13 @@
 import "./Navbar.css";
+import { AuthContext } from "../../context/auth.context";
+
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 
-function Navbars() {
-  // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider's `value` prop
-  // const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+function Navbars({ toggleHiddenS, toggleHiddenL, toggleHiddenH }) {
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+
   const navRef = useRef();
 
   const showNavBar = () => {
@@ -25,7 +26,13 @@ function Navbars() {
         alt="Logo Fonzie"
       />
       <nav ref={navRef}>
-        <Link to="/" onClick={handleLinkClick}>
+        <Link
+          to="/"
+          onClick={() => {
+            handleLinkClick();
+            toggleHiddenH();
+          }}
+        >
           Home
         </Link>
         <Link to="/Linhas" onClick={handleLinkClick}>
@@ -37,12 +44,41 @@ function Navbars() {
         <Link to="/Panelas" onClick={handleLinkClick}>
           Panelas
         </Link>
-        <Link to="/Signup" onClick={handleLinkClick}>
-          Signup
-        </Link>
-        <Link to="/Login" onClick={handleLinkClick}>
-          Login
-        </Link>
+        {!isLoggedIn ? (
+          <>
+            <Link
+              onClick={() => {
+                handleLinkClick();
+                toggleHiddenS();
+              }}
+            >
+              Sign up
+            </Link>
+            <Link
+              onClick={() => {
+                handleLinkClick();
+                toggleHiddenL();
+              }}
+            >
+              Login
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link onClick={handleLinkClick}> Profile</Link>
+            <Link
+              onClick={() => {
+                logOutUser();
+                toggleHiddenH();
+                handleLinkClick();
+              }}
+            >
+              {" "}
+              Logout
+            </Link>
+          </>
+        )}
+
         <button className="nav-btn nav-close-btn" onClick={showNavBar}>
           <FaTimes />
         </button>

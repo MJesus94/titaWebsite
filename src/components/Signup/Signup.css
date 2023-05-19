@@ -1,0 +1,119 @@
+.form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    background-color: antiquewhite;
+    border-radius: 16px;
+    width: 17vw;
+    height: 42vh;
+  }
+
+.formHeader{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Titillium Web', sans-serif;
+    margin: 20px 0 50px 0;
+}
+
+.exitCross{
+    width:1vw;
+    margin: 0 auto;
+}
+
+.form-group {
+    position: relative;
+    margin: 0 auto 20px auto;
+    width: 80%
+  }
+  
+  .line {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    padding: 0 5px;
+    background-color: antiquewhite;
+  }
+
+.input{
+    background-color: antiquewhite;
+    padding: 10px 5px;
+    border: solid 1px black;
+    border-radius: 5px;
+    width:100%;
+}
+
+.gradientGrey {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://res.cloudinary.com/df3vc4osi/image/upload/v1684496288/titaWebsite/overlay_eftwox.png');
+    background-repeat: repeat;
+  }
+
+
+
+/* CSS */
+.button-56 {
+  align-items: center;
+  background-color: antiquewhite;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 0 auto;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
