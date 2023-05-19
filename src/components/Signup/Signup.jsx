@@ -30,58 +30,60 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
 
   return (
     <>
-    <div className="gradientGrey"></div>
-    <div className="form">
-      <div className="formHeader">
-        <h1>Sign Up</h1>
-        <Link>
-          <img
-            className="exitCross"
-            src="https://res.cloudinary.com/df3vc4osi/image/upload/v1678934027/movie-gallery/images-removebg-preview_cbnsxm.png"
-            alt="exit"
-            onClick={toggleHiddenH}
-          />
-        </Link>
-      </div>
-      <form onSubmit={handleSignupSubmit}>
-        <div className="form-group">
-          <label className="line" htmlFor="email">
-            Email
-          </label>
-          <input
-            className="input"
-            type="email"
-            name="email"
-            onChange={handleEmail}
-          />
+      <div className="gradientGrey"></div>
+      <div className="form">
+        <div className="formHeader">
+          <h1>Sign Up</h1>
+          <Link>
+            <img
+              className="exitCross"
+              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1678934027/movie-gallery/images-removebg-preview_cbnsxm.png"
+              alt="exit"
+              onClick={toggleHiddenH}
+            />
+          </Link>
         </div>
-        <div className="form-group">
-          <label className="line" htmlFor="password">
-            Password
-          </label>
-          <input
-            className="input"
-            type="password"
-            name="password"
-            onChange={handlePassword}
-          />
-        </div>
-        <div className="form-group">
-          <label className="line" htmlFor="username">
-            Name
-          </label>
-          <input
-            className="input"
-            type="text"
-            name="username"
-            onChange={handleUserame}
-          />
-        </div>
-        <button class="button-56" type="submit">Sign up</button>
-      </form>
+        <form onSubmit={handleSignupSubmit}>
+          <div className="form-group">
+            <label className="line" htmlFor="email">
+              Email
+            </label>
+            <input
+              className="input"
+              type="email"
+              name="email"
+              onChange={handleEmail}
+            />
+          </div>
+          <div className="form-group">
+            <label className="line" htmlFor="password">
+              Password
+            </label>
+            <input
+              className="input"
+              type="password"
+              name="password"
+              onChange={handlePassword}
+            />
+          </div>
+          <div className="form-group">
+            <label className="line" htmlFor="name">
+              Name
+            </label>
+            <input
+              className="input"
+              type="text"
+              name="name"
+              onChange={handleUserame}
+            />
+          </div>
+          <button class="button-56" type="submit">
+            Sign up
+          </button>
+        </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-    </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+      </div>
     </>
   );
 }
