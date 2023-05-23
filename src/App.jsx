@@ -13,9 +13,22 @@ import Signup from "./components/Signup/Signup";
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 
+import userService from "./services/user.service";
+
 function App() {
   const [hiddenS, setHiddenS] = useState(true);
   const [hiddenL, setHiddenL] = useState(true);
+  const [admin, setAdmin] = useState(undefined);
+
+  const currentUser = async () => {
+    try {
+      const response = await userService.getCurrentUser();
+      setAdmin(response.data.admin)
+      console.log(admin)
+    } catch (error) {
+      console.log("error");
+    }
+  };
 
   const toggleHiddenS = () => {
     setHiddenS(!hiddenS);
@@ -38,11 +51,12 @@ function App() {
         toggleHiddenS={toggleHiddenS}
         toggleHiddenL={toggleHiddenL}
         toggleHiddenH={toggleHiddenH}
+        admin={admin}
       />
       {!hiddenS && (
         <Signup toggleHiddenL={toggleHiddenL} toggleHiddenH={toggleHiddenH} />
       )}
-      {!hiddenL && <Login toggleHiddenH={toggleHiddenH} />}
+      {!hiddenL && <Login toggleHiddenH={toggleHiddenH} currentUser={currentUser}/>}
       <Routes>
         <Route
           path="/"

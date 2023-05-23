@@ -6,8 +6,9 @@
     z-index: 4;
     background-color: antiquewhite;
     border-radius: 16px;
-    width: 17vw;
-    height: 42vh;
+    width: 19vw;
+    height: 45vh;
+    box-shadow: rgba(255, 255, 255, 0.397) 0 20px 19px 0;
   }
 
 .formHeader{
@@ -16,6 +17,14 @@
     align-items: center;
     font-family: 'Titillium Web', sans-serif;
     margin: 20px 0 50px 0;
+}
+
+.eyeIcon{
+    position:absolute;
+    width: 1vw;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    right: 0.1%;
 }
 
 .exitCross{
@@ -59,7 +68,7 @@
 
 
 /* CSS */
-.button-56 {
+.buttonSignup {
   align-items: center;
   background-color: antiquewhite;
   border: 2px solid #111;
@@ -84,7 +93,7 @@
   margin: 0 auto;
 }
 
-.button-56:after {
+.buttonSignup:after {
   background-color: #111;
   border-radius: 8px;
   content: "";
@@ -99,21 +108,21 @@
   z-index: -1;
 }
 
-.button-56:hover:after {
+.buttonSignup:hover:after {
   transform: translate(0, 0);
 }
 
-.button-56:active {
+.buttonSignup:active {
   background-color: #ffdeda;
   outline: 0;
 }
 
-.button-56:hover {
+.buttonSignup:hover {
   outline: 0;
 }
 
 @media (min-width: 768px) {
-  .button-56 {
+  .buttonSignup {
     padding: 0 40px;
   }
 }

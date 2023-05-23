@@ -5,7 +5,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 
-function Navbars({ toggleHiddenS, toggleHiddenL, toggleHiddenH }) {
+function Navbars({ toggleHiddenS, toggleHiddenL, toggleHiddenH, admin }) {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   const navRef = useRef();
@@ -44,6 +44,7 @@ function Navbars({ toggleHiddenS, toggleHiddenL, toggleHiddenH }) {
         <Link to="/Panelas" onClick={handleLinkClick}>
           Panelas
         </Link>
+        {admin && <Link>+ Produtos</Link>}
         {!isLoggedIn ? (
           <>
             <Link
@@ -78,6 +79,7 @@ function Navbars({ toggleHiddenS, toggleHiddenL, toggleHiddenH }) {
             </Link>
           </>
         )}
+        
 
         <button className="nav-btn nav-close-btn" onClick={showNavBar}>
           <FaTimes />

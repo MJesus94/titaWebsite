@@ -9,10 +9,15 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +35,7 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
 
   return (
     <>
-      <div className="gradientGrey"></div>
+      <div className="gradientGrey" onClick={toggleHiddenH}></div>
       <div className="form">
         <div className="formHeader">
           <h1>Sign Up</h1>
@@ -61,10 +66,25 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
             </label>
             <input
               className="input"
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               onChange={handlePassword}
             />
+            {!showPassword ? (
+              <img
+                className="eyeIcon"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1684510168/titaWebsite/eye_icon_2-removebg-preview_di1qug.png"
+                alt="password Visible"
+                onClick={togglePasswordVisibility}
+              />
+            ) : (
+              <img
+                className="eyeIcon"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1684510169/titaWebsite/eye_icon_3-removebg-preview_nx7bm0.png"
+                alt="password Visible"
+                onClick={togglePasswordVisibility}
+              />
+            )}
           </div>
           <div className="form-group">
             <label className="line" htmlFor="name">
@@ -77,7 +97,7 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
               onChange={handleName}
             />
           </div>
-          <button class="button-56" type="submit">
+          <button className="buttonSignup" type="submit">
             Sign up
           </button>
         </form>

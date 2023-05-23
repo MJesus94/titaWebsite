@@ -2,13 +2,16 @@ import "./Login.css";
 import authService from "../../services/auth.service";
 import { AuthContext } from "../../context/auth.context";
 
+
 import { useState, useContext, React } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Login({ toggleHiddenH }) {
+function Login({ toggleHiddenH, currentUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [showPassword, setShowPassword] = useState(false);
+    const API_KEY= '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';
 
   const navigate = useNavigate();
 
@@ -16,6 +19,10 @@ function Login({ toggleHiddenH }) {
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +32,10 @@ function Login({ toggleHiddenH }) {
 
     try {
       const response = await authService.login(requestBody);
-      if (!errorMessage) toggleHiddenH();
+      if (!errorMessage) {
+        toggleHiddenH();
+        currentUser();
+      }
 
       localStorage.setItem("authToken", response.data.authToken, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -40,7 +50,7 @@ function Login({ toggleHiddenH }) {
 
   return (
     <>
-      <div className="gradientGrey"></div>
+      <div className="gradientGrey" onClick={toggleHiddenH}></div>
       <div className="form">
         <div className="formHeader">
           <h1>Login</h1>
@@ -71,12 +81,27 @@ function Login({ toggleHiddenH }) {
             </label>
             <input
               className="input"
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               onChange={handlePassword}
             />
+            {!showPassword ? (
+              <img
+                className="eyeIcon"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1684510168/titaWebsite/eye_icon_2-removebg-preview_di1qug.png"
+                alt="password Visible"
+                onClick={togglePasswordVisibility}
+              />
+            ) : (
+              <img
+                className="eyeIcon"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1684510169/titaWebsite/eye_icon_3-removebg-preview_nx7bm0.png"
+                alt="password Visible"
+                onClick={togglePasswordVisibility}
+              />
+            )}
           </div>
-          <button class="button-56" type="submit">
+          <button className="buttonLogin" type="submit">
             Login
           </button>
         </form>
