@@ -11,7 +11,6 @@ function Login({ toggleHiddenH, currentUser }) {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [showPassword, setShowPassword] = useState(false);
-    const API_KEY= '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';
 
   const navigate = useNavigate();
 
