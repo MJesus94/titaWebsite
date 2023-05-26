@@ -36,6 +36,10 @@ class AuthService {
     // same as
     // return axios.post("http://localhost:5005/auth/verify");
   };
+
+  emailConfirmation = (confirmationCode) => {
+    return this.api.get(`/auth/confirm-email/${confirmationCode}`)
+  }
 }
 
 // Create one instance (object) of the service

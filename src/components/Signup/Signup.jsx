@@ -1,7 +1,7 @@
 import "./Signup.css";
 import authService from "../../services/auth.service";
 
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Signup({ toggleHiddenL, toggleHiddenH }) {
@@ -10,6 +10,7 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [showPassword, setShowPassword] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(undefined);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -26,12 +27,25 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
 
     // Send a request to the server using axios
     try {
-      await authService.signup(requestBody);
-      if (!errorMessage) toggleHiddenL();
+      const response = await authService.signup(requestBody);
+      const { message } = response.data;
+      if (!errorMessage) {
+        toggleHiddenL();
+        setSuccessMessage(message);
+        console.log(successMessage);
+      }
     } catch (error) {
-      setErrorMessage(error);
+      if (error.response) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage("An error occurred. Please try again later.");
+      }
     }
   };
+
+  useEffect(() => {
+    console.log(successMessage);
+  }, [successMessage]);
 
   return (
     <>
@@ -103,6 +117,7 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
         </form>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {successMessage && <p className="error-message">{successMessage}</p>}
       </div>
     </>
   );

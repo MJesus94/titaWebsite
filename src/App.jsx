@@ -7,6 +7,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Linhas from "./pages/Linhas/Linhas";
 import Pinceis from "./pages/Pincéis/Pinceis";
 import Panelas from "./pages/Panelas/Panelas";
+import EmailConfirmationPage from "./pages/EmailConfirmationPage/EmailConfirmationPage";
 
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
@@ -23,8 +24,8 @@ function App() {
   const currentUser = async () => {
     try {
       const response = await userService.getCurrentUser();
-      setAdmin(response.data.admin)
-      console.log(admin)
+      setAdmin(response.data.admin);
+      console.log(admin);
     } catch (error) {
       console.log("error");
     }
@@ -56,8 +57,14 @@ function App() {
       {!hiddenS && (
         <Signup toggleHiddenL={toggleHiddenL} toggleHiddenH={toggleHiddenH} />
       )}
-      {!hiddenL && <Login toggleHiddenH={toggleHiddenH} currentUser={currentUser}/>}
+      {!hiddenL && (
+        <Login toggleHiddenH={toggleHiddenH} currentUser={currentUser} />
+      )}
       <Routes>
+        <Route
+          path="/confirm-email/:confirmationCode"
+          element={<EmailConfirmationPage />}
+        />
         <Route
           path="/"
           element={
