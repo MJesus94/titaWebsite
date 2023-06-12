@@ -100,7 +100,7 @@
 }
 
 .buttonSignup:after {
-  background-color: #111;
+  background-color: #000000;
   border-radius: 8px;
   content: "";
   display: block;

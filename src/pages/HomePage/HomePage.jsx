@@ -6,7 +6,7 @@ import React from "react";
 
 import Carousel from "../../components/Carousel/Carousel";
 
-function HomePage({ hiddenS, hiddenL, toggleHiddenL, toggleHiddenS, toggleHiddenH }) {
+function HomePage() {
   const viewportWidth = window.innerWidth;
 
   const slides = [

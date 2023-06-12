@@ -1,0 +1,68 @@
+@media only screen and (max-width: 425px) and (min-width: 376px){
+    @import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
+        .form{
+            width:100vw;
+            height:100vh;
+            border-radius: 0px;
+            margin: 0;
+            overflow-y: hidden;
+        }
+    
+        .loginFormHeader{
+            display: flex;
+            justify-content: flex-end;
+            margin: 50px 0px 100px 0px;
+        }
+    
+        .login{
+            position:absolute;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+            background-color: rgb(240, 198, 145);
+            width: 75vw;
+            height: 37.5vh;
+            left:-100px;
+            top:-150px;
+        }
+    
+        .login > h1 {
+            margin: 190px 0px 0px 65px;
+            color:white;
+            font-weight: 700;
+        }
+    
+        .exitCross{
+            width: 12vw;
+            height: 6vh;
+            margin-right:25px;
+        }
+    
+        .closeLogin{
+            position:absolute;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+            background-color: rgb(228, 193, 151);
+            width: 50vw;
+            height: 25vh;
+            left:30%;
+            top:-100px;
+            z-index: -1;
+        }
+    
+        .loginFormBox{
+            margin-top: 200px;
+        }
+    
+        .form-group{
+            margin-top: 25px;
+        }
+    
+        .error-message{
+            z-index: 10;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width:100vw;
+          }
+    }
