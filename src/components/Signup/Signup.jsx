@@ -1,10 +1,9 @@
-import "./Signup.css";
 import authService from "../../services/auth.service";
-
+import "./Signup.css";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Signup({ toggleHiddenL, toggleHiddenH }) {
+function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -20,6 +19,7 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
     setShowPassword(!showPassword);
   };
 
+
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
     // Create an object representing the request body
@@ -32,7 +32,7 @@ function Signup({ toggleHiddenL, toggleHiddenH }) {
       if (!errorMessage) {
         toggleHiddenL();
         setSuccessMessage(message);
-        console.log(successMessage);
+        showSuccessToast();
       }
     } catch (error) {
       if (error.response) {

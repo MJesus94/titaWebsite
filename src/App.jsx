@@ -1,6 +1,9 @@
 import "./App.css";
+import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -46,8 +49,16 @@ function App() {
     setHiddenS(true);
   };
 
+  const showSuccessToast = () => {
+    toast.success("Successful Signup")
+  }
+
+  const showLoginSuccessToast = () =>{
+    toast.success("Successful Login")
+  }
   return (
     <div className="App">
+      <ToastContainer />
       <Navbar
         toggleHiddenS={toggleHiddenS}
         toggleHiddenL={toggleHiddenL}
@@ -55,10 +66,10 @@ function App() {
         admin={admin}
       />
       {!hiddenS && (
-        <Signup toggleHiddenL={toggleHiddenL} toggleHiddenH={toggleHiddenH} />
+        <Signup toggleHiddenL={toggleHiddenL} toggleHiddenH={toggleHiddenH} showSuccessToast={showSuccessToast} />
       )}
       {!hiddenL && (
-        <Login toggleHiddenH={toggleHiddenH} currentUser={currentUser} />
+        <Login toggleHiddenH={toggleHiddenH} currentUser={currentUser} showLoginSuccessToast={showLoginSuccessToast}/>
       )}
       <Routes>
         <Route
