@@ -115,7 +115,7 @@ function Login({ toggleHiddenH, currentUser , showLoginSuccessToast}) {
         </button>
       </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && <p className="error-messageL">{errorMessage}</p>}
     </div>
   </>
    
