@@ -11,7 +11,7 @@
         .loginFormHeader{
             display: flex;
             justify-content: flex-end;
-            margin: 50px 0px 100px 0px;
+            margin: 75px 0px 100px 0px;
         }
     
         .login{
@@ -61,7 +61,7 @@
         .error-message{
             z-index: 10;
             position: absolute;
-            top: 45%;
+            top: 55%;
             left: 50%;
             transform: translate(-50%, -50%);
             width:100vw;
