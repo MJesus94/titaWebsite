@@ -22,11 +22,11 @@
         width: 75vw;
         height: 37.5vh;
         left:-100px;
-        top:-150px;
+        top:-125px;
     }
 
     .signup > h1 {
-        margin: 190px 0px 0px 75px;
+        margin: 220px 0px 0px 75px;
         color:white;
         font-weight: 700;
     }
@@ -45,7 +45,7 @@
         width: 50vw;
         height: 25vh;
         left:30%;
-        top:-100px;
+        top:-75px;
         z-index: -1;
     }
 
