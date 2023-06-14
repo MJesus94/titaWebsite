@@ -1,9 +1,8 @@
 import "./App.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-
+import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -11,6 +10,7 @@ import Linhas from "./pages/Linhas/Linhas";
 import Pinceis from "./pages/Pincéis/Pinceis";
 import Panelas from "./pages/Panelas/Panelas";
 import EmailConfirmationPage from "./pages/EmailConfirmationPage/EmailConfirmationPage";
+import NewProducts from "./pages/NewProducts/NewProducts";
 
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
@@ -34,6 +34,10 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    currentUser();
+  }, []);
+
   const toggleHiddenS = () => {
     setHiddenS(!hiddenS);
     setHiddenL(true);
@@ -50,13 +54,12 @@ function App() {
   };
 
   const showSuccessToast = () => {
-    toast.success("Successful Signup")
-  }
+    toast.success("Successful Signup");
+  };
 
-  const showLoginSuccessToast = () =>{
-    toast.success("Successful Login")
-  }
-
+  const showLoginSuccessToast = () => {
+    toast.success("Successful Login");
+  };
 
   return (
     <div className="App">
@@ -68,10 +71,18 @@ function App() {
         admin={admin}
       />
       {!hiddenS && (
-        <Signup toggleHiddenL={toggleHiddenL} toggleHiddenH={toggleHiddenH} showSuccessToast={showSuccessToast} />
+        <Signup
+          toggleHiddenL={toggleHiddenL}
+          toggleHiddenH={toggleHiddenH}
+          showSuccessToast={showSuccessToast}
+        />
       )}
       {!hiddenL && (
-        <Login toggleHiddenH={toggleHiddenH} currentUser={currentUser} showLoginSuccessToast={showLoginSuccessToast}/>
+        <Login
+          toggleHiddenH={toggleHiddenH}
+          currentUser={currentUser}
+          showLoginSuccessToast={showLoginSuccessToast}
+        />
       )}
       <Routes>
         <Route
@@ -102,6 +113,7 @@ function App() {
         <Route path="/Linhas" element={<Linhas />} />
         <Route path="/Pinceis" element={<Pinceis />} />
         <Route path="/Panelas" element={<Panelas />} />
+        <Route path="/NewProduct" element={<NewProducts />} />
       </Routes>
     </div>
   );

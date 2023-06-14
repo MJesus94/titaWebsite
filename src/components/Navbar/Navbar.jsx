@@ -44,7 +44,7 @@ function Navbars({ toggleHiddenS, toggleHiddenL, toggleHiddenH, admin }) {
         <Link to="/Panelas" onClick={handleLinkClick}>
           Panelas
         </Link>
-        {admin && <Link>+ Produtos</Link>}
+        {admin && <Link to="/NewProduct">+ Produtos</Link>}
         {!isLoggedIn ? (
           <>
             <Link
@@ -68,6 +68,7 @@ function Navbars({ toggleHiddenS, toggleHiddenL, toggleHiddenH, admin }) {
           <>
             <Link onClick={handleLinkClick}> Profile</Link>
             <Link
+              to="/"
               onClick={() => {
                 logOutUser();
                 toggleHiddenH();
@@ -79,7 +80,6 @@ function Navbars({ toggleHiddenS, toggleHiddenL, toggleHiddenH, admin }) {
             </Link>
           </>
         )}
-        
 
         <button className="nav-btn nav-close-btn" onClick={showNavBar}>
           <FaTimes />

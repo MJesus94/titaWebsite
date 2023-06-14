@@ -1,0 +1,33 @@
+.addProductSection{
+    display: relative;
+}
+
+.formDiv{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 25vw;
+    height: 40vh;
+}
+
+.formTitle{
+    margin-bottom: 30px;
+}
+
+.addProductForm{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.addProductLabel{
+    margin: 10px 0px;
+}
+
+.addProductInput{
+    width: 100%;
+}
+
+.fileUpload{
+    margin: 20px 0px;
+}
