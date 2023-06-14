@@ -35,6 +35,7 @@
             width: 12vw;
             height: 6vh;
             margin-right:25px;
+            margin-top: 25px;
         }
     
         .closeLogin{
@@ -50,7 +51,7 @@
         }
     
         .loginFormBox{
-            margin-top: 200px;
+            margin-top: 175px;
         }
     
         .form-group{
