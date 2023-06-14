@@ -22,7 +22,7 @@
         width: 75vw;
         height: 37.5vh;
         left:-100px;
-        top:-125px;
+        top:-100px;
     }
 
     .signup > h1 {
@@ -45,7 +45,7 @@
         width: 50vw;
         height: 25vh;
         left:30%;
-        top:-75px;
+        top:-50px;
         z-index: -1;
     }
 
