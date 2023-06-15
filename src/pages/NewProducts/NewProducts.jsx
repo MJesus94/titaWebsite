@@ -1,22 +1,34 @@
 import "./NewProducts.css";
-import productService from "../../services/product.service";
+import { colourOptions } from "../../Assets/Data";
 
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import React, { useState } from "react";
 
+import productService from "../../services/product.service";
+
 function NewProducts() {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
   const [imgUrl, setImgUrl] = useState("");
-  const [cardSize, setCardSize] = useState("small"); // Default value is set to "small"
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("Linhas");
+  const [price, setPrice] = useState("");
+  const [cardSize, setCardSize] = useState("small");
+  const [selectedColors, setSelectedColors] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const animatedComponents = makeAnimated();
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
+  const handleCategory = (e) => setCategory(e.target.value);
   const handlePrice = (e) => setPrice(e.target.value);
   const handleCardSize = (e) => setCardSize(e.target.value);
+  const handleSelectedColors = (selectedOptions) => {
+    setSelectedColors(selectedOptions);
+  };
   const handleFileUpload = (e) => {
     // console.log("The file to be uploaded is: ", e.target.files[0]);
 
@@ -42,7 +54,16 @@ function NewProducts() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("hello");
-    const body = { title, description, price, imgUrl };
+    const body = {
+      title,
+      imgUrl,
+      description,
+      category,
+      price,
+      cardSize,
+      color: selectedColors.map((color) => color.value),
+    };
+    console.log(body);
     try {
       await productService.createProduct(body);
       navigate(`/profilePage`);
@@ -50,6 +71,7 @@ function NewProducts() {
       console.log(error);
     }
   };
+
   return (
     <>
       <section className="addProductSection">
@@ -58,12 +80,12 @@ function NewProducts() {
             <h4 className="titlePost">Add new Product</h4>
           </div>
           <form className="addProductForm" onSubmit={handleSubmit}>
-            <label className="addProductLabel" htmlFor="email">
+            <label className="addProductLabel" htmlFor="text">
               Title:
             </label>
             <input
               className="addProductInput"
-              type="email"
+              type="text"
               name="email"
               value={title}
               onChange={handleTitle}
@@ -89,6 +111,18 @@ function NewProducts() {
               value={price}
               onChange={handlePrice}
             />
+            <label className="addProductLabel" htmlFor="color">
+              Color:
+            </label>
+            <Select
+              closeMenuOnSelect={false}
+              components={animatedComponents}
+              isMulti
+              name="color"
+              options={colourOptions}
+              onChange={handleSelectedColors}
+              value={selectedColors}
+            />
             <label className="addProductLabel" htmlFor="cardSize">
               Card Size:
             </label>
@@ -102,6 +136,19 @@ function NewProducts() {
               <option value="medium">Medium</option>
               <option value="large">Large</option>
             </select>
+            <label className="addProductLabel" htmlFor="category">
+              Category:
+            </label>
+            <select
+              className="addProductInput"
+              name="category"
+              value={category}
+              onChange={handleCategory}
+            >
+              <option value="Linhas">Linhas</option>
+              <option value="Pincéis">Pincéis</option>
+              <option value="Panelas">Panelas</option>
+            </select>
             <input
               type="file"
               onChange={(e) => handleFileUpload(e)}
@@ -109,7 +156,12 @@ function NewProducts() {
             />
 
             {!loading ? (
-              <Button variant="warning" className="disabledButton" size="md">
+              <Button
+                variant="warning"
+                className="disabledButton"
+                size="md"
+                type="submit"
+              >
                 Submit
               </Button>
             ) : (

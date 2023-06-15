@@ -28,7 +28,6 @@ function App() {
     try {
       const response = await userService.getCurrentUser();
       setAdmin(response.data.admin);
-      console.log(admin);
     } catch (error) {
       console.log("error");
     }
@@ -69,6 +68,7 @@ function App() {
         toggleHiddenL={toggleHiddenL}
         toggleHiddenH={toggleHiddenH}
         admin={admin}
+        setAdmin={setAdmin}
       />
       {!hiddenS && (
         <Signup
