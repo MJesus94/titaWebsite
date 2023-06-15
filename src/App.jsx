@@ -53,7 +53,7 @@ function App() {
   };
 
   const showSuccessToast = () => {
-    toast.success("Successful Signup");
+    toast.success("Successful Signup, please confirm your email before Login");
   };
 
   const showLoginSuccessToast = () => {
