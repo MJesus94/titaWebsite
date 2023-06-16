@@ -18,6 +18,7 @@ function NewProducts() {
   const [cardSize, setCardSize] = useState("small");
   const [selectedColors, setSelectedColors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const animatedComponents = makeAnimated();
 
@@ -68,7 +69,20 @@ function NewProducts() {
       await productService.createProduct(body);
       navigate(`/profilePage`);
     } catch (error) {
-      console.log(error);
+        if (error.response && error.response.status === 400) {
+            const { message, missingFields } = error.response.data;
+            if (missingFields && missingFields.length > 0) {
+              // Construct the missing fields message
+              const missingFieldsMessage = `Please fill in the following fields: ${missingFields.join(
+                ", "
+              )}`;
+              setError(missingFieldsMessage);
+            } else {
+              setError(message);
+            }
+          } else {
+            console.log("An error occurred:", error);
+          }
     }
   };
 
@@ -176,6 +190,7 @@ function NewProducts() {
             )}
           </form>
         </div>
+        {error && <p className="error">{error}</p>}
       </section>
     </>
   );
