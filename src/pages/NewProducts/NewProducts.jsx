@@ -19,6 +19,7 @@ function NewProducts() {
   const [selectedColors, setSelectedColors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [missingFields, setMissingFields] = useState([]);
 
   const animatedComponents = makeAnimated();
 
@@ -64,25 +65,44 @@ function NewProducts() {
       cardSize,
       color: selectedColors.map((color) => color.value),
     };
-    console.log(body);
+
+    const requiredFields = [
+      "title",
+      "imgUrl",
+      "category",
+      "price",
+      "cardSize",
+      "color",
+    ];
+
+    const missing = requiredFields.filter((field) => !body[field]);
+    if (selectedColors.length === 0) {
+      missing.push("color");
+    }
+
+    if (missing.length > 0) {
+      setMissingFields(missing);
+      console.log(missingFields);
+    }
+
     try {
       await productService.createProduct(body);
       navigate(`/profilePage`);
     } catch (error) {
-        if (error.response && error.response.status === 400) {
-            const { message, missingFields } = error.response.data;
-            if (missingFields && missingFields.length > 0) {
-              // Construct the missing fields message
-              const missingFieldsMessage = `Please fill in the following fields: ${missingFields.join(
-                ", "
-              )}`;
-              setError(missingFieldsMessage);
-            } else {
-              setError(message);
-            }
-          } else {
-            console.log("An error occurred:", error);
-          }
+      if (error.response && error.response.status === 400) {
+        const { message, missingFields } = error.response.data;
+        if (missingFields && missingFields.length > 0) {
+          // Construct the missing fields message
+          const missingFieldsMessage = `Please fill in the following fields: ${missingFields.join(
+            ", "
+          )}`;
+          setError(missingFieldsMessage);
+        } else {
+          setError(message);
+        }
+      } else {
+        console.log("An error occurred:", error);
+      }
     }
   };
 
@@ -94,7 +114,12 @@ function NewProducts() {
             <h4 className="titlePost">Add new Product</h4>
           </div>
           <form className="addProductForm" onSubmit={handleSubmit}>
-            <label className="addProductLabel" htmlFor="text">
+            <label
+              className={`addProductLabel ${
+                missingFields.includes("title") && "errorLabel"
+              }`}
+              htmlFor="text"
+            >
               Title:
             </label>
             <input
@@ -115,7 +140,12 @@ function NewProducts() {
               value={description}
               onChange={handleDescription}
             />
-            <label className="addProductLabel" htmlFor="price">
+            <label
+              className={`addProductLabel ${
+                missingFields.includes("price") && "errorLabel"
+              }`}
+              htmlFor="price"
+            >
               Price:
             </label>
             <input
@@ -125,7 +155,12 @@ function NewProducts() {
               value={price}
               onChange={handlePrice}
             />
-            <label className="addProductLabel" htmlFor="color">
+            <label
+              className={`addProductLabel ${
+                missingFields.includes("color") && "errorLabel"
+              }`}
+              htmlFor="color"
+            >
               Color:
             </label>
             <Select
@@ -163,16 +198,19 @@ function NewProducts() {
               <option value="Pincéis">Pincéis</option>
               <option value="Panelas">Panelas</option>
             </select>
+            <label className="addProductLabel" htmlFor="file">
+              File:
+            </label>
             <input
               type="file"
               onChange={(e) => handleFileUpload(e)}
-              className="fileUpload"
+              className="addProductInput"
             />
 
             {!loading ? (
               <Button
                 variant="warning"
-                className="disabledButton"
+                className="disabledButton addProductLabel"
                 size="md"
                 type="submit"
               >
@@ -181,7 +219,7 @@ function NewProducts() {
             ) : (
               <Button
                 variant="warning"
-                className="disabledButton"
+                className="disabledButton addProductLabel"
                 size="md"
                 disabled
               >

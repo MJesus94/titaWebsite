@@ -28,6 +28,7 @@
     width: 100%;
 }
 
-.fileUpload{
-    margin: 20px 0px;
-}
+.errorLabel {
+    color: red;
+    font-weight:600;
+  }

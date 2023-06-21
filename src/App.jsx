@@ -113,7 +113,14 @@ function App() {
         <Route path="/Linhas" element={<Linhas />} />
         <Route path="/Pinceis" element={<Pinceis />} />
         <Route path="/Panelas" element={<Panelas />} />
-        <Route path="/NewProduct" element={<NewProducts />} />
+        <Route
+          path="/NewProduct"
+          element={
+            <IsPrivate>
+              <NewProducts />
+            </IsPrivate>
+          }
+        />
       </Routes>
     </div>
   );
