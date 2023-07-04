@@ -26,11 +26,13 @@ function Navbars({
 
   return (
     <header>
-      <img
-        className="logo"
-        src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683732465/titaWebsite/345753260_556282476419009_5163430452511384756_n_sznx4x.jpg"
-        alt="Logo Fonzie"
-      />
+      <Link to="/" onClick={toggleHiddenH}>
+        <img
+          className="logo"
+          src="https://res.cloudinary.com/df3vc4osi/image/upload/v1683732465/titaWebsite/345753260_556282476419009_5163430452511384756_n_sznx4x.jpg"
+          alt="Logo Fonzie"
+        />{" "}
+      </Link>
       <nav ref={navRef}>
         <Link
           to="/"
@@ -44,13 +46,17 @@ function Navbars({
         <Link to="/Linhas" onClick={handleLinkClick}>
           Linhas
         </Link>
-        <Link to="/Pincéis" onClick={handleLinkClick}>
+        <Link to="/Pinceis" onClick={handleLinkClick}>
           Pincéis
         </Link>
         <Link to="/Panelas" onClick={handleLinkClick}>
           Panelas
         </Link>
-        {admin && <Link to="/NewProduct">+ Produtos</Link>}
+        {admin && (
+          <Link to="/NewProduct" onClick={handleLinkClick}>
+            + Produtos
+          </Link>
+        )}
         {!isLoggedIn ? (
           <>
             <Link

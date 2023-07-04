@@ -7,5 +7,6 @@ export const colourOptions = [
     { value: 'orange', label: 'Orange' },
     { value: 'pink', label: 'Pink' },
     { value: 'black', label: 'Black' },
+    { value: 'white', label: 'White'},
     { value: 'rainbow', label: 'Rainbow'}
   ];

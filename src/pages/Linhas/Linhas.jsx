@@ -10,7 +10,7 @@ function Linhas() {
   const getAllProducts = async () => {
     try {
       const response = await productService.findAllProducts();
-      let copy = [...response.data];
+      let copy = [...response.data.ProductLinhas];
       let currentIndex = copy.length;
       while (currentIndex !== 0) {
         const randomIndex = Math.floor(Math.random() * currentIndex);
@@ -32,7 +32,9 @@ function Linhas() {
       {allProducts &&
         allProducts.map((product) => {
           if (product.category === "Linhas") {
-            return <Pin size={product.cardSize} key={product.id} product={product}/>;
+            return (
+              <Pin size={product.cardSize} key={product.id} product={product} />
+            );
           }
         })}
     </div>

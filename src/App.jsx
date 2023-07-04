@@ -22,7 +22,7 @@ import userService from "./services/user.service";
 function App() {
   const [hiddenS, setHiddenS] = useState(true);
   const [hiddenL, setHiddenL] = useState(true);
-  const [admin, setAdmin] = useState(undefined);
+  const [admin, setAdmin] = useState("");
 
   const currentUser = async () => {
     try {
@@ -89,18 +89,7 @@ function App() {
           path="/confirm-email/:confirmationCode"
           element={<EmailConfirmationPage />}
         />
-        <Route
-          path="/"
-          element={
-            <HomePage
-              hiddenS={hiddenS}
-              hiddenL={hiddenL}
-              toggleHiddenS={toggleHiddenS}
-              toggleHiddenL={toggleHiddenL}
-              toggleHiddenH={toggleHiddenH}
-            />
-          }
-        />
+        <Route path="/" element={<HomePage />} />
 
         <Route
           path="/profile"

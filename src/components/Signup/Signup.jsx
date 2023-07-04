@@ -1,7 +1,7 @@
 import authService from "../../services/auth.service";
 import "./Signup.css";
 import "./SignupL.css";
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
@@ -45,9 +45,6 @@ function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
     }
   };
 
-  useEffect(() => {
-    console.log(successMessage);
-  }, [successMessage]);
   if (viewportWidth <= 425) {
     return (
       <>
