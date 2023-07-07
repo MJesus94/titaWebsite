@@ -21,7 +21,7 @@
 }
 
 .pin {
-    margin: 7px 7px;
+    margin: 10px 10px;
     padding: 0;
     border-radius: 16px;
     background-color: rgb(255, 254, 254);
@@ -30,15 +30,15 @@
   }
   
   .small {
-    grid-row-end: span 26;
+    grid-row-end: span 25;
   }
   
   .medium {
-    grid-row-end: span 33;
+    grid-row-end: span 34;
   }
   
   .large {
-    grid-row-end: span 45;
+    grid-row-end: span 46;
   }
 
   .linhasCard:hover {
