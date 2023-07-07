@@ -11,6 +11,7 @@ import Pinceis from "./pages/Pincéis/Pinceis";
 import Panelas from "./pages/Panelas/Panelas";
 import EmailConfirmationPage from "./pages/EmailConfirmationPage/EmailConfirmationPage";
 import NewProducts from "./pages/NewProducts/NewProducts";
+import SpecificProduct from "./pages/SpecificProduct/SpecificProduct";
 
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
@@ -99,9 +100,9 @@ function App() {
             </IsPrivate>
           }
         />
-        <Route path="/Linhas" element={<Linhas />} />
-        <Route path="/Pinceis" element={<Pinceis />} />
-        <Route path="/Panelas" element={<Panelas />} />
+        <Route path="/:Linhas" element={<Linhas />} />
+        <Route path="/:Pinceis" element={<Pinceis />} />
+        <Route path="/:Panelas" element={<Panelas />} />
         <Route
           path="/NewProduct"
           element={
@@ -110,6 +111,7 @@ function App() {
             </IsPrivate>
           }
         />
+        <Route path="/product/:id" element={<SpecificProduct />} />
       </Routes>
     </div>
   );

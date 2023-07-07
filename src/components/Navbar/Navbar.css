@@ -23,7 +23,7 @@ header {
   padding: 0 2rem;
   background-color: var(--main2Color);
   color: var(--textColor);
-  border-bottom: 1px solid #ccc;
+  border-bottom: 3px solid #ccc;
 }
 .logo{
   z-index: -1;

@@ -3,14 +3,17 @@ import Pin from "../../components/Pin/Pin";
 import productService from "../../services/product.service";
 
 import { React, useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 
 function Panelas() {
   const [allProducts, setAllProducts] = useState("");
 
+  const { Panelas } = useParams();
+
   const getAllProducts = async () => {
     try {
       const response = await productService.findAllProducts();
-      let copy = [...response.data];
+      let copy = [...response.data.productPanelas];
       let currentIndex = copy.length;
       while (currentIndex !== 0) {
         const randomIndex = Math.floor(Math.random() * currentIndex);
@@ -28,15 +31,41 @@ function Panelas() {
   }, []);
 
   return (
-    <div className="pin-container">
-      {allProducts &&
-        allProducts.map((product) => {
-          if (product.category === "Panelas") {
-            return <Pin size={product.cardSize} key={product.id} product={product}/>;
-          }
-        })}
-    </div>
+    <section className="main-section">
+      <div className="infoContainer">
+        <ol className="routePath">
+          <li>
+            <Link to="/" className="link">
+              <span className="categorySpan">Página Inicial</span>
+              <img
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688657721/titaWebsite/images-removebg-preview_q3tb4e.png"
+                alt="right caret"
+                className="icon-caret"
+              />
+            </Link>
+          </li>
+          <li>
+            <span className="currentProduct">{Panelas}</span>
+          </li>
+        </ol>
+      </div>
+
+      <div className="pin-container">
+        {allProducts &&
+          allProducts.map((product) => {
+            if (product.category === `${Panelas}`) {
+              return (
+                <Pin
+                  size={product.cardSize}
+                  key={product.id}
+                  product={product}
+                />
+              );
+            }
+          })}
+      </div>
+    </section>
   );
 }
 
-export default Panelas
+export default Panelas;

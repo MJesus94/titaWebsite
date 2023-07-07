@@ -34,23 +34,14 @@ function Navbars({
         />{" "}
       </Link>
       <nav ref={navRef}>
-        <Link
-          to="/"
-          onClick={() => {
-            handleLinkClick();
-            toggleHiddenH();
-          }}
-        >
-          Home
-        </Link>
         <Link to="/Linhas" onClick={handleLinkClick}>
           Linhas
         </Link>
-        <Link to="/Pinceis" onClick={handleLinkClick}>
-          Pincéis
-        </Link>
         <Link to="/Panelas" onClick={handleLinkClick}>
           Panelas
+        </Link>
+        <Link to="/Pinceis" onClick={handleLinkClick}>
+          Pincéis
         </Link>
         {admin && (
           <Link to="/NewProduct" onClick={handleLinkClick}>

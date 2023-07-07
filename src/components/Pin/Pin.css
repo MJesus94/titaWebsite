@@ -21,7 +21,7 @@
 }
 
 .pin {
-    margin: 15px 10px;
+    margin: 7px 7px;
     padding: 0;
     border-radius: 16px;
     background-color: rgb(255, 254, 254);
@@ -86,3 +86,12 @@
     font-weight: 600;
     font-size: 20px;
   }
+
+/*   a.links{
+    text-decoration: none !important; 
+  } */
+
+  .links:focus, :hover, :visited, :link, :active {
+    text-decoration: none !important;
+  }
+    
