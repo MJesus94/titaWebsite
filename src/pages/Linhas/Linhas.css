@@ -1,12 +1,23 @@
-.pin-container {
+/* .pin-container {
     margin: 0;
     padding: 0;
-    width: 80vw;
+    width:80vw;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     display: grid;
-    grid-template-columns: repeat(auto-fill, 340px);
-    grid-auto-rows: 10px;
+    grid-template-columns: repeat(auto-fill, 360px);
+    grid-auto-rows: auto;
     justify-content: center;
+  } */
+
+  .wrapper {
+    max-width: 1440px;
+    margin: 550px auto;
   }
+
+  .columns {
+    column-gap: 5px;
+    column-count: 5;
+}
+

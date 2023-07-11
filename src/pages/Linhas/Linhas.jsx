@@ -7,7 +7,6 @@ import { Link, useParams } from "react-router-dom";
 
 function Linhas() {
   const [allProducts, setAllProducts] = useState("");
-
   const { Linhas } = useParams();
 
   const getAllProducts = async () => {
@@ -50,10 +49,10 @@ function Linhas() {
         </ol>
       </div>
 
-      <div className="pin-container">
-        {allProducts &&
-          allProducts.map((product) => {
-            if (product.category === `${Linhas}`) {
+      <div className="wrapper">
+        <div className="columns">
+          {allProducts &&
+            allProducts.map((product) => {
               return (
                 <Pin
                   size={product.cardSize}
@@ -61,8 +60,8 @@ function Linhas() {
                   product={product}
                 />
               );
-            }
-          })}
+            })}
+        </div>
       </div>
     </section>
   );
