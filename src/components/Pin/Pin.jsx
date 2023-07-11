@@ -60,7 +60,7 @@ import { React, useState, useEffect } from "react";
 import "./Pin.css";
 import { useNavigate } from "react-router-dom";
 
-function Pin({ product  }) {
+function Pin({ product }) {
   const navigate = useNavigate();
   const navigation = (id) => {
     navigate(`/product/${id}`);
@@ -68,7 +68,6 @@ function Pin({ product  }) {
 
   const [imgWidth, setImgWidth] = useState(null);
   const [imgHeight, setImgHeight] = useState(null);
-  const [proportion, setProportion] = useState(1);
 
   useEffect(() => {
     if (product && product.imgUrl) {
@@ -78,8 +77,6 @@ function Pin({ product  }) {
       img.addEventListener("load", () => {
         setImgWidth(img.naturalWidth);
         setImgHeight(img.naturalHeight);
-        const imgProportion = imgHeight / imgWidth;
-        setProportion(imgProportion);
       });
 
       return () => {
@@ -88,10 +85,12 @@ function Pin({ product  }) {
     }
   }, [product]);
 
+  useEffect(() => {}, [imgWidth]);
+
   return (
     <div
       className={`pin linhasCard`}
-      style={{ height: `${284 * proportion}px` }}
+      style={{ height: `${284 * (imgHeight / imgWidth)}px` }}
     >
       <img
         className="productPicSmall"
