@@ -3,12 +3,10 @@ import Pin from "../../components/Pin/Pin";
 import productService from "../../services/product.service";
 
 import { React, useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Panelas() {
-  const [allProducts, setAllProducts] = useState("");
-
-  const { Panelas } = useParams();
+  const [panelasProducts, setPanelasProducts] = useState([]);
 
   const getAllProducts = async () => {
     try {
@@ -22,7 +20,7 @@ function Panelas() {
         copy[currentIndex] = copy[randomIndex];
         copy[randomIndex] = temporaryValue;
       }
-      setAllProducts(copy);
+      setPanelasProducts(copy);
     } catch (error) {}
   };
 
@@ -45,24 +43,16 @@ function Panelas() {
             </Link>
           </li>
           <li>
-            <span className="currentProduct">{Panelas}</span>
+            <span className="currentProduct">Panelas</span>
           </li>
         </ol>
       </div>
 
-      <div className="pin-container">
-        {allProducts &&
-          allProducts.map((product) => {
-            if (product.category === `${Panelas}`) {
-              return (
-                <Pin
-                  size={product.cardSize}
-                  key={product.id}
-                  product={product}
-                />
-              );
-            }
-          })}
+      <div className="pinterestLayout">
+        {panelasProducts &&
+          panelasProducts
+            .filter((product) => product.category === "Panelas")
+            .map((product) => <Pin key={product.id} product={product} />)}
       </div>
     </section>
   );

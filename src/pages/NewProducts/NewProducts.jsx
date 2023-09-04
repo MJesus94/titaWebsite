@@ -258,19 +258,6 @@ function NewProducts() {
                   onChange={handleSelectedColors}
                   value={selectedColors}
                 />
-                <label className="addProductLabel" htmlFor="cardSize">
-                  Card Size:
-                </label>
-                <select
-                  className="addProductInput"
-                  name="cardSize"
-                  value={cardSize}
-                  onChange={handleCardSize}
-                >
-                  <option value="small">Small</option>
-                  <option value="medium">Medium</option>
-                  <option value="large">Large</option>
-                </select>
                 <label className="addProductLabel" htmlFor="file">
                   File:
                 </label>

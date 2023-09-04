@@ -1,23 +1,29 @@
-/* .pin-container {
-    margin: 0;
-    padding: 0;
-    width:80vw;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 360px);
-    grid-auto-rows: auto;
-    justify-content: center;
-  } */
-
-  .wrapper {
-    max-width: 1440px;
-    margin: 550px auto;
-  }
-
-  .columns {
-    column-gap: 5px;
-    column-count: 5;
+.pinterestLayout{
+  width:1400px;
+  margin: 20px auto;
+  columns: 4;
+  column-gap:20px;
 }
 
+
+@media (max-width: 1200px)
+{
+  .container{
+      width: calc(100% - 40px);
+      columns: 3;
+  }
+}
+
+@media (max-width: 768px)
+{
+  .container{
+      columns: 2;
+  }
+}
+
+@media (max-width: 480px)
+{
+  .container{
+      columns: 1;
+  }
+}

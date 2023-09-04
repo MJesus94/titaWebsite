@@ -3,11 +3,10 @@ import Pin from "../../components/Pin/Pin";
 import productService from "../../services/product.service";
 
 import { React, useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Linhas() {
-  const [allProducts, setAllProducts] = useState("");
-  const { Linhas } = useParams();
+  const [allProducts, setAllProducts] = useState([]);
 
   const getAllProducts = async () => {
     try {
@@ -44,24 +43,17 @@ function Linhas() {
             </Link>
           </li>
           <li>
-            <span className="currentProduct">{Linhas}</span>
+            <span className="currentProduct">Linhas</span>
           </li>
         </ol>
       </div>
 
-      <div className="wrapper">
-        <div className="columns">
+      <div className="pinterestLayout">
           {allProducts &&
-            allProducts.map((product) => {
-              return (
-                <Pin
-                  size={product.cardSize}
-                  key={product.id}
-                  product={product}
-                />
-              );
-            })}
-        </div>
+          allProducts.filter((product) => product.category === "Linhas")
+          .map((product) => (
+            <Pin key={product.id} product={product} />
+          ))}
       </div>
     </section>
   );

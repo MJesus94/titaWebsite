@@ -6,7 +6,7 @@ import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Pinceis() {
-  const [allProducts, setAllProducts] = useState("");
+  const [pinceisProducts, setPinceisProducts] = useState([]);
 
   const getAllProducts = async () => {
     try {
@@ -20,7 +20,7 @@ function Pinceis() {
         copy[currentIndex] = copy[randomIndex];
         copy[randomIndex] = temporaryValue;
       }
-      setAllProducts(copy);
+      setPinceisProducts(copy);
     } catch (error) {}
   };
 
@@ -48,19 +48,11 @@ function Pinceis() {
         </ol>
       </div>
 
-      <div className="pin-container">
-        {allProducts &&
-          allProducts.map((product) => {
-            if (product.category === "Pincéis") {
-              return (
-                <Pin
-                  size={product.cardSize}
-                  key={product.id}
-                  product={product}
-                />
-              );
-            }
-          })}
+      <div className="pinterestLayout">
+        {pinceisProducts &&
+          pinceisProducts
+            .filter((product) => product.category === "Pincéis")
+            .map((product) => <Pin key={product.id} product={product} />)}
       </div>
     </section>
   );
