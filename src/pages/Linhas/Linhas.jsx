@@ -5,7 +5,7 @@ import productService from "../../services/product.service";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Linhas() {
+function Linhas({ admin, showDeleteSuccessToast }) {
   const [allProducts, setAllProducts] = useState([]);
 
   const getAllProducts = async () => {
@@ -49,11 +49,18 @@ function Linhas() {
       </div>
 
       <div className="pinterestLayout">
-          {allProducts &&
-          allProducts.filter((product) => product.category === "Linhas")
-          .map((product) => (
-            <Pin key={product.id} product={product} />
-          ))}
+        {allProducts &&
+          allProducts
+            .filter((product) => product.category === "Linhas")
+            .map((product) => (
+              <Pin
+                key={product.id}
+                product={product}
+                admin={admin}
+                setAllProducts={setAllProducts}
+                showDeleteSuccessToast={showDeleteSuccessToast}
+              />
+            ))}
       </div>
     </section>
   );

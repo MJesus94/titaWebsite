@@ -45,7 +45,6 @@ function NewProducts() {
     const priceValue = parseFloat(e.target.value);
     setPrice(priceValue);
   };
-  const handleCardSize = (e) => setCardSize(e.target.value);
   const handleTema = (e) => setTema(e.target.value);
   const handleFormato = (e) => setFormato(e.target.value);
   const handleTamanho = (e) => setTamanho(e.target.value);
@@ -92,7 +91,6 @@ function NewProducts() {
       "imgUrl",
       "category",
       "price",
-      "cardSize",
       "color",
     ];
 

@@ -2,24 +2,45 @@
     margin-bottom: 10px;
     break-inside: avoid;
     border-radius: 15px;
+    position: relative;
+  }
+  .configDiv{
+    position:absolute;
+    display: flex;
+    justify-content: flex-end;
+    width:100%;
+  }
+  .editButton, .deleteButton{
+    top: 0;
+    visibility: hidden;
+    width:2.5vw;
   }
 
-  .box img{
+  .box:hover .editButton {
+    visibility: visible;
+  }
+
+  .box:hover .deleteButton{
+    visibility: visible;
+    border-top-right-radius: 15px;
+  }
+
+  .box .productImg{
     max-width: 100%;
     border-radius: 15px;
   }
 
-  .box img:hover{
+  .box .productImg:hover{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
   }
   
   .box:hover {
-    transform: scale(1.02); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.02); 
     cursor: pointer;
     transition: 0.5;
   } 
 
-  .box:hover .infoTag {
+  .box:hover .infoTag{
     opacity: 0.75; 
     transform: translateY(0);
     visibility: visible;

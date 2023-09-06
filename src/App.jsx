@@ -25,14 +25,6 @@ function App() {
   const [hiddenL, setHiddenL] = useState(true);
   const [admin, setAdmin] = useState("");
 
-  const images = [
-    'https://res.cloudinary.com/df3vc4osi/image/upload/v1688898208/titaWebsite/e5p7mmaic978vexwgf9r.jpg',
-    'https://res.cloudinary.com/df3vc4osi/image/upload/v1688899583/titaWebsite/snqr3wqbqv1bkffdqcve.jpg',
-    "https://res.cloudinary.com/df3vc4osi/image/upload/v1688897902/titaWebsite/cwxntkrztgwq9o9pgrkq.jpg",
-    "https://res.cloudinary.com/df3vc4osi/image/upload/v1688897776/titaWebsite/bskwmvzccthkoutbbvhw.jpg"
-    // Add more image URLs as needed
-  ];
-
   const currentUser = async () => {
     try {
       const response = await userService.getCurrentUser();
@@ -68,6 +60,10 @@ function App() {
   const showLoginSuccessToast = () => {
     toast.success("Successful Login");
   };
+
+  const showDeleteSuccessToast = () => {
+    toast.success("Product successfully deleted");
+  }
 
   return (
     <div className="App">
@@ -108,9 +104,9 @@ function App() {
             </IsPrivate>
           }
         />
-        <Route path="/Linhas" element={<Linhas />} />
-        <Route path="/Pinceis" element={<Pinceis  images={images}/>} />
-        <Route path="/Panelas" element={<Panelas />} />
+        <Route path="/Linhas" element={<Linhas admin={admin} showDeleteSuccessToast={showDeleteSuccessToast}/>} />
+        <Route path="/Pinceis" element={<Pinceis admin={admin} showDeleteSuccessToast={showDeleteSuccessToast}/>} />
+        <Route path="/Panelas" element={<Panelas admin={admin} showDeleteSuccessToast={showDeleteSuccessToast}/>} />
         <Route
           path="/NewProduct"
           element={
