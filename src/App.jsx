@@ -12,6 +12,7 @@ import Panelas from "./pages/Panelas/Panelas";
 import EmailConfirmationPage from "./pages/EmailConfirmationPage/EmailConfirmationPage";
 import NewProducts from "./pages/NewProducts/NewProducts";
 import SpecificProduct from "./pages/SpecificProduct/SpecificProduct";
+import EditProduct from "./pages/EditProduct/EditProduct";
 
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
@@ -63,7 +64,7 @@ function App() {
 
   const showDeleteSuccessToast = () => {
     toast.success("Product successfully deleted");
-  }
+  };
 
   return (
     <div className="App">
@@ -104,9 +105,33 @@ function App() {
             </IsPrivate>
           }
         />
-        <Route path="/Linhas" element={<Linhas admin={admin} showDeleteSuccessToast={showDeleteSuccessToast}/>} />
-        <Route path="/Pinceis" element={<Pinceis admin={admin} showDeleteSuccessToast={showDeleteSuccessToast}/>} />
-        <Route path="/Panelas" element={<Panelas admin={admin} showDeleteSuccessToast={showDeleteSuccessToast}/>} />
+        <Route
+          path="/Linhas"
+          element={
+            <Linhas
+              admin={admin}
+              showDeleteSuccessToast={showDeleteSuccessToast}
+            />
+          }
+        />
+        <Route
+          path="/Pinceis"
+          element={
+            <Pinceis
+              admin={admin}
+              showDeleteSuccessToast={showDeleteSuccessToast}
+            />
+          }
+        />
+        <Route
+          path="/Panelas"
+          element={
+            <Panelas
+              admin={admin}
+              showDeleteSuccessToast={showDeleteSuccessToast}
+            />
+          }
+        />
         <Route
           path="/NewProduct"
           element={
@@ -116,6 +141,7 @@ function App() {
           }
         />
         <Route path="/product/:id" element={<SpecificProduct />} />
+        <Route path="/editProduct/:id" element={<EditProduct />} />
       </Routes>
     </div>
   );

@@ -3,7 +3,6 @@ import "./HomePageM.css";
 import "./HomePageL.css";
 import React from "react";
 
-
 import Carousel from "../../components/Carousel/Carousel";
 
 function HomePage() {
@@ -45,17 +44,14 @@ function HomePage() {
   if (viewportWidth <= 425) {
     return (
       <>
-      
         <section>
-
           <div className="containerCarousel">
             <Carousel slides={slides} />
           </div>
           <hr />
           <section className="promoCode">
-
             <div className="categoryCrochet">
-              <h4>Novo por aqui</h4>
+              <h4>Novo por aquis</h4>
               <span>Ver coleções</span>
             </div>
             <div className="promoZone">
@@ -92,7 +88,7 @@ function HomePage() {
         </footer>
       </>
     );
-  }  else if (viewportWidth <= 768) {
+  } else if (viewportWidth <= 768) {
     return <></>;
   } else {
     return (
@@ -102,7 +98,7 @@ function HomePage() {
             <Carousel slides={slides} />
           </div>
           <hr />
-          
+
           <section className="mainContainer">
             <div className="mainTextDiv">
               <h2>Novo por aqui</h2>
@@ -115,7 +111,7 @@ function HomePage() {
               ></img>
             </div>
             <div className="productPromo">
-            {crochet.map((crochet, crochetIndex) => (
+              {crochet.map((crochet, crochetIndex) => (
                 <div className="productCard" key={crochetIndex}>
                   <img
                     className="productPic"

@@ -16,7 +16,6 @@ function NewProducts() {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("Linhas");
   const [price, setPrice] = useState(0);
-  const [cardSize, setCardSize] = useState("small");
   const [selectedColors, setSelectedColors] = useState([]);
   const [tema, setTema] = useState("");
   const [formato, setFormato] = useState("");
@@ -82,17 +81,10 @@ function NewProducts() {
       description,
       category,
       price,
-      cardSize,
       color: selectedColors.map((color) => color.value),
     };
     console.log(category);
-    const requiredFields = [
-      "title",
-      "imgUrl",
-      "category",
-      "price",
-      "color",
-    ];
+    const requiredFields = ["title", "imgUrl", "category", "price", "color"];
 
     const missing = requiredFields.filter((field) => !body[field]);
 

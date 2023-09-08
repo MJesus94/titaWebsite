@@ -54,7 +54,7 @@ function Linhas({ admin, showDeleteSuccessToast }) {
             .filter((product) => product.category === "Linhas")
             .map((product) => (
               <Pin
-                key={product.id}
+                key={product._id}
                 product={product}
                 admin={admin}
                 setAllProducts={setAllProducts}

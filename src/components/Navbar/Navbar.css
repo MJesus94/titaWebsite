@@ -25,20 +25,24 @@ header {
   color: var(--textColor);
   border-bottom: 3px solid #ccc;
 }
+
 .logo{
   z-index: -1;
   height: 7.5vh;
   width: 3.75vw;
 }
+
 nav{
     display: flex;
     align-items: center;
 }
+
 nav a {
   margin: 0 2rem;
   color: var(--textColor);
   text-decoration: none;
 }
+
 nav a:hover {
   color: var(--secondaryColor);
 }
