@@ -5,7 +5,7 @@ import productService from "../../services/product.service";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Panelas() {
+function Panelas({ admin, showDeleteSuccessToast }) {
   const [panelasProducts, setPanelasProducts] = useState([]);
 
   const getAllProducts = async () => {
@@ -52,7 +52,15 @@ function Panelas() {
         {panelasProducts &&
           panelasProducts
             .filter((product) => product.category === "Panelas")
-            .map((product) => <Pin key={product.id} product={product} />)}
+            .map((product) => (
+              <Pin
+                key={product._id}
+                product={product}
+                admin={admin}
+                setPanelasProducts={setPanelasProducts}
+                showDeleteSuccessToast={showDeleteSuccessToast}
+              />
+            ))}
       </div>
     </section>
   );

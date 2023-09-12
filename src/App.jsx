@@ -17,6 +17,7 @@ import EditProduct from "./pages/EditProduct/EditProduct";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Navbar from "./components/Navbar/Navbar";
+import IsAdmin from "./components/IsAdmin/IsAdmin";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 
 import userService from "./services/user.service";
@@ -64,6 +65,10 @@ function App() {
 
   const showDeleteSuccessToast = () => {
     toast.success("Product successfully deleted");
+  };
+
+  const showEditProductSuccessToast = () => {
+    toast.success("Product successfully edited");
   };
 
   return (
@@ -135,13 +140,22 @@ function App() {
         <Route
           path="/NewProduct"
           element={
-            <IsPrivate>
+            <IsAdmin>
               <NewProducts />
-            </IsPrivate>
+            </IsAdmin>
           }
         />
         <Route path="/product/:id" element={<SpecificProduct />} />
-        <Route path="/editProduct/:id" element={<EditProduct />} />
+        <Route
+          path="/editProduct/:id"
+          element={
+            <IsAdmin>
+              <EditProduct
+                showEditProductSuccessToast={showEditProductSuccessToast}
+              />
+            </IsAdmin>
+          }
+        />
       </Routes>
     </div>
   );

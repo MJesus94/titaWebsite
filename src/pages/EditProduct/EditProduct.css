@@ -1,0 +1,24 @@
+.errorDiv{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items:center ;
+    transform: translate(-50%, -50%);
+    z-index: 8;
+    border-radius:15px;
+    background-color: antiquewhite;
+    height:15vh;
+}
+.error{
+    margin:2vh;
+    font-weight: 600;
+    color:red;
+}
+
+.closeError{
+    height:4vh;
+    position:absolute;
+    right:0%;
+    top:0%;
+}

@@ -6,7 +6,14 @@ import { useNavigate } from "react-router-dom";
 import productService from "../../services/product.service";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal"; // Import the modal component
 
-function Pin({ product, admin, setAllProducts, showDeleteSuccessToast }) {
+function Pin({
+  product,
+  admin,
+  setAllProducts,
+  setPinceisProducts,
+  setPanelasProducts,
+  showDeleteSuccessToast,
+}) {
   const [editIsHovered, setEditIsHovered] = useState(false);
   const [deleteIsHovered, setDeleteIsHovered] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
@@ -24,14 +31,26 @@ function Pin({ product, admin, setAllProducts, showDeleteSuccessToast }) {
 
   const handleConfirmDelete = async () => {
     try {
-      console.log("Deleting product with ID:", product._id);
+      console.log("Deleting product with ID:", setAllProducts);
       const response = await productService.deleteProduct(product._id);
       console.log("Response from deleteProduct API:", response);
       if (response.status === 200) {
-        setAllProducts((prevProducts) =>
-          prevProducts.filter((product) => product._id !== productId)
-        );
-        showDeleteSuccessToast();
+        if (product.category === "Linhas") {
+          setAllProducts((prevProducts) =>
+            prevProducts.filter((product) => product._id !== productId)
+          );
+          showDeleteSuccessToast();
+        } else if (product.category === "Pincéis") {
+          setPinceisProducts((prevProducts) =>
+            prevProducts.filter((product) => product._id !== productId)
+          );
+          showDeleteSuccessToast();
+        } else {
+          setPanelasProducts((prevProducts) =>
+            prevProducts.filter((product) => product._id !== productId)
+          );
+          showDeleteSuccessToast();
+        }
       }
     } catch (error) {
       console.error("Error deleting product:", error);
@@ -97,7 +116,6 @@ function Pin({ product, admin, setAllProducts, showDeleteSuccessToast }) {
           alt="Linhas"
           onClick={() => {
             navigation(product._id);
-            product = [];
           }}
         />
 
@@ -105,7 +123,6 @@ function Pin({ product, admin, setAllProducts, showDeleteSuccessToast }) {
           className="infoTag"
           onClick={() => {
             navigation(product._id);
-            product = [];
           }}
         >
           <div>

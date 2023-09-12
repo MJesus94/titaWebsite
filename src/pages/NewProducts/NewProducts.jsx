@@ -5,7 +5,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import productService from "../../services/product.service";
 
@@ -155,10 +155,6 @@ function NewProducts() {
   // react router dom Navigate
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(category);
-  }, [category]);
 
   return (
     <>

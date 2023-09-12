@@ -5,7 +5,7 @@ import productService from "../../services/product.service";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Pinceis() {
+function Pinceis({ admin, showDeleteSuccessToast }) {
   const [pinceisProducts, setPinceisProducts] = useState([]);
 
   const getAllProducts = async () => {
@@ -52,7 +52,13 @@ function Pinceis() {
         {pinceisProducts &&
           pinceisProducts
             .filter((product) => product.category === "Pincéis")
-            .map((product) => <Pin key={product.id} product={product} />)}
+            .map((product) => <Pin
+                key={product._id}
+                product={product}
+                admin={admin}
+                setPinceisProducts={setPinceisProducts}
+                showDeleteSuccessToast={showDeleteSuccessToast}
+              />)}
       </div>
     </section>
   );

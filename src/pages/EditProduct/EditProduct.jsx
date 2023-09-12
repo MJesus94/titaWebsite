@@ -1,18 +1,25 @@
 import "../SpecificProduct/SpecificProduct.css";
+import "./EditProduct.css";
+
+import { colourOptions } from "../../Assets/Data";
 
 import React, { useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import productService from "../../services/product.service";
 
 function EditProduct() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const animatedComponents = makeAnimated();
 
   const [oneProduct, setOneProduct] = useState(false);
   const [imgWidth, setImgWidth] = useState(false);
   const [imgHeight, setImgHeight] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
-  const [editedPrice, setEditedPrice] = useState("");
+  const [editedPrice, setEditedPrice] = useState(false);
   const [editedSelectedColors, setEditedSelectedColors] = useState([]);
   const [editedDescription, setEditedDescription] = useState("");
   const [editedTema, setEditedTema] = useState("");
@@ -20,15 +27,20 @@ function EditProduct() {
   const [editedTamanho, setEditedTamanho] = useState("");
   const [editedCobertura, setEditedCobertura] = useState("");
   const [editedMassa, setEditedMassa] = useState("");
-
-  const [missingFields, setMissingFields] = useState([]);
   const [error, setError] = useState("");
+  const [hidden, setHidden] = useState(false);
 
   const handleEditedTitle = (e) => setEditedTitle(e.target.value);
   const handleEditedPrice = (e) => {
     const priceValue = parseFloat(e.target.value);
     setEditedPrice(priceValue);
   };
+  const handleEditedDescription = (e) => setEditedDescription(e.target.value);
+  const handleEditedTema = (e) => setEditedTema(e.target.value);
+  const handleEditedFormato = (e) => setEditedFormato(e.target.value);
+  const handleEditedTamanho = (e) => setEditedTamanho(e.target.value);
+  const handleEditedMassa = (e) => setEditedMassa(e.target.value);
+  const handleEditedCobertura = (e) => setEditedCobertura(e.target.value);
   const handleSelectedColors = (selectedOptions) => {
     setEditedSelectedColors(selectedOptions);
   };
@@ -36,25 +48,39 @@ function EditProduct() {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
 
-    const isValidNumber = (value) => {
-      return /^-?\d+(\.\d+)?$/.test(value);
-    };
+    try {
+      const priceValue = editedPrice || oneProduct.price;
 
-    if (!isValidNumber(editedPrice)) {
-      setError("Please enter a valid price.");
-      return;
+      const body = {
+        title: editedTitle,
+        description: editedDescription,
+        price: priceValue,
+        color: editedSelectedColors.map((color) => color.value),
+      };
+
+      validateFields(body);
+
+      if (oneProduct.category === "Pincéis") {
+        body.tema = editedTema;
+        body.formato = editedFormato;
+        body.tamanho = editedTamanho;
+        validateAdditionalFields(body, ["tema", "formato", "tamanho"]);
+      } else if (oneProduct.category === "Panelas") {
+        body.cobertura = editedCobertura;
+        body.formato = editedFormato;
+        body.massa = editedMassa;
+        validateAdditionalFields(body, ["cobertura", "formato", "massa"]);
+      }
+
+      await productService.editProduct(id, body);
+      navigateBasedOnCategory();
+    } catch (error) {
+      handleFormSubmissionError(error);
     }
-    
-    const priceValue = parseFloat(editedPrice);
+  };
 
-    const body = {
-      title: editedTitle,
-      description: editedDescription,
-      price: priceValue,
-      color: editedSelectedColors.map((color) => color.value),
-    };
-    console.log(oneProduct.category);
-    const requiredFields = ["title", "imgUrl", "category", "price", "color"];
+  const validateFields = (body) => {
+    const requiredFields = ["title", "price", "color"];
 
     const missing = requiredFields.filter((field) => !body[field]);
 
@@ -62,52 +88,60 @@ function EditProduct() {
       missing.push("color");
     }
 
-    // additional fields based on category
-    if (oneProduct.category === "Pincéis") {
-      body.tema = editedTema;
-      body.formato = editedFormato;
-      body.tamanho = editedTamanho;
-    } else if (oneProduct.category === "Panelas") {
-      body.cobertura = editedCobertura;
-      body.formato = editedFormato;
-      body.massa = editedMassa;
-    }
-
     if (missing.length > 0) {
-      setMissingFields(missing);
-      console.log(missingFields);
-      return;
-    }
-    console.log(body);
-    try {
-      await productService.createProduct(body);
-
-      // Navigation based on category
-      if (oneProduct.category === "Linhas") {
-        navigate(`/Linhas`);
-      } else if (oneProduct.category === "Pincéis") {
-        navigate("/Pinceis");
-      } else {
-        navigate("/Panelas");
-      }
-    } catch (error) {
-      if (error.response && error.response.status === 400) {
-        const { message, missingFields } = error.response.data;
-        if (missingFields && missingFields.length > 0) {
-          // Construct the missing fields message
-          const missingFieldsMessage = `Please fill in the following fields: ${missingFields.join(
-            ", "
-          )}`;
-          setError(missingFieldsMessage);
-        } else {
-          setError(message);
-        }
-      } else {
-        console.log("An error occurred:", error);
-      }
+      const missingFieldsMessage = `Please fill in the following fields: ${missing.join(
+        ", "
+      )}`;
+      setError(missingFieldsMessage);
+      setHidden(false);
+      throw new Error(missingFieldsMessage);
     }
   };
 
+  const validateAdditionalFields = (body, fields) => {
+    const missing = fields.filter((field) => !body[field]);
+
+    if (missing.length > 0) {
+      const missingFieldsMessage = `Please fill in the following fields: ${missing.join(
+        ", "
+      )}`;
+      setError(missingFieldsMessage);
+      setHidden(false);
+      throw new Error(missingFieldsMessage);
+    }
+  };
+
+  const navigateBasedOnCategory = () => {
+    const categoryRoutes = {
+      Linhas: "/Linhas",
+      Pincéis: "/Pinceis",
+      Panelas: "/Panelas",
+    };
+
+    navigate(categoryRoutes[oneProduct.category]);
+  };
+
+  const handleFormSubmissionError = (error) => {
+    if (error.response && error.response.status === 400) {
+      const { message, missingFields } = error.response.data;
+      if (missingFields && missingFields.length > 0) {
+        const missingFieldsMessage = `Please fill in the following fields: ${missingFields.join(
+          ", "
+        )}`;
+        setError(missingFieldsMessage);
+        setHidden(false);
+      } else {
+        setError(message);
+        setHidden(false);
+      }
+    } else {
+      console.error("An error occurred:", error);
+    }
+  };
+
+  const hideErrorMessage = () => {
+    setHidden(!hidden);
+  };
   const getOneProduct = async () => {
     try {
       const response = await productService.findOneProduct(id);
@@ -181,11 +215,12 @@ function EditProduct() {
               <div className="productInformation">
                 <div className="productDetails">
                   <div>
-                    <label htmlfor="text">Title</label>
+                    <label htmlFor="text">Title</label>
                     <input
                       type="text"
                       placeholder={oneProduct.title}
                       name="title"
+                      id="title"
                       value={editedTitle}
                       onChange={handleEditedTitle}
                     />
@@ -193,8 +228,9 @@ function EditProduct() {
                   <div>
                     <label htmlFor="price">Price</label>
                     <input
-                      type="text"
+                      type="number"
                       name="price"
+                      id="price"
                       value={editedPrice}
                       onChange={handleEditedPrice}
                       placeholder={oneProduct.price}
@@ -237,9 +273,114 @@ function EditProduct() {
                   />
                 )}
               </div>
-              <div></div>
+              <div>
+                <label htmlFor="description">Description</label>
+                <textarea
+                  placeholder={oneProduct.description}
+                  name="description"
+                  id="description"
+                  value={editedDescription}
+                  onChange={handleEditedDescription}
+                />
+                <label htmlFor="color">Color</label>
+                <Select
+                  closeMenuOnSelect={false}
+                  components={animatedComponents}
+                  isMulti
+                  name="color"
+                  id="color"
+                  options={colourOptions}
+                  onChange={handleSelectedColors}
+                  value={editedSelectedColors}
+                />
+                {oneProduct.category === "Pincéis" ? (
+                  <>
+                    <label htmlFor="tema">Tema</label>
+                    <input
+                      type="text"
+                      name="tema"
+                      id="tema"
+                      value={editedTema}
+                      onChange={handleEditedTema}
+                      placeholder={oneProduct.tema}
+                    />
+                    <label htmlFor="formato">Formato</label>
+                    <input
+                      type="text"
+                      name="formato"
+                      id="formato"
+                      value={editedFormato}
+                      onChange={handleEditedFormato}
+                      placeholder={oneProduct.formato}
+                    />
+                    <label htmlFor="tamanho">Tamanho</label>
+                    <input
+                      type="text"
+                      name="tamanho"
+                      id="tamanho"
+                      value={editedTamanho}
+                      onChange={handleEditedTamanho}
+                      placeholder={oneProduct.tamanho}
+                    />
+                  </>
+                ) : oneProduct.category === "Panelas" ? (
+                  <>
+                    {" "}
+                    <label htmlFor="massa">Massa</label>
+                    <input
+                      type="text"
+                      name="massa"
+                      id="massa"
+                      value={editedMassa}
+                      onChange={handleEditedMassa}
+                      placeholder={oneProduct.massa}
+                    />
+                    <label htmlFor="formato">Formato</label>
+                    <input
+                      type="text"
+                      name="formato"
+                      id="formato"
+                      value={editedFormato}
+                      onChange={handleEditedFormato}
+                      placeholder={oneProduct.formato}
+                    />
+                    <label htmlFor="cobertura">Cobertura</label>
+                    <input
+                      type="text"
+                      name="cobertura"
+                      id="cobertura"
+                      value={editedCobertura}
+                      onChange={handleEditedCobertura}
+                      placeholder={oneProduct.cobertura}
+                    />{" "}
+                  </>
+                ) : (
+                  <></>
+                )}
+                <Button
+                  variant="warning"
+                  className="addProductLabel"
+                  size="md"
+                  type="submit"
+                >
+                  Submit
+                </Button>
+              </div>
             </div>
           </form>
+          {error && !hidden && (
+            <div className="overlay">
+              <div className="errorDiv">
+                <img
+                  className="closeError"
+                  src="https://res.cloudinary.com/df3vc4osi/image/upload/v1686585930/titaWebsite/Exit_button_icon_png_kzipsv.png"
+                  alt="exit"
+                  onClick={hideErrorMessage}
+                />
+                <p className="error">{error}</p>
+              </div>
+            </div>
+          )}
         </section>
       )}
     </>
