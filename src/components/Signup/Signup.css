@@ -34,9 +34,12 @@
 
 .form-group {
     position: relative;
-    margin: 0 auto 20px auto;
     width: 80%
   }
+
+.signUpFormGroupPos{
+  margin: 0 auto 20px auto;
+}
   
   .line {
     position: absolute;

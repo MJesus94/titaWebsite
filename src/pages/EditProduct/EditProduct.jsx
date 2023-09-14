@@ -10,7 +10,7 @@ import makeAnimated from "react-select/animated";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import productService from "../../services/product.service";
 
-function EditProduct() {
+function EditProduct({ showEditProductSuccessToast }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const animatedComponents = makeAnimated();
@@ -74,6 +74,7 @@ function EditProduct() {
 
       await productService.editProduct(id, body);
       navigateBasedOnCategory();
+      showEditProductSuccessToast();
     } catch (error) {
       handleFormSubmissionError(error);
     }
@@ -273,7 +274,7 @@ function EditProduct() {
                   />
                 )}
               </div>
-              <div>
+              <div className="alignment">
                 <label htmlFor="description">Description</label>
                 <textarea
                   placeholder={oneProduct.description}

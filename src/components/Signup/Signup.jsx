@@ -53,16 +53,15 @@ function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
             <div className="signup">
               <h1>Sign Up</h1>
             </div>
-            <div className="closeSignup">
-            </div>
+            <div className="closeSignup"></div>
             <Link>
-                <img
-                  className="exitCross"
-                  src="https://res.cloudinary.com/df3vc4osi/image/upload/v1686585930/titaWebsite/Exit_button_icon_png_kzipsv.png"
-                  alt="exit"
-                  onClick={toggleHiddenH}
-                />
-              </Link>
+              <img
+                className="exitCross"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1686585930/titaWebsite/Exit_button_icon_png_kzipsv.png"
+                alt="exit"
+                onClick={toggleHiddenH}
+              />
+            </Link>
           </div>
           <form onSubmit={handleSignupSubmit} className="formBox">
             <div className="form-group">
@@ -142,7 +141,7 @@ function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
             </Link>
           </div>
           <form onSubmit={handleSignupSubmit}>
-            <div className="form-group">
+            <div className="form-group signUpFormGroupPos">
               <label className="line" htmlFor="email">
                 Email
               </label>
@@ -153,7 +152,7 @@ function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
                 onChange={handleEmail}
               />
             </div>
-            <div className="form-group">
+            <div className="form-group signUpFormGroupPos">
               <label className="line" htmlFor="password">
                 Password
               </label>
@@ -179,7 +178,7 @@ function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
                 />
               )}
             </div>
-            <div className="form-group">
+            <div className="form-group signUpFormGroupPos">
               <label className="line" htmlFor="name">
                 Name
               </label>

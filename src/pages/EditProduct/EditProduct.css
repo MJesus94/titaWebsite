@@ -10,6 +10,10 @@
     background-color: antiquewhite;
     height:15vh;
 }
+.alignment{
+    display: flex;
+    flex-direction:column;
+}
 .error{
     margin:2vh;
     font-weight: 600;

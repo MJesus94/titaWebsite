@@ -15,6 +15,7 @@ import SpecificProduct from "./pages/SpecificProduct/SpecificProduct";
 import EditProduct from "./pages/EditProduct/EditProduct";
 
 import Login from "./components/Login/Login";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import Signup from "./components/Signup/Signup";
 import Navbar from "./components/Navbar/Navbar";
 import IsAdmin from "./components/IsAdmin/IsAdmin";
@@ -25,6 +26,7 @@ import userService from "./services/user.service";
 function App() {
   const [hiddenS, setHiddenS] = useState(true);
   const [hiddenL, setHiddenL] = useState(true);
+  const [hiddenForgotForm, setHiddenForgotForm] = useState(true);
   const [admin, setAdmin] = useState("");
 
   const currentUser = async () => {
@@ -40,6 +42,12 @@ function App() {
     currentUser();
   }, []);
 
+  const toggleHiddenForgotForm = () => {
+    setHiddenForgotForm(!hiddenForgotForm);
+    setHiddenL(true);
+    setHiddenS(true);
+  };
+
   const toggleHiddenS = () => {
     setHiddenS(!hiddenS);
     setHiddenL(true);
@@ -53,6 +61,7 @@ function App() {
   const toggleHiddenH = () => {
     setHiddenL(true);
     setHiddenS(true);
+    setHiddenForgotForm(true);
   };
 
   const showSuccessToast = () => {
@@ -69,6 +78,18 @@ function App() {
 
   const showEditProductSuccessToast = () => {
     toast.success("Product successfully edited");
+  };
+
+  const showSentEmailSuccessToast = () => {
+    toast.success("Email was sent");
+  };
+
+  const showCodeConfirmSuccessToast = () => {
+    toast.success("Your code is correct");
+  };
+
+  const showPasswordChangedToast = () => {
+    toast.success("Your password has been changed");
   };
 
   return (
@@ -93,6 +114,16 @@ function App() {
           toggleHiddenH={toggleHiddenH}
           currentUser={currentUser}
           showLoginSuccessToast={showLoginSuccessToast}
+          toggleHiddenForgotForm={toggleHiddenForgotForm}
+        />
+      )}
+
+      {!hiddenForgotForm && (
+        <ForgotPassword
+          toggleHiddenH={toggleHiddenH}
+          showSentEmailSuccessToast={showSentEmailSuccessToast}
+          showCodeConfirmSuccessToast={showCodeConfirmSuccessToast}
+          showPasswordChangedToast={showPasswordChangedToast}
         />
       )}
       <Routes>

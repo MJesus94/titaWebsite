@@ -5,6 +5,10 @@
     z-index: 9;
 }
 
+.loginFormGroupPos{
+  margin: 20px auto 20px auto;
+}
+
 .buttonLogin {
     align-items: center;
     background-color: antiquewhite;
@@ -27,7 +31,10 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    margin: 65px auto 0 auto;
+  }
+
+  .buttonPos{
+    margin: 40px auto 0 auto;
   }
   
   .buttonLogin:after {
@@ -57,7 +64,23 @@
   .buttonLogin:hover {
     outline: 0;
   }
+
+  .forgotPasswordDiv{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2vw;
+  }
   
+  .forgotPassword{
+    text-decoration: none;
+    color:black;
+  }
+
+  .forgotPassword:hover {
+   text-decoration: underline;
+  }
+
   @media (min-width: 768px) {
     .buttonLogin {
       padding: 0 40px;

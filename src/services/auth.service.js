@@ -38,8 +38,20 @@ class AuthService {
   };
 
   emailConfirmation = (confirmationCode) => {
-    return this.api.get(`/auth/confirm-email/${confirmationCode}`)
-  }
+    return this.api.get(`/auth/confirm-email/${confirmationCode}`);
+  };
+
+  sendPasswordResetCode = (requestBody) => {
+    return this.api.post("/auth/sendPasswordResetCode", requestBody);
+  };
+
+  passwordResetCode = (requestBody) => {
+    return this.api.post("/auth/passwordResetCode", requestBody);
+  };
+
+  newPassword = (requestBody) => {
+    return this.api.put("/auth/newPassword", requestBody);
+  };
 }
 
 // Create one instance (object) of the service
