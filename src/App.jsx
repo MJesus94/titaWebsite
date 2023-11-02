@@ -20,6 +20,7 @@ import Signup from "./components/Signup/Signup";
 import Navbar from "./components/Navbar/Navbar";
 import IsAdmin from "./components/IsAdmin/IsAdmin";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
+import Footer from "./components/Footer/Footer";
 
 import userService from "./services/user.service";
 
@@ -167,6 +168,7 @@ function App() {
           element={<ProfilePage activeUser={activeUser} />}
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

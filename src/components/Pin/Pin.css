@@ -90,3 +90,9 @@
       margin-bottom: 5px;
     }
   }
+
+  @media only screen and (max-width: 375px) {
+    .box{
+      padding:8px;
+    }
+  }

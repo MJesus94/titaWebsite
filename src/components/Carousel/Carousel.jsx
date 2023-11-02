@@ -2,6 +2,7 @@ import "./Carousel.css";
 
 import React from "react";
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Carousel({ slides }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -10,6 +11,14 @@ function Carousel({ slides }) {
   const [touchEndX, setTouchEndX] = useState(null);
 
   const timerRef = useRef(null);
+  const navigate = useNavigate();
+  const handleSlideClick = (title) => {
+    if (title === "Pincéis") {
+      navigate("/Pinceis");
+    } else {
+      navigate(`/${title}`);
+    }
+  };
 
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
@@ -105,6 +114,9 @@ function Carousel({ slides }) {
               className="slideShow"
               key={slideIndex}
               style={slideStyle(slideIndex)}
+              onClick={() => {
+                handleSlideClick(_.title);
+              }}
             ></div>
           ))}
         </div>
@@ -114,13 +126,22 @@ function Carousel({ slides }) {
           <div
             className="dashes"
             key={slideIndex}
-            onClick={() => goToSlide(slideIndex)}
+            onClick={() => {
+              goToSlide(slideIndex);
+            }}
           >
             ‒
           </div>
         ))}
       </div>
-      <h3 className="title">{title}</h3>
+      <h3
+        className="title"
+        onClick={() => {
+          handleSlideClick(title);
+        }}
+      >
+        {title}
+      </h3>
     </div>
   );
 }

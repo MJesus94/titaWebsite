@@ -2,6 +2,7 @@ import "./ProfilePage.css";
 import userService from "../../services/user.service";
 import productService from "../../services/product.service";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ProfilePage({ showSuccessToast }) {
   const [activeMenuItem, setActiveMenuItem] = useState(0);
@@ -97,6 +98,11 @@ function ProfilePage({ showSuccessToast }) {
     }
   };
 
+  const navigate = useNavigate();
+  const navigation = (id) => {
+    navigate(`/product/${id}`);
+  };
+
   const currentUser = async () => {
     try {
       const response = await userService.getCurrentUser();
@@ -120,10 +126,10 @@ function ProfilePage({ showSuccessToast }) {
     } catch (error) {}
   };
 
-  const removeProductById = (id) => {
+  const removeProductById = (idToRemove) => {
     // Use filter to create a new array without the object with the specified ID
     const updatedProducts = filteredProducts.filter(
-      (product) => product.id !== id
+      (product) => product._id !== idToRemove
     );
 
     // Update the state with the new array
@@ -321,6 +327,9 @@ function ProfilePage({ showSuccessToast }) {
               <div className="wishlistProduct">
                 <div>
                   <img
+                    onClick={() => {
+                      navigation(product._id);
+                    }}
                     className="favoriteImg"
                     src={product.imgUrl}
                     alt={product.title}
@@ -333,7 +342,7 @@ function ProfilePage({ showSuccessToast }) {
                 <div className="favoritePriceDiv">
                   <span>{`${product.price} €`}</span>
                   <button
-                    className="buttonAddToFavourites"
+                    className="buttonAddToFavouritesP"
                     onClick={() => {
                       removeProductAsFavorite(product._id);
                     }}

@@ -52,37 +52,43 @@ function HomePage() {
     } catch (error) {}
   };
 
-  const calculateImageDimensions = (url) => {
-    const img = new Image();
-    img.src = url;
-
-    img.addEventListener("load", () => {
-      setImgWidth(img.naturalWidth);
-      setImgHeight(img.naturalHeight);
-    });
-  };
-
   const navigate = useNavigate();
-  const navigation = (id) => {
-    navigate(`/product/${id}`);
+  
+  const handleSlideClick = (id) => {
+    navigate(`/product/${id}`)
   };
+
 
   useEffect(() => {
     getAllProducts();
   }, []);
 
+
+  const calculateImageDimensions = (url) => {
+    const img = new Image();
+    img.src = url;
+
+    return new Promise((resolve) => {
+      img.addEventListener("load", () => {
+        resolve({ width: img.naturalWidth, height: img.naturalHeight });
+      });
+    });
+  };
+
   useEffect(() => {
-    if (allProducts[0]) {
-      calculateImageDimensions(allProducts[0].imgUrl);
-    }
-    if (allProducts[1]) {
-      calculateImageDimensions(allProducts[1].imgUrl);
-    }
-    if (allProducts[2]) {
-      calculateImageDimensions(allProducts[2].imgUrl);
-    }
-    if (allProducts[3]) {
-      calculateImageDimensions(allProducts[3].imgUrl);
+    const updateProductDimensions = async () => {
+      const productsWithDimensions = await Promise.all(
+        allProducts.map(async (product) => {
+          const dimensions = await calculateImageDimensions(product.imgUrl);
+          return { ...product, dimensions };
+        })
+      );
+
+      setAllProducts(productsWithDimensions);
+    };
+
+    if (allProducts.length > 0) {
+      updateProductDimensions();
     }
   }, [allProducts]);
 
@@ -96,46 +102,43 @@ function HomePage() {
           <hr />
           <section className="promoCode">
             <div className="categoryCrochet">
-              <h4>Novo por aquis</h4>
-              <span>Ver coleções</span>
+              <h4>Novo por aqui</h4>
             </div>
             <div className="promoZone">
-              {allProducts[0] && (
+              {allProducts.slice(0, 4).map((product, index) => (
                 <div
-                  className="itemCard"
-                  onClick={() => {
-                    navigation(allProducts[0]._id);
-                  }}
+                  key={index}
+                  className={
+                    product.dimensions &&
+                    product.dimensions.width < product.dimensions.height
+                      ? "itemCard box addWidth"
+                      : "itemCard box"
+                  }
+                  onClick={() => handleSlideClick(product._id)}
                 >
                   <img
-                    className="productImg"
-                    src={allProducts[0].imgUrl}
-                    alt={allProducts[0].title}
-                  ></img>
-
-                  <h2>{allProducts[0].title}</h2>
-                  <h5>{allProducts[0].price}</h5>
+                    className={
+                      product.dimensions &&
+                      product.dimensions.width < product.dimensions.height
+                        ? "productImg moreHeight centerImg"
+                        : "productImg moreHeight"
+                    }
+                    src={product.imgUrl}
+                    alt={product.title}
+                  />
+                  {imgWidth > imgHeight ? (
+                    <h2 className="mobileSTitle">{product.title}</h2>
+                  ) : imgWidth < imgHeight ? (
+                    <h3 className="mobileSTitle">{product.title}</h3>
+                  ) : (
+                    <h2 className="mobileSTitle">{product.title}</h2>
+                  )}
+                  <h5 className="mobileSPrice">{`${product.price} €`}</h5>
                 </div>
-              )}
+              ))}
             </div>
           </section>
         </section>
-        <footer>
-          <ul>
-            <li>
-              <h2>Quem nós somos</h2>
-            </li>
-            <li>
-              <h2>Contactos</h2>
-            </li>
-          </ul>
-          <div className="copyrightDiv">
-            <div>
-              <h6>Developed by Miguel Jesus</h6>
-              <h6>Copyright ©2023 Fonzie</h6>
-            </div>
-          </div>
-        </footer>
       </>
     );
   } else if (viewportWidth <= 768) {
@@ -165,7 +168,7 @@ function HomePage() {
                 <div
                   className="itemCard box"
                   onClick={() => {
-                    navigation(allProducts[0]._id);
+                    handleSlideClick(allProducts[0]._id);
                   }}
                 >
                   <img
@@ -188,7 +191,7 @@ function HomePage() {
                 <div
                   className="itemCard box"
                   onClick={() => {
-                    navigation(allProducts[1]._id);
+                    handleSlideClick(allProducts[1]._id);
                   }}
                 >
                   <img
@@ -211,7 +214,7 @@ function HomePage() {
                 <div
                   className="itemCard box"
                   onClick={() => {
-                    navigation(allProducts[2]._id);
+                    handleSlideClick(allProducts[2]._id);
                   }}
                 >
                   <img
@@ -233,7 +236,7 @@ function HomePage() {
                 <div
                   className="itemCard box"
                   onClick={() => {
-                    navigation(allProducts[3]._id);
+                    handleSlideClick(allProducts[3]._id);
                   }}
                 >
                   <img
