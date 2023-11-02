@@ -1,16 +1,20 @@
 import authService from "../../services/auth.service";
 import "./Signup.css";
 import "./SignupL.css";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
+function Signup({
+  toggleHiddenL,
+  toggleHiddenH,
+  showSuccessToast,
+  showErrorToast,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [showPassword, setShowPassword] = useState(false);
-  const [successMessage, setSuccessMessage] = useState(undefined);
 
   const viewportWidth = window.innerWidth;
 
@@ -30,12 +34,12 @@ function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
     // Send a request to the server using axios
     try {
       const response = await authService.signup(requestBody);
-      const { message } = response.data;
-      if (!errorMessage) {
-        toggleHiddenL();
-        setSuccessMessage(message);
-        showSuccessToast();
-      }
+
+      setErrorMessage("");
+      toggleHiddenL();
+      showSuccessToast(
+        "Successful Signup, please confirm your email before Login"
+      );
     } catch (error) {
       if (error.response) {
         setErrorMessage(error.response.data.message);
@@ -44,6 +48,10 @@ function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
       }
     }
   };
+
+  useEffect(() => {
+    showErrorToast(errorMessage);
+  }, [errorMessage]);
 
   if (viewportWidth <= 425) {
     return (
@@ -116,9 +124,6 @@ function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
               Sign up
             </button>
           </form>
-
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-          {successMessage && <p className="error-message">{successMessage}</p>}
         </div>
       </>
     );
@@ -193,9 +198,6 @@ function Signup({ toggleHiddenL, toggleHiddenH, showSuccessToast }) {
               Sign up
             </button>
           </form>
-
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
-          {successMessage && <p className="error-message">{successMessage}</p>}
         </div>
       </>
     );

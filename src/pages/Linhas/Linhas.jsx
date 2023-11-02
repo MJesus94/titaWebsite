@@ -5,22 +5,14 @@ import productService from "../../services/product.service";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Linhas({ admin, showDeleteSuccessToast }) {
+function Linhas({ admin, showSuccessToast }) {
   const [allProducts, setAllProducts] = useState([]);
 
   const getAllProducts = async () => {
     try {
       const response = await productService.findAllProducts();
-      let copy = [...response.data.productLinhas];
-      let currentIndex = copy.length;
-      while (currentIndex !== 0) {
-        const randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        let temporaryValue = copy[currentIndex];
-        copy[currentIndex] = copy[randomIndex];
-        copy[randomIndex] = temporaryValue;
-      }
-      setAllProducts(copy);
+      console.log(response.data.productLinhas);
+      setAllProducts(response.data.productLinhas);
     } catch (error) {}
   };
 
@@ -58,7 +50,7 @@ function Linhas({ admin, showDeleteSuccessToast }) {
                 product={product}
                 admin={admin}
                 setAllProducts={setAllProducts}
-                showDeleteSuccessToast={showDeleteSuccessToast}
+                showSuccessToast={showSuccessToast}
               />
             ))}
       </div>

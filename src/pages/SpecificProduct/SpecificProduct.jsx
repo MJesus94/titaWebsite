@@ -3,11 +3,15 @@ import "./SpecificProduct.css";
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import productService from "../../services/product.service";
+import userService from "../../services/user.service";
 
-function SpecificProduct() {
+function SpecificProduct({ showSuccessToast }) {
   const [oneProduct, setOneProduct] = useState(null);
   const [imgWidth, setImgWidth] = useState(null);
   const [imgHeight, setImgHeight] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [user, setCurrentUser] = useState(null);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const { id } = useParams();
 
@@ -18,9 +22,52 @@ function SpecificProduct() {
     } catch (error) {}
   };
 
+  const currentUser = async () => {
+    try {
+      const response = await userService.getCurrentUser();
+      setCurrentUser(response.data);
+      console.log(response.data);
+    } catch (error) {
+      setErrorMessage("Error getting current user");
+    }
+  };
+
+  const addProductAsFavorite = async () => {
+    try {
+      const response = await productService.addAsFavourite(oneProduct._id);
+      showSuccessToast("Produto adicionado à wishlist com sucesso");
+      setIsFavorite(true);
+    } catch (error) {
+      setErrorMessage("Failed to add as favourite");
+    }
+  };
+
+  const removeProductAsFavorite = async () => {
+    try {
+      await productService.removeFromFavourites(oneProduct._id);
+      showSuccessToast("Produto removido da sua Wishlist");
+      setIsFavorite(false);
+    } catch (error) {
+      setErrorMessage("Failed to remove from favorites");
+    }
+  };
+  const checkFavorite = () => {
+    if (user && user.favourites) {
+      const isInArray = user.favourites.includes(oneProduct._id);
+      setIsFavorite(isInArray);
+    }
+  };
+
   useEffect(() => {
     getOneProduct();
+    currentUser();
   }, []);
+
+  useEffect(() => {
+    if (oneProduct && user) {
+      checkFavorite();
+    }
+  }, [oneProduct, user]);
 
   useEffect(() => {
     if (oneProduct && oneProduct.imgUrl) {
@@ -91,30 +138,73 @@ function SpecificProduct() {
                 </div>
               </div>
               <div className="buttonsDiv">
-                <button className="buttonAddToCart">
+                {/* <button className="buttonAddToCart">
                   <span>ADICIONAR AO CARRINHO</span>
-                </button>
-                <button className="buttonAddToFavourites">
-                  <img
-                    className="favouriteHeart"
-                    src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688747630/titaWebsite/images__1_-removebg-preview_yayvcy.png"
-                    alt="heart"
-                  />{" "}
-                  ADD TO WISHLIST
-                </button>
+                </button> */}
+                {isFavorite ? (
+                  <button
+                    className="buttonAddToFavourites"
+                    onClick={removeProductAsFavorite}
+                  >
+                    <img
+                      className="favouriteHeart"
+                      src="https://res.cloudinary.com/df3vc4osi/image/upload/v1698340755/titaWebsite/fullheart_icon_qq8kpw.png"
+                      alt="heart"
+                    />{" "}
+                    REMOVE FROM WISHLIST
+                  </button>
+                ) : (
+                  <button
+                    className="buttonAddToFavourites"
+                    onClick={addProductAsFavorite}
+                  >
+                    <img
+                      className="favouriteHeart"
+                      src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688747630/titaWebsite/images__1_-removebg-preview_yayvcy.png"
+                      alt="heart"
+                    />{" "}
+                    ADD TO WISHLIST
+                  </button>
+                )}
               </div>
             </div>
             <div className="imgUrlDisplayDiv">
               {" "}
               {imgWidth > imgHeight ? (
-                <img className="imgUrlDisplay" src={oneProduct.imgUrl} alt={oneProduct.title} />
+                <img
+                  className="imgUrlDisplay"
+                  src={oneProduct.imgUrl}
+                  alt={oneProduct.title}
+                />
               ) : imgWidth === imgHeight ? (
-                <img className="imgUrlDisplay" src={oneProduct.imgUrl} alt={oneProduct.title} />
+                <img
+                  className="imgUrlDisplay"
+                  src={oneProduct.imgUrl}
+                  alt={oneProduct.title}
+                />
               ) : (
-                <img className="imgUrlDisplay" src={oneProduct.imgUrl} alt={oneProduct.title} />
+                <img
+                  className="imgUrlDisplay"
+                  src={oneProduct.imgUrl}
+                  alt={oneProduct.title}
+                />
               )}
             </div>
-            <div></div>
+            <div className="descriptionDiv">
+              <ul className="ulDescription">
+                <li>{oneProduct.description}</li>
+                <li>
+                  <span className="corSpan">Cor:</span>
+                  {oneProduct.color.map((color, index) =>
+                    index === oneProduct.color.length - 1 ? (
+                      <span key={index}>{color}</span>
+                    ) : (
+                      <span key={index}>{`${color}, `}</span>
+                    )
+                  )}
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
       )}

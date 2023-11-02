@@ -12,7 +12,7 @@ function Pin({
   setAllProducts,
   setPinceisProducts,
   setPanelasProducts,
-  showDeleteSuccessToast,
+  showSuccessToast,
 }) {
   const [editIsHovered, setEditIsHovered] = useState(false);
   const [deleteIsHovered, setDeleteIsHovered] = useState(false);
@@ -39,17 +39,17 @@ function Pin({
           setAllProducts((prevProducts) =>
             prevProducts.filter((product) => product._id !== productId)
           );
-          showDeleteSuccessToast();
+          showSuccessToast("Product successfully deleted");
         } else if (product.category === "Pincéis") {
           setPinceisProducts((prevProducts) =>
             prevProducts.filter((product) => product._id !== productId)
           );
-          showDeleteSuccessToast();
+          showSuccessToast("Product successfully deleted");
         } else {
           setPanelasProducts((prevProducts) =>
             prevProducts.filter((product) => product._id !== productId)
           );
-          showDeleteSuccessToast();
+          showSuccessToast("Product successfully deleted");
         }
       }
     } catch (error) {

@@ -5,22 +5,13 @@ import productService from "../../services/product.service";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Pinceis({ admin, showDeleteSuccessToast }) {
+function Pinceis({ admin, showSuccessToast }) {
   const [pinceisProducts, setPinceisProducts] = useState([]);
 
   const getAllProducts = async () => {
     try {
       const response = await productService.findAllProducts();
-      let copy = [...response.data.productPinceis];
-      let currentIndex = copy.length;
-      while (currentIndex !== 0) {
-        const randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        let temporaryValue = copy[currentIndex];
-        copy[currentIndex] = copy[randomIndex];
-        copy[randomIndex] = temporaryValue;
-      }
-      setPinceisProducts(copy);
+      setPinceisProducts(response.data.productPinceis);
     } catch (error) {}
   };
 
@@ -52,13 +43,15 @@ function Pinceis({ admin, showDeleteSuccessToast }) {
         {pinceisProducts &&
           pinceisProducts
             .filter((product) => product.category === "Pincéis")
-            .map((product) => <Pin
+            .map((product) => (
+              <Pin
                 key={product._id}
                 product={product}
                 admin={admin}
                 setPinceisProducts={setPinceisProducts}
-                showDeleteSuccessToast={showDeleteSuccessToast}
-              />)}
+                showSuccessToast={showSuccessToast}
+              />
+            ))}
       </div>
     </section>
   );

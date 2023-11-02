@@ -55,7 +55,7 @@
     box-sizing: border-box;
     padding: 6px;
     opacity: 0;
-    transform: translateY(+100%);
+    transform: translateY(-100%);
     transition: opacity 0.3s ease, transform 0.3s ease;
     visibility: hidden;
     opacity:0;

@@ -19,10 +19,17 @@ class AuthService {
     });
   }
 
-  login = (requestBody) => {
+  /* login = (requestBody) => {
     return this.api.post("/auth/login", requestBody);
     // same as
     // return axios.post("http://localhost:5005/auth/login");
+  }; */
+  login = (requestBody) => {
+    return this.api.post("/auth/login", requestBody);
+  };
+
+  refreshToken = (refreshToken) => {
+    return this.api.post("/auth/refresh-token", { refreshToken });
   };
 
   signup = (requestBody) => {

@@ -18,7 +18,7 @@ hr{
     align-items: center;
     flex-wrap: wrap;
     max-width: 67vw;
-    height: 80vh;
+    height: 100vh;
     margin: 50px auto;
     background-color: antiquewhite;
     padding: 15px;
@@ -47,10 +47,28 @@ hr{
     height: 100%;
 }
 
+.productImg{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.moreWidth{
+    width:30vw;
+}
+
+.moreHeight{
+    height:30vh;
+}
+
+.itemCard{
+    margin: 0 1.4vw;
+    text-align:left;
+}
+
 .productPromo{
     padding: 25px 10px 10px;
     width: calc(67vw - 30px);
-    height: calc(40vh - 15px);
+    height: calc(45vh - 15px);
     background-color: white;
     display: flex;
     justify-content: center;
@@ -98,26 +116,25 @@ hr{
 }
 
 footer{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
     text-align:left;
+    margin-top:50px;
     padding-top: 15px;
     color: white;
     width: 100vw;
-    height: 13vh;
+    height: 14vh;
     background-color: black;
 }
 
 footer > ul {
     max-width: 67vw;
-    margin: 0 auto 5px auto;
+    margin-left: 5px ;
     padding-left: 30px;
-    list-style: none;
+    list-style-type: none;
 }
 
-.servicesDiv{
-    display: flex;
-    justify-content:space-around;
-    margin: 7px auto;
-}
 
 .copyrightDiv{
     text-align: center;

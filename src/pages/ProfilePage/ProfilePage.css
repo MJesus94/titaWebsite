@@ -1,0 +1,178 @@
+:root {
+    --webPrimaryColor: rgb(240, 198, 145);
+  }
+
+.mainDiv{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width:1584px;
+    margin-left: auto;
+    margin-right: auto;
+    padding:1.25rem;
+    column-gap: 2rem;
+    box-sizing: border-box;
+}
+
+.contentDiv{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    column-gap: 2rem;
+    width:100%;
+    margin-bottom: 7vh;
+}
+
+.menuOptions{
+    padding-top:2rem;
+    width:20vw;
+    height:30vh;
+    margin-right:5vw;
+    background-color:white;
+}
+
+.menuOptions > p {
+    text-align:start;
+    padding-left:15px;
+    margin-bottom:3vh;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.ulOptions{
+    text-align: start;
+    list-style-type: none;
+    padding: 0;
+}
+
+.ulOptions > li{
+    position: relative;
+    padding-left: 20px;
+    margin-bottom:7px;
+    cursor: pointer;
+}
+
+.fontColor{
+    color: var(--webPrimaryColor);
+    font-weight:600;
+}
+.ulOptions > li.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.2vw;
+    height: 1.5vh;
+    background-color: var(--webPrimaryColor);
+  }
+
+.personalInfo{
+    display:flex;
+    flex-direction: column;
+    width:50vw;
+    height:50vh;
+    flex-grow:1;
+    padding: 3rem 1rem;
+    background-color:white;
+}
+
+.userNameDiv{
+    width:25vw;
+    text-align: start;
+    font-weight:600;
+}
+
+.optionTitleDiv{
+    display: flex;
+}
+
+.rectStyle{
+    text-align: center;
+    display: inline-block;
+    width: 0.3vw;
+    height: 2.7vh;
+    background-color: var(--webPrimaryColor);
+    margin: auto 10px;
+}
+
+.changePersonalInfoForm{
+    display: flex;
+    flex-wrap:wrap;
+    column-gap: 2rem;
+    row-gap: 2rem;
+}
+
+.formLabel{
+    height: 6vh;
+    width: 25vw;
+    position:relative;
+}
+
+.inputPersonalInfo{
+    width:100%;
+    height:100%;
+    padding:1rem;
+    font-size: 22px;
+}
+
+.nameLabel{
+    position:absolute;
+    top:-14px;
+    left:15px;
+    padding:2px;
+    background-color: white;
+}
+
+.formPIButton{
+    margin-top: 2rem;
+    width:9vw;
+    height: 6vh;
+    background-color: var(--webPrimaryColor);
+    border: none;
+    border-radius: 5px;
+    color:white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.wishlistDiv{
+    background-color: white;
+    width: 50vw;
+}
+
+.wishlistProduct{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+    padding:2vw;
+}
+
+.favoriteImg{
+    width:8vw;
+}
+
+.favoriteImg:hover{
+    transform: scale(1.03)
+}
+
+.favoriteTitleDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 6vw;
+}
+
+.favoritePriceDiv{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+}
+
+.favoritePrice{
+    align-self: baseline;
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}

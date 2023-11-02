@@ -30,6 +30,7 @@
 .exitCross{
     width:1vw;
     margin: 0 auto;
+    cursor:pointer;
 }
 
 .form-group {

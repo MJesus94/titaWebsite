@@ -10,7 +10,7 @@ import makeAnimated from "react-select/animated";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import productService from "../../services/product.service";
 
-function EditProduct({ showEditProductSuccessToast }) {
+function EditProduct({ showSuccessToast }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const animatedComponents = makeAnimated();
@@ -74,7 +74,7 @@ function EditProduct({ showEditProductSuccessToast }) {
 
       await productService.editProduct(id, body);
       navigateBasedOnCategory();
-      showEditProductSuccessToast();
+      showSuccessToast("Product successfully edited");
     } catch (error) {
       handleFormSubmissionError(error);
     }
@@ -156,6 +156,17 @@ function EditProduct({ showEditProductSuccessToast }) {
 
   useEffect(() => {
     if (oneProduct && oneProduct.imgUrl) {
+      setEditedTitle(oneProduct.title);
+      setEditedDescription(oneProduct.description);
+      const selectedColors = oneProduct.color.map((color) => ({
+        value: color,
+        label: color,
+      }));
+      setEditedSelectedColors(selectedColors);
+      setEditedCobertura(oneProduct.cobertura);
+      setEditedFormato(oneProduct.formato);
+      setEditedMassa(oneProduct.massa);
+      setEditedPrice(oneProduct.price);
       const img = new Image();
       img.src = oneProduct.imgUrl;
 

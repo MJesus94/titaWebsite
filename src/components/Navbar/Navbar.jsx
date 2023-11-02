@@ -69,7 +69,10 @@ function Navbars({
           </>
         ) : (
           <>
-            <Link onClick={handleLinkClick}> Profile</Link>
+            <Link to="/profile" onClick={handleLinkClick}>
+              {" "}
+              Profile
+            </Link>
             <Link
               to="/"
               onClick={() => {

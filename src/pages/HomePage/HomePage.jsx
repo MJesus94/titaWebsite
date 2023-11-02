@@ -1,7 +1,10 @@
 import "./HomePage.css";
 import "./HomePageM.css";
 import "./HomePageL.css";
-import React from "react";
+import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import productService from "../../services/product.service";
 
 import Carousel from "../../components/Carousel/Carousel";
 
@@ -23,23 +26,65 @@ function HomePage() {
     },
   ];
 
-  const crochet = [
-    {
-      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083320189_iOS_oabnw8.jpg",
-      title: "O que quiser",
-      price: "€ 10.00",
-    },
-    {
-      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683568960/titaWebsite/20230506_083326808_iOS_lce8d6.jpg",
-      title: "O que quiser",
-      price: "€ 10.00",
-    },
-    {
-      url: "https://res.cloudinary.com/df3vc4osi/image/upload/v1683568959/titaWebsite/20230506_083350950_iOS_utfuxm.jpg",
-      title: "O que quiser",
-      price: "€ 10.00",
-    },
-  ];
+  const [allProducts, setAllProducts] = useState([]);
+  const [imgWidth, setImgWidth] = useState(null);
+  const [imgHeight, setImgHeight] = useState(null);
+
+  const getAllProducts = async () => {
+    try {
+      const response = await productService.findAllProducts();
+      const { productLinhas, productPanelas, productPinceis } = response.data;
+
+      const combinedArray = [
+        ...productLinhas,
+        ...productPanelas,
+        ...productPinceis,
+      ];
+
+      const combinedArrayWithDates = combinedArray.map((item) => ({
+        ...item,
+        createdAt: new Date(item.createdAt),
+      }));
+
+      combinedArrayWithDates.sort((a, b) => b.createdAt - a.createdAt);
+
+      setAllProducts(combinedArrayWithDates);
+    } catch (error) {}
+  };
+
+  const calculateImageDimensions = (url) => {
+    const img = new Image();
+    img.src = url;
+
+    img.addEventListener("load", () => {
+      setImgWidth(img.naturalWidth);
+      setImgHeight(img.naturalHeight);
+    });
+  };
+
+  const navigate = useNavigate();
+  const navigation = (id) => {
+    navigate(`/product/${id}`);
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
+  useEffect(() => {
+    if (allProducts[0]) {
+      calculateImageDimensions(allProducts[0].imgUrl);
+    }
+    if (allProducts[1]) {
+      calculateImageDimensions(allProducts[1].imgUrl);
+    }
+    if (allProducts[2]) {
+      calculateImageDimensions(allProducts[2].imgUrl);
+    }
+    if (allProducts[3]) {
+      calculateImageDimensions(allProducts[3].imgUrl);
+    }
+  }, [allProducts]);
 
   if (viewportWidth <= 425) {
     return (
@@ -55,18 +100,23 @@ function HomePage() {
               <span>Ver coleções</span>
             </div>
             <div className="promoZone">
-              {crochet.map((crochet, crochetIndex) => (
-                <div className="itemCard" key={crochetIndex}>
+              {allProducts[0] && (
+                <div
+                  className="itemCard"
+                  onClick={() => {
+                    navigation(allProducts[0]._id);
+                  }}
+                >
                   <img
                     className="productImg"
-                    src={crochet.url}
-                    alt={crochet.title}
+                    src={allProducts[0].imgUrl}
+                    alt={allProducts[0].title}
                   ></img>
 
-                  <h2>{crochet.title}</h2>
-                  <h5>{crochet.price}</h5>
+                  <h2>{allProducts[0].title}</h2>
+                  <h5>{allProducts[0].price}</h5>
                 </div>
-              ))}
+              )}
             </div>
           </section>
         </section>
@@ -111,18 +161,96 @@ function HomePage() {
               ></img>
             </div>
             <div className="productPromo">
-              {crochet.map((crochet, crochetIndex) => (
-                <div className="productCard" key={crochetIndex}>
+              {allProducts[0] && (
+                <div
+                  className="itemCard box"
+                  onClick={() => {
+                    navigation(allProducts[0]._id);
+                  }}
+                >
                   <img
-                    className="productPic"
-                    src={crochet.url}
-                    alt={crochet.title}
+                    className={
+                      imgWidth > imgHeight
+                        ? "productImg moreWidth"
+                        : imgWidth < imgHeight
+                        ? "productImg moreHeight"
+                        : "productImg moreWidth"
+                    }
+                    src={allProducts[0].imgUrl}
+                    alt={allProducts[0].title}
                   ></img>
 
-                  <h6>{crochet.title}</h6>
-                  <h6>{crochet.price}</h6>
+                  <h2>{allProducts[0].title}</h2>
+                  <h5>{`${allProducts[0].price} €`}</h5>
                 </div>
-              ))}
+              )}
+              {allProducts[1] && (
+                <div
+                  className="itemCard box"
+                  onClick={() => {
+                    navigation(allProducts[1]._id);
+                  }}
+                >
+                  <img
+                    className={
+                      imgWidth > imgHeight
+                        ? "productImg moreWidth"
+                        : imgWidth < imgHeight
+                        ? "productImg moreHeight"
+                        : "productImg moreWidth"
+                    }
+                    src={allProducts[1].imgUrl}
+                    alt={allProducts[1].title}
+                  ></img>
+
+                  <h2>{allProducts[1].title}</h2>
+                  <h5>{`${allProducts[1].price} €`}</h5>
+                </div>
+              )}
+              {allProducts[2] && (
+                <div
+                  className="itemCard box"
+                  onClick={() => {
+                    navigation(allProducts[2]._id);
+                  }}
+                >
+                  <img
+                    className={
+                      imgWidth > imgHeight
+                        ? "productImg moreWidth"
+                        : imgWidth < imgHeight
+                        ? "productImg moreHeight"
+                        : "productImg moreWidth"
+                    }
+                    src={allProducts[2].imgUrl}
+                    alt={allProducts[2].title}
+                  ></img>
+                  <h2>{allProducts[2].title}</h2>
+                  <h5>{`${allProducts[2].price} €`}</h5>
+                </div>
+              )}
+              {allProducts[3] && (
+                <div
+                  className="itemCard box"
+                  onClick={() => {
+                    navigation(allProducts[3]._id);
+                  }}
+                >
+                  <img
+                    className={
+                      imgWidth > imgHeight
+                        ? "productImg moreWidth"
+                        : imgWidth < imgHeight
+                        ? "productImg moreHeight"
+                        : "productImg moreWidth"
+                    }
+                    src={allProducts[3].imgUrl}
+                    alt={allProducts[3].title}
+                  ></img>
+                  <h2>{allProducts[3].title}</h2>
+                  <h5>{`${allProducts[3].price} €`}</h5>
+                </div>
+              )}
             </div>
           </section>
         </section>

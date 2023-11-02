@@ -28,11 +28,13 @@ function App() {
   const [hiddenL, setHiddenL] = useState(true);
   const [hiddenForgotForm, setHiddenForgotForm] = useState(true);
   const [admin, setAdmin] = useState("");
+  const [activeUser, setActiveUser] = useState(false);
 
   const currentUser = async () => {
     try {
       const response = await userService.getCurrentUser();
       setAdmin(response.data.admin);
+      setActiveUser(response.data);
     } catch (error) {
       console.log("error");
     }
@@ -51,11 +53,13 @@ function App() {
   const toggleHiddenS = () => {
     setHiddenS(!hiddenS);
     setHiddenL(true);
+    setHiddenForgotForm(true);
   };
 
   const toggleHiddenL = () => {
     setHiddenL(!hiddenL);
     setHiddenS(true);
+    setHiddenForgotForm(true);
   };
 
   const toggleHiddenH = () => {
@@ -64,32 +68,12 @@ function App() {
     setHiddenForgotForm(true);
   };
 
-  const showSuccessToast = () => {
-    toast.success("Successful Signup, please confirm your email before Login");
+  const showSuccessToast = (message) => {
+    toast.success(message);
   };
 
-  const showLoginSuccessToast = () => {
-    toast.success("Successful Login");
-  };
-
-  const showDeleteSuccessToast = () => {
-    toast.success("Product successfully deleted");
-  };
-
-  const showEditProductSuccessToast = () => {
-    toast.success("Product successfully edited");
-  };
-
-  const showSentEmailSuccessToast = () => {
-    toast.success("Email was sent");
-  };
-
-  const showCodeConfirmSuccessToast = () => {
-    toast.success("Your code is correct");
-  };
-
-  const showPasswordChangedToast = () => {
-    toast.success("Your password has been changed");
+  const showErrorToast = (message) => {
+    toast.error(message);
   };
 
   return (
@@ -107,23 +91,24 @@ function App() {
           toggleHiddenL={toggleHiddenL}
           toggleHiddenH={toggleHiddenH}
           showSuccessToast={showSuccessToast}
+          showErrorToast={showErrorToast}
         />
       )}
       {!hiddenL && (
         <Login
           toggleHiddenH={toggleHiddenH}
           currentUser={currentUser}
-          showLoginSuccessToast={showLoginSuccessToast}
+          showSuccessToast={showSuccessToast}
           toggleHiddenForgotForm={toggleHiddenForgotForm}
+          showErrorToast={showErrorToast}
         />
       )}
 
       {!hiddenForgotForm && (
         <ForgotPassword
           toggleHiddenH={toggleHiddenH}
-          showSentEmailSuccessToast={showSentEmailSuccessToast}
-          showCodeConfirmSuccessToast={showCodeConfirmSuccessToast}
-          showPasswordChangedToast={showPasswordChangedToast}
+          toggleHiddenL={toggleHiddenL}
+          showSuccessToast={showSuccessToast}
         />
       )}
       <Routes>
@@ -137,35 +122,24 @@ function App() {
           path="/profile"
           element={
             <IsPrivate>
-              <ProfilePage />
+              <ProfilePage showSuccessToast={showSuccessToast} />
             </IsPrivate>
           }
         />
         <Route
           path="/Linhas"
-          element={
-            <Linhas
-              admin={admin}
-              showDeleteSuccessToast={showDeleteSuccessToast}
-            />
-          }
+          element={<Linhas admin={admin} showSuccessToast={showSuccessToast} />}
         />
         <Route
           path="/Pinceis"
           element={
-            <Pinceis
-              admin={admin}
-              showDeleteSuccessToast={showDeleteSuccessToast}
-            />
+            <Pinceis admin={admin} showSuccessToast={showSuccessToast} />
           }
         />
         <Route
           path="/Panelas"
           element={
-            <Panelas
-              admin={admin}
-              showDeleteSuccessToast={showDeleteSuccessToast}
-            />
+            <Panelas admin={admin} showSuccessToast={showSuccessToast} />
           }
         />
         <Route
@@ -176,16 +150,21 @@ function App() {
             </IsAdmin>
           }
         />
-        <Route path="/product/:id" element={<SpecificProduct />} />
+        <Route
+          path="/product/:id"
+          element={<SpecificProduct showSuccessToast={showSuccessToast} />}
+        />
         <Route
           path="/editProduct/:id"
           element={
             <IsAdmin>
-              <EditProduct
-                showEditProductSuccessToast={showEditProductSuccessToast}
-              />
+              <EditProduct showSuccessToast={showSuccessToast} />
             </IsAdmin>
           }
+        />
+        <Route
+          path="/profile/:id"
+          element={<ProfilePage activeUser={activeUser} />}
         />
       </Routes>
     </div>

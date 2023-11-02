@@ -1,5 +1,6 @@
 .main-section{
     width: 100%;
+    background-color:rgb(245, 245, 245)
 }
 
 .infoContainer{
@@ -94,6 +95,17 @@
     cursor: pointer;
 }
 
+.buttonFavourites{
+    margin-bottom: 16px;
+    padding: 12px;
+    background-color: black;
+    color: white;
+    border-radius:4px;
+    border: 1px solid black;
+    width:17vw;
+    cursor: pointer;
+}
+
 .buttonAddToFavourites:hover{
     background-color: black;
     color: white;
@@ -114,4 +126,28 @@
 
 .imgUrlDisplay{
     width: 60%;
+}
+
+.descriptionDiv{
+    margin-top: 110px;
+}
+
+.descriptionDiv > div{
+    margin-bottom: 40px;
+}
+
+.ulDescription{
+    line-height:1.5rem;
+    font-weight: 400;
+    font-size: 18px;
+    list-style-type: none;
+    text-align:left;
+    margin-left:2vw;
+}
+.ulDescription > li {
+    margin-bottom: 2vh;
+}
+
+.corSpan{
+    margin-right:0.5vw;
 }

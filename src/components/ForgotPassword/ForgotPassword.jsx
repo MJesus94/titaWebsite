@@ -1,16 +1,10 @@
 import "./ForgotPassword.css";
 
-import { useState, useEffect, useRef, React } from "react";
-import { Link } from "react-router-dom";
+import { useState, React } from "react";
 
 import authService from "../../services/auth.service";
 
-function ForgotPassword({
-  toggleHiddenH,
-  showSentEmailSuccessToast,
-  showCodeConfirmSuccessToast,
-  showPasswordChangedToast,
-}) {
+function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [confirmedCode, setConfirmedCode] = useState(false);
@@ -18,8 +12,6 @@ function ForgotPassword({
   const [confirmPassword, setConfirmPassword] = useState("");
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [error, setError] = useState(false);
-
-  const inputRef = useRef();
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -40,7 +32,8 @@ function ForgotPassword({
       const response = await authService.sendPasswordResetCode(requestBody);
       if (response.data.sent) {
         setSent(response.data.sent);
-        showSentEmailSuccessToast();
+        console.log(response.data.sent);
+        showSuccessToast("Email was sent");
       }
     } catch (error) {
       if (error.response) {
@@ -62,7 +55,7 @@ function ForgotPassword({
         };
         const response = await authService.newPassword(requestBody);
         if (response.data.message) {
-          showPasswordChangedToast();
+          showSuccessToast("Your password has been changed");
           setConfirmedCode(!confirmedCode);
           toggleHiddenH();
         }
@@ -86,7 +79,7 @@ function ForgotPassword({
         setConfirmedCode(true);
         setSent(!sent);
         setOtp(new Array(6).fill(""));
-        showCodeConfirmSuccessToast();
+        showSuccessToast("Your code is correct");
       }
     } catch (error) {
       if (error.response) {
@@ -119,6 +112,9 @@ function ForgotPassword({
     }
   };
 
+  const backwards = () => {
+    setSent(!sent);
+  };
   return (
     <>
       {!sent && !confirmedCode ? (
@@ -127,14 +123,19 @@ function ForgotPassword({
           <div className="gradientGrey" onClick={toggleHiddenH}></div>
           <div className="form">
             <div className="formHeader">
+              <img
+                className="backwards"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1698324409/titaWebsite/backward_Arrow_rlq51h.png"
+                alt="backwards arrow"
+                onClick={toggleHiddenL}
+              />
               <h1>Forgot Password</h1>
-              <Link>
-                <img
-                  className="exitCross"
-                  src="https://res.cloudinary.com/df3vc4osi/image/upload/v1678934027/movie-gallery/images-removebg-preview_cbnsxm.png"
-                  alt="exit"
-                />
-              </Link>
+              <img
+                className="exitCross"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1678934027/movie-gallery/images-removebg-preview_cbnsxm.png"
+                alt="exit"
+                onClick={toggleHiddenH}
+              />
             </div>
             <form onSubmit={handleForgotSubmit}>
               <div className="form-group forgotFormGroupPos">
@@ -159,9 +160,21 @@ function ForgotPassword({
           <div className="gradientGrey"></div>
           <div className="form">
             <div className="formHeader">
+              <img
+                className="backwards"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1698324409/titaWebsite/backward_Arrow_rlq51h.png"
+                alt="backwards arrow"
+                onClick={backwards}
+              />
               <label className="" htmlFor="recoveryPasswordCode">
                 <h1>Confirm code</h1>
               </label>
+              <img
+                className="exitCross"
+                src="https://res.cloudinary.com/df3vc4osi/image/upload/v1678934027/movie-gallery/images-removebg-preview_cbnsxm.png"
+                alt="exit"
+                onClick={toggleHiddenH}
+              />
             </div>
             <form onSubmit={handleRecoveryPasswordCodeSubmit}>
               <div className="form-group confirmFormGroupPos">

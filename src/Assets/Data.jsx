@@ -1,12 +1,12 @@
 export const colourOptions = [
-    { value: 'red', label: 'Red' },
-    { value: 'blue', label: 'Blue' },
-    { value: 'green', label: 'Green' },
-    { value: 'yellow', label: 'Yellow' },
-    { value: 'purple', label: 'Purple' },
-    { value: 'orange', label: 'Orange' },
-    { value: 'pink', label: 'Pink' },
-    { value: 'black', label: 'Black' },
-    { value: 'white', label: 'White'},
-    { value: 'rainbow', label: 'Rainbow'}
+    { value: 'Vermelho', label: 'Vermelho' },
+    { value: 'Azul', label: 'Azul' },
+    { value: 'Verde', label: 'Verde' },
+    { value: 'Amarelo', label: 'Amarelo' },
+    { value: 'Roxo', label: 'Roxo' },
+    { value: 'Laranja', label: 'Laranja' },
+    { value: 'Rosa', label: 'Rosa' },
+    { value: 'Preto', label: 'Preto' },
+    { value: 'Branco', label: 'Branco'},
+    { value: 'Multicolorido', label: 'Rainbow'}
   ];
