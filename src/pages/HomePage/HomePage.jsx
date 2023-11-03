@@ -8,7 +8,7 @@ import productService from "../../services/product.service";
 
 import Carousel from "../../components/Carousel/Carousel";
 
-function HomePage() {
+function HomePage({ showNavBar }) {
   const viewportWidth = window.innerWidth;
 
   const slides = [
@@ -53,16 +53,15 @@ function HomePage() {
   };
 
   const navigate = useNavigate();
-  
-  const handleSlideClick = (id) => {
-    navigate(`/product/${id}`)
-  };
 
+  const handleSlideClick = (id) => {
+    navigate(`/product/${id}`);
+    showNavBar();
+  };
 
   useEffect(() => {
     getAllProducts();
   }, []);
-
 
   const calculateImageDimensions = (url) => {
     const img = new Image();
@@ -164,115 +163,40 @@ function HomePage() {
               ></img>
             </div>
             <div className="productPromo">
-              {allProducts[0] && (
+              {allProducts.slice(0, 4).map((product, index) => (
                 <div
-                  className="itemCard box"
-                  onClick={() => {
-                    handleSlideClick(allProducts[0]._id);
-                  }}
+                  key={index}
+                  className={
+                    product.dimensions &&
+                    product.dimensions.width < product.dimensions.height
+                      ? "itemCard box addWidth"
+                      : "itemCard box"
+                  }
+                  onClick={() => handleSlideClick(product._id)}
                 >
                   <img
                     className={
-                      imgWidth > imgHeight
-                        ? "productImg moreWidth"
-                        : imgWidth < imgHeight
-                        ? "productImg moreHeight"
-                        : "productImg moreWidth"
+                      product.dimensions &&
+                      product.dimensions.width < product.dimensions.height
+                        ? "productImg moreHeight centerImg"
+                        : "productImg moreHeight"
                     }
-                    src={allProducts[0].imgUrl}
-                    alt={allProducts[0].title}
-                  ></img>
-
-                  <h2>{allProducts[0].title}</h2>
-                  <h5>{`${allProducts[0].price} €`}</h5>
+                    src={product.imgUrl}
+                    alt={product.title}
+                  />
+                  {imgWidth > imgHeight ? (
+                    <h2 className="mobileSTitle">{product.title}</h2>
+                  ) : imgWidth < imgHeight ? (
+                    <h3 className="mobileSTitle">{product.title}</h3>
+                  ) : (
+                    <h2 className="mobileSTitle">{product.title}</h2>
+                  )}
+                  <h5 className="mobileSPrice">{`${product.price} €`}</h5>
                 </div>
-              )}
-              {allProducts[1] && (
-                <div
-                  className="itemCard box"
-                  onClick={() => {
-                    handleSlideClick(allProducts[1]._id);
-                  }}
-                >
-                  <img
-                    className={
-                      imgWidth > imgHeight
-                        ? "productImg moreWidth"
-                        : imgWidth < imgHeight
-                        ? "productImg moreHeight"
-                        : "productImg moreWidth"
-                    }
-                    src={allProducts[1].imgUrl}
-                    alt={allProducts[1].title}
-                  ></img>
-
-                  <h2>{allProducts[1].title}</h2>
-                  <h5>{`${allProducts[1].price} €`}</h5>
-                </div>
-              )}
-              {allProducts[2] && (
-                <div
-                  className="itemCard box"
-                  onClick={() => {
-                    handleSlideClick(allProducts[2]._id);
-                  }}
-                >
-                  <img
-                    className={
-                      imgWidth > imgHeight
-                        ? "productImg moreWidth"
-                        : imgWidth < imgHeight
-                        ? "productImg moreHeight"
-                        : "productImg moreWidth"
-                    }
-                    src={allProducts[2].imgUrl}
-                    alt={allProducts[2].title}
-                  ></img>
-                  <h2>{allProducts[2].title}</h2>
-                  <h5>{`${allProducts[2].price} €`}</h5>
-                </div>
-              )}
-              {allProducts[3] && (
-                <div
-                  className="itemCard box"
-                  onClick={() => {
-                    handleSlideClick(allProducts[3]._id);
-                  }}
-                >
-                  <img
-                    className={
-                      imgWidth > imgHeight
-                        ? "productImg moreWidth"
-                        : imgWidth < imgHeight
-                        ? "productImg moreHeight"
-                        : "productImg moreWidth"
-                    }
-                    src={allProducts[3].imgUrl}
-                    alt={allProducts[3].title}
-                  ></img>
-                  <h2>{allProducts[3].title}</h2>
-                  <h5>{`${allProducts[3].price} €`}</h5>
-                </div>
-              )}
+              ))}
             </div>
           </section>
         </section>
-        <footer>
-          <ul>
-            <li>
-              <h2>Quem nós somos</h2>
-            </li>
-            <li>
-              <h2>Contactos</h2>
-            </li>
-          </ul>
-          <div className="copyrightDiv">
-            <div>
-              <h6>Developed by Miguel Jesus</h6>
-              <h6>Copyright ©2023 Fonzie</h6>
-            </div>
-          </div>
-        </footer>
       </>
     );
   }

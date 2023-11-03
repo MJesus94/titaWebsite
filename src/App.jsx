@@ -13,6 +13,7 @@ import EmailConfirmationPage from "./pages/EmailConfirmationPage/EmailConfirmati
 import NewProducts from "./pages/NewProducts/NewProducts";
 import SpecificProduct from "./pages/SpecificProduct/SpecificProduct";
 import EditProduct from "./pages/EditProduct/EditProduct";
+import { NavbarVisibilityProvider } from "./context/NavbarVisibilityContext";
 
 import Login from "./components/Login/Login";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
@@ -30,6 +31,11 @@ function App() {
   const [hiddenForgotForm, setHiddenForgotForm] = useState(true);
   const [admin, setAdmin] = useState("");
   const [activeUser, setActiveUser] = useState(false);
+  const [navElement, setNavElement] = useState(null);
+
+  const showNavBar = () => {
+    navElement.current.classList.toggle("responsive_nav");
+  };
 
   const currentUser = async () => {
     try {
@@ -78,98 +84,104 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <ToastContainer />
-      <Navbar
-        toggleHiddenS={toggleHiddenS}
-        toggleHiddenL={toggleHiddenL}
-        toggleHiddenH={toggleHiddenH}
-        admin={admin}
-        setAdmin={setAdmin}
-      />
-      {!hiddenS && (
-        <Signup
+    <NavbarVisibilityProvider>
+      <div className="App">
+        <ToastContainer />
+        <Navbar
+          toggleHiddenS={toggleHiddenS}
           toggleHiddenL={toggleHiddenL}
           toggleHiddenH={toggleHiddenH}
-          showSuccessToast={showSuccessToast}
-          showErrorToast={showErrorToast}
+          admin={admin}
+          setAdmin={setAdmin}
+          setNavElement={setNavElement}
+          showNavBar={showNavBar}
         />
-      )}
-      {!hiddenL && (
-        <Login
-          toggleHiddenH={toggleHiddenH}
-          currentUser={currentUser}
-          showSuccessToast={showSuccessToast}
-          toggleHiddenForgotForm={toggleHiddenForgotForm}
-          showErrorToast={showErrorToast}
-        />
-      )}
+        {!hiddenS && (
+          <Signup
+            toggleHiddenL={toggleHiddenL}
+            toggleHiddenH={toggleHiddenH}
+            showSuccessToast={showSuccessToast}
+            showErrorToast={showErrorToast}
+          />
+        )}
+        {!hiddenL && (
+          <Login
+            toggleHiddenH={toggleHiddenH}
+            currentUser={currentUser}
+            showSuccessToast={showSuccessToast}
+            toggleHiddenForgotForm={toggleHiddenForgotForm}
+            showErrorToast={showErrorToast}
+          />
+        )}
 
-      {!hiddenForgotForm && (
-        <ForgotPassword
-          toggleHiddenH={toggleHiddenH}
-          toggleHiddenL={toggleHiddenL}
-          showSuccessToast={showSuccessToast}
-        />
-      )}
-      <Routes>
-        <Route
-          path="/confirm-email/:confirmationCode"
-          element={<EmailConfirmationPage />}
-        />
-        <Route path="/" element={<HomePage />} />
+        {!hiddenForgotForm && (
+          <ForgotPassword
+            toggleHiddenH={toggleHiddenH}
+            toggleHiddenL={toggleHiddenL}
+            showSuccessToast={showSuccessToast}
+          />
+        )}
+        <Routes>
+          <Route
+            path="/confirm-email/:confirmationCode"
+            element={<EmailConfirmationPage />}
+          />
+          <Route path="/" element={<HomePage showNavBar={showNavBar} />} />
 
-        <Route
-          path="/profile"
-          element={
-            <IsPrivate>
-              <ProfilePage showSuccessToast={showSuccessToast} />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path="/Linhas"
-          element={<Linhas admin={admin} showSuccessToast={showSuccessToast} />}
-        />
-        <Route
-          path="/Pinceis"
-          element={
-            <Pinceis admin={admin} showSuccessToast={showSuccessToast} />
-          }
-        />
-        <Route
-          path="/Panelas"
-          element={
-            <Panelas admin={admin} showSuccessToast={showSuccessToast} />
-          }
-        />
-        <Route
-          path="/NewProduct"
-          element={
-            <IsAdmin>
-              <NewProducts />
-            </IsAdmin>
-          }
-        />
-        <Route
-          path="/product/:id"
-          element={<SpecificProduct showSuccessToast={showSuccessToast} />}
-        />
-        <Route
-          path="/editProduct/:id"
-          element={
-            <IsAdmin>
-              <EditProduct showSuccessToast={showSuccessToast} />
-            </IsAdmin>
-          }
-        />
-        <Route
-          path="/profile/:id"
-          element={<ProfilePage activeUser={activeUser} />}
-        />
-      </Routes>
-      <Footer />
-    </div>
+          <Route
+            path="/profile"
+            element={
+              <IsPrivate>
+                <ProfilePage showSuccessToast={showSuccessToast} />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/Linhas"
+            element={
+              <Linhas admin={admin} showSuccessToast={showSuccessToast} />
+            }
+          />
+          <Route
+            path="/Pinceis"
+            element={
+              <Pinceis admin={admin} showSuccessToast={showSuccessToast} />
+            }
+          />
+          <Route
+            path="/Panelas"
+            element={
+              <Panelas admin={admin} showSuccessToast={showSuccessToast} />
+            }
+          />
+          <Route
+            path="/NewProduct"
+            element={
+              <IsAdmin>
+                <NewProducts />
+              </IsAdmin>
+            }
+          />
+          <Route
+            path="/product/:id"
+            element={<SpecificProduct showSuccessToast={showSuccessToast} />}
+          />
+          <Route
+            path="/editProduct/:id"
+            element={
+              <IsAdmin>
+                <EditProduct showSuccessToast={showSuccessToast} />
+              </IsAdmin>
+            }
+          />
+          <Route
+            path="/profile/:id"
+            element={<ProfilePage activeUser={activeUser} />}
+          />
+        </Routes>
+        <Footer />
+      </div>
+    </NavbarVisibilityProvider>
   );
 }
 

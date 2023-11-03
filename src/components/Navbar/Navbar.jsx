@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/auth.context";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRef, useContext } from "react";
 import { Link } from "react-router-dom";
+import { useNavbarVisibility } from "../../context/NavbarVisibilityContext";
 
 function Navbars({
   toggleHiddenS,
@@ -11,14 +12,14 @@ function Navbars({
   toggleHiddenH,
   admin,
   setAdmin,
+  setNavElement,
+  showNavBar,
 }) {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   const navRef = useRef();
 
-  const showNavBar = () => {
-    navRef.current.classList.toggle("responsive_nav");
-  };
+  setNavElement(navRef);
 
   const handleLinkClick = () => {
     showNavBar();
