@@ -23,6 +23,8 @@ function ProfilePage({ showSuccessToast }) {
   const [zipCode, setZipCode] = useState("");
   const [city, setCity] = useState("");
 
+  const viewportWidth = window.innerWidth;
+
   const handleFirstName = (e) => setFirstName(e.target.value);
   const handleLastName = (e) => setLastName(e.target.value);
   const handleStreet = (e) => setStreet(e.target.value);
@@ -320,7 +322,38 @@ function ProfilePage({ showSuccessToast }) {
           <h2>Under Development ...</h2>
         </div>
       )}
-      {wishlistActive && (
+      {wishlistActive && viewportWidth <= 320 ? (
+        <div className="wishlistDiv">
+          {filteredProducts.map((product) => {
+            return (
+              <div className="wishlistProduct">
+                <div>
+                  <img
+                    onClick={() => {
+                      navigation(product._id);
+                    }}
+                    className="favoriteImg"
+                    src={product.imgUrl}
+                    alt={product.title}
+                  />
+                </div>
+                <div className="favoritePriceDiv">
+                  <h4>{product.title}</h4>
+                  <span>{`${product.price} €`}</span>
+                  <button
+                    className="buttonAddToFavouritesP"
+                    onClick={() => {
+                      removeProductAsFavorite(product._id);
+                    }}
+                  >
+                  <span className="removeWishlist">REMOVE FROM WISHLIST</span>
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : wishlistActive && viewportWidth >= 1024 ? (
         <div className="wishlistDiv">
           {filteredProducts.map((product) => {
             return (
@@ -354,6 +387,8 @@ function ProfilePage({ showSuccessToast }) {
             );
           })}
         </div>
+      ) : (
+        <></>
       )}
     </div>
   );
