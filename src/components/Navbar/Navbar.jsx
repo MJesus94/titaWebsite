@@ -2,9 +2,8 @@ import "./Navbar.css";
 import { AuthContext } from "../../context/auth.context";
 
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useRef, useContext } from "react";
+import { useRef, useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavbarVisibility } from "../../context/NavbarVisibilityContext";
 
 function Navbars({
   toggleHiddenS,
@@ -15,6 +14,19 @@ function Navbars({
   setNavElement,
   showNavBar,
 }) {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   const navRef = useRef();
@@ -34,7 +46,7 @@ function Navbars({
           alt="Logo Fonzie"
         />{" "}
       </Link>
-      <nav ref={navRef}>
+      <nav ref={navRef} style={{top: `${scrollPosition}px`}}>
         <Link to="/Linhas" onClick={handleLinkClick}>
           Linhas
         </Link>

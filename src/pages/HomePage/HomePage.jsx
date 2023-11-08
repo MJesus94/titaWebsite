@@ -125,13 +125,13 @@ function HomePage({ showNavBar }) {
                     src={product.imgUrl}
                     alt={product.title}
                   />
-                  {imgWidth > imgHeight ? (
-                    <h2 className="mobileSTitle">{product.title}</h2>
-                  ) : imgWidth < imgHeight ? (
-                    <h3 className="mobileSTitle">{product.title}</h3>
+                  {product.dimensions &&
+                  product.dimensions.width < product.dimensions.height ? (
+                    <h3 className="mobileSTitle">{`${product.title}`}</h3>
                   ) : (
-                    <h2 className="mobileSTitle">{product.title}</h2>
+                    <h2 className="mobileSTitle">{`${product.title}`}</h2>
                   )}
+
                   <h5 className="mobileSPrice">{`${product.price} €`}</h5>
                 </div>
               ))}

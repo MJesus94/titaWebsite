@@ -10,8 +10,11 @@ function SpecificProduct({ showSuccessToast }) {
   const [imgWidth, setImgWidth] = useState(null);
   const [imgHeight, setImgHeight] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [specsVisible, setSpecsVisible] = useState(false);
   const [user, setCurrentUser] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const viewportWidth = window.innerWidth;
 
   const { id } = useParams();
 
@@ -51,11 +54,27 @@ function SpecificProduct({ showSuccessToast }) {
       setErrorMessage("Failed to remove from favorites");
     }
   };
+
+  const turnSpecsAsVisible = () => {
+    setSpecsVisible(!specsVisible);
+  };
+
   const checkFavorite = () => {
     if (user && user.favourites) {
       const isInArray = user.favourites.includes(oneProduct._id);
       setIsFavorite(isInArray);
     }
+  };
+
+  const calculateImageDimensions = (url) => {
+    const img = new Image();
+    img.src = url;
+
+    return new Promise((resolve) => {
+      img.addEventListener("load", () => {
+        resolve({ width: img.naturalWidth, height: img.naturalHeight });
+      });
+    });
   };
 
   useEffect(() => {
@@ -70,146 +89,290 @@ function SpecificProduct({ showSuccessToast }) {
   }, [oneProduct, user]);
 
   useEffect(() => {
-    if (oneProduct && oneProduct.imgUrl) {
-      const img = new Image();
-      img.src = oneProduct.imgUrl;
+    const updateProductDimensions = async () => {
+      if (oneProduct && oneProduct.imgUrl) {
+        const dimensions = await calculateImageDimensions(oneProduct.imgUrl);
 
-      img.addEventListener("load", () => {
-        setImgWidth(img.naturalWidth);
-        setImgHeight(img.naturalHeight);
-      });
+        if (oneProduct.dimensions) {
+          if (
+            dimensions.width !== oneProduct.dimensions.width ||
+            dimensions.height !== oneProduct.dimensions.height
+          ) {
+            setOneProduct((prevProduct) => ({ ...prevProduct, dimensions }));
+          }
+        } else {
+          setOneProduct((prevProduct) => ({ ...prevProduct, dimensions }));
+        }
+      }
+    };
 
-      return () => {
-        img.removeEventListener("load", () => {});
-      };
-    }
+    updateProductDimensions();
   }, [oneProduct]);
 
-  return (
-    <>
-      {oneProduct && (
-        <section className="main-section">
-          <div className="infoContainer">
-            <ol className="routePath">
-              <li>
-                {" "}
-                <Link to="/" className="link">
-                  <span className="categorySpan">Página Inicial</span>
-                  <img
-                    src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688657721/titaWebsite/images-removebg-preview_q3tb4e.png"
-                    alt="right caret"
-                    className="icon-caret"
-                  />
-                </Link>
-              </li>
-              <li>
-                {" "}
-                <Link
-                  to={
-                    oneProduct.category === "Pincéis"
-                      ? "/Pinceis"
-                      : `/${oneProduct.category}`
-                  }
-                  className="link"
-                >
+  if (viewportWidth <= 320) {
+    return (
+      <>
+        {oneProduct && (
+          <section className="main-section">
+            <div className="infoContainer">
+              <ol className="routePath">
+                <li>
                   {" "}
-                  <span className="categorySpan">
-                    {oneProduct.category}
-                  </span>{" "}
+                  <Link to="/" className="link">
+                    <span className="categorySpan">Página Inicial</span>
+                    <img
+                      src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688657721/titaWebsite/images-removebg-preview_q3tb4e.png"
+                      alt="right caret"
+                      className="icon-caret"
+                    />
+                  </Link>
+                </li>
+                <li>
+                  {" "}
+                  <Link
+                    to={
+                      oneProduct.category === "Pincéis"
+                        ? "/Pinceis"
+                        : `/${oneProduct.category}`
+                    }
+                    className="link"
+                  >
+                    {" "}
+                    <span className="categorySpan">
+                      {oneProduct.category}
+                    </span>{" "}
+                    <img
+                      src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688657721/titaWebsite/images-removebg-preview_q3tb4e.png"
+                      alt="right caret"
+                      className="icon-caret"
+                    />
+                  </Link>
+                </li>
+                <li className="currentProduct"> {oneProduct.title} </li>
+              </ol>
+            </div>
+            <div className="productDisplay productMobileCard">
+              <div className="productInformation">
+                <div className="productDetails">
+                  <div>
+                    <h1 className="productTitle">{oneProduct.title}</h1>
+                  </div>
+                </div>
+                <div className="imgUrlDisplayDiv">
                   <img
-                    src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688657721/titaWebsite/images-removebg-preview_q3tb4e.png"
-                    alt="right caret"
-                    className="icon-caret"
+                    className="imgUrlDisplayWidth"
+                    src={oneProduct.imgUrl}
+                    alt={oneProduct.title}
                   />
-                </Link>
-              </li>
-              <li className="currentProduct"> {oneProduct.title} </li>
-            </ol>
-          </div>
-
-          <div className="productDisplay">
-            <div className="productInformation">
-              <div className="productDetails">
-                <div>
-                  <h1 className="productTitle">{oneProduct.title}</h1>
                 </div>
-                <div>
-                  <span className="productPrice">€ {oneProduct.price}</span>
-                </div>
-              </div>
-              <div className="buttonsDiv">
-                {/* <button className="buttonAddToCart">
+                <div className="buttonsDiv">
+                  {/* <button className="buttonAddToCart">
                   <span>ADICIONAR AO CARRINHO</span>
                 </button> */}
-                {isFavorite ? (
-                  <button
-                    className="buttonAddToFavourites"
-                    onClick={removeProductAsFavorite}
-                  >
-                    <img
-                      className="favouriteHeart"
-                      src="https://res.cloudinary.com/df3vc4osi/image/upload/v1698340755/titaWebsite/fullheart_icon_qq8kpw.png"
-                      alt="heart"
-                    />{" "}
-                    REMOVE FROM WISHLIST
-                  </button>
-                ) : (
-                  <button
-                    className="buttonAddToFavourites"
-                    onClick={addProductAsFavorite}
-                  >
-                    <img
-                      className="favouriteHeart"
-                      src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688747630/titaWebsite/images__1_-removebg-preview_yayvcy.png"
-                      alt="heart"
-                    />{" "}
-                    ADD TO WISHLIST
-                  </button>
-                )}
+                  <div className="priceFavDiv">
+                    <span className="productPrice">€ {oneProduct.price}</span>
+                    {isFavorite ? (
+                      <button
+                        className="buttonAddToFavourites"
+                        onClick={removeProductAsFavorite}
+                      >
+                        <img
+                          className="favouriteHeart"
+                          src="https://res.cloudinary.com/df3vc4osi/image/upload/v1698340755/titaWebsite/fullheart_icon_qq8kpw.png"
+                          alt="heart"
+                        />{" "}
+                        <span className="favoritesSpan">REMOVE FROM WISHLIST</span>
+                      </button>
+                    ) : (
+                      <button
+                        className="buttonAddToFavourites"
+                        onClick={addProductAsFavorite}
+                      >
+                        <img
+                          className="favouriteHeart"
+                          src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688747630/titaWebsite/images__1_-removebg-preview_yayvcy.png"
+                          alt="heart"
+                        />{" "}
+                        ADD TO WISHLIST
+                      </button>
+                    )}
+                  </div>
+                  <div className="prodSpecMainDiv">
+                    <div
+                      className="prodSpec"
+                      onClick={() => {
+                        turnSpecsAsVisible();
+                      }}
+                    >
+                      <span className="specSpan">
+                        Características do Produto
+                      </span>
+                      {!specsVisible ? (
+                        <img
+                          className="specArrow"
+                          src="https://res.cloudinary.com/df3vc4osi/image/upload/v1699366743/titaWebsite/right_arrow_ymcged.png"
+                          alt="right arrow"
+                        />
+                      ) : (
+                        <img
+                          className="specArrow"
+                          src="https://res.cloudinary.com/df3vc4osi/image/upload/v1699382307/titaWebsite/arrow_up-removebg-preview_frihnb.png"
+                          alt="arrow up"
+                        />
+                      )}
+                    </div>
+                    {specsVisible && (
+                      <div className="descriptionDiv">
+                        <ul className="ulDescription">
+                          <li>{oneProduct.description}</li>
+                          <li>
+                            <span className="corSpan">Cor:</span>
+                            {oneProduct.color.map((color, index) =>
+                              index === oneProduct.color.length - 1 ? (
+                                <span key={index}>{color}</span>
+                              ) : (
+                                <span key={index}>{`${color}, `}</span>
+                              )
+                            )}
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="imgUrlDisplayDiv">
-              {" "}
-              {imgWidth > imgHeight ? (
-                <img
-                  className="imgUrlDisplay"
-                  src={oneProduct.imgUrl}
-                  alt={oneProduct.title}
-                />
-              ) : imgWidth === imgHeight ? (
-                <img
-                  className="imgUrlDisplay"
-                  src={oneProduct.imgUrl}
-                  alt={oneProduct.title}
-                />
-              ) : (
-                <img
-                  className="imgUrlDisplay"
-                  src={oneProduct.imgUrl}
-                  alt={oneProduct.title}
-                />
-              )}
-            </div>
-            <div className="descriptionDiv">
-              <ul className="ulDescription">
-                <li>{oneProduct.description}</li>
+          </section>
+        )}
+      </>
+    );
+  } else {
+    return (
+      <>
+        {oneProduct && (
+          <section className="main-section">
+            <div className="infoContainer">
+              <ol className="routePath">
                 <li>
-                  <span className="corSpan">Cor:</span>
-                  {oneProduct.color.map((color, index) =>
-                    index === oneProduct.color.length - 1 ? (
-                      <span key={index}>{color}</span>
-                    ) : (
-                      <span key={index}>{`${color}, `}</span>
-                    )
-                  )}
+                  {" "}
+                  <Link to="/" className="link">
+                    <span className="categorySpan">Página Inicial</span>
+                    <img
+                      src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688657721/titaWebsite/images-removebg-preview_q3tb4e.png"
+                      alt="right caret"
+                      className="icon-caret"
+                    />
+                  </Link>
                 </li>
-              </ul>
+                <li>
+                  {" "}
+                  <Link
+                    to={
+                      oneProduct.category === "Pincéis"
+                        ? "/Pinceis"
+                        : `/${oneProduct.category}`
+                    }
+                    className="link"
+                  >
+                    {" "}
+                    <span className="categorySpan">
+                      {oneProduct.category}
+                    </span>{" "}
+                    <img
+                      src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688657721/titaWebsite/images-removebg-preview_q3tb4e.png"
+                      alt="right caret"
+                      className="icon-caret"
+                    />
+                  </Link>
+                </li>
+                <li className="currentProduct"> {oneProduct.title} </li>
+              </ol>
             </div>
-          </div>
-        </section>
-      )}
-    </>
-  );
+
+            <div className="productDisplay">
+              <div className="productInformation">
+                <div className="productDetails">
+                  <div>
+                    <h1 className="productTitle">{oneProduct.title}</h1>
+                  </div>
+                  <div>
+                    <span className="productPrice">€ {oneProduct.price}</span>
+                  </div>
+                </div>
+                <div className="buttonsDiv">
+                  {/* <button className="buttonAddToCart">
+                    <span>ADICIONAR AO CARRINHO</span>
+                  </button> */}
+                  {isFavorite ? (
+                    <button
+                      className="buttonAddToFavourites"
+                      onClick={removeProductAsFavorite}
+                    >
+                      <img
+                        className="favouriteHeart"
+                        src="https://res.cloudinary.com/df3vc4osi/image/upload/v1698340755/titaWebsite/fullheart_icon_qq8kpw.png"
+                        alt="heart"
+                      />{" "}
+                      REMOVE FROM WISHLIST
+                    </button>
+                  ) : (
+                    <button
+                      className="buttonAddToFavourites"
+                      onClick={addProductAsFavorite}
+                    >
+                      <img
+                        className="favouriteHeart"
+                        src="https://res.cloudinary.com/df3vc4osi/image/upload/v1688747630/titaWebsite/images__1_-removebg-preview_yayvcy.png"
+                        alt="heart"
+                      />{" "}
+                      ADD TO WISHLIST
+                    </button>
+                  )}
+                </div>
+              </div>
+              <div className="imgUrlDisplayDiv">
+                {" "}
+                {imgWidth > imgHeight ? (
+                  <img
+                    className="imgUrlDisplay"
+                    src={oneProduct.imgUrl}
+                    alt={oneProduct.title}
+                  />
+                ) : imgWidth === imgHeight ? (
+                  <img
+                    className="imgUrlDisplay"
+                    src={oneProduct.imgUrl}
+                    alt={oneProduct.title}
+                  />
+                ) : (
+                  <img
+                    className="imgUrlDisplay"
+                    src={oneProduct.imgUrl}
+                    alt={oneProduct.title}
+                  />
+                )}
+              </div>
+              <div className="descriptionDiv">
+                <ul className="ulDescription">
+                  <li>{oneProduct.description}</li>
+                  <li>
+                    <span className="corSpan">Cor:</span>
+                    {oneProduct.color.map((color, index) =>
+                      index === oneProduct.color.length - 1 ? (
+                        <span key={index}>{color}</span>
+                      ) : (
+                        <span key={index}>{`${color}, `}</span>
+                      )
+                    )}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        )}
+      </>
+    );
+  }
 }
 
 export default SpecificProduct;
