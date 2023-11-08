@@ -15,6 +15,7 @@ function SpecificProduct({ showSuccessToast }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const viewportWidth = window.innerWidth;
+  console.log(viewportWidth);
 
   const { id } = useParams();
 
@@ -109,7 +110,7 @@ function SpecificProduct({ showSuccessToast }) {
     updateProductDimensions();
   }, [oneProduct]);
 
-  if (viewportWidth <= 360) {
+  if (viewportWidth <= 375) {
     return (
       <>
         {oneProduct && (
