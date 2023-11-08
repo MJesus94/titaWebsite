@@ -322,7 +322,7 @@ function ProfilePage({ showSuccessToast }) {
           <h2>Under Development ...</h2>
         </div>
       )}
-      {wishlistActive && viewportWidth <= 375 ? (
+      {wishlistActive && viewportWidth <= 391 ? (
         <div className="wishlistDiv">
           {filteredProducts.map((product) => {
             return (

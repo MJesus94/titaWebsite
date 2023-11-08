@@ -195,7 +195,7 @@
   cursor: pointer;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 391px) {
   .mainDiv {
     display: flex;
     flex-direction: column;
@@ -210,67 +210,67 @@
     margin-bottom: 3vh;
   }
 
-  .rectStyle{
-    width:1.1vw;
-    height:4vh;
+  .rectStyle {
+    width: 1.1vw;
+    height: 4vh;
   }
 
-  .menuOptions{
-    width:100%;
-    margin-bottom:3vh;
+  .menuOptions {
+    width: 100%;
+    margin-bottom: 3vh;
   }
 
-  .ulOptions > li.active::before{
-    width:1vw;
-    height:4vh;
+  .ulOptions > li.active::before {
+    width: 1vw;
+    height: 4vh;
   }
 
-  .personalInfo{
-    width:100%;
+  .personalInfo {
+    width: 100%;
     height: auto;
     padding: 3vh 3vw;
   }
 
-  .formLabel{
-    width:100%;
-    height:9vh;
+  .formLabel {
+    width: 100%;
+    height: 9vh;
   }
 
-  .inputPersonalInfo{
+  .inputPersonalInfo {
     font-size: 20px;
   }
 
-  .formPIButton{
-    width:45vw;
-    height:8vh;
+  .formPIButton {
+    width: 45vw;
+    height: 8vh;
   }
-  
-  .wishlistProduct{
+
+  .wishlistProduct {
     margin: 3vh 0;
   }
 
-  .wishlistDiv{
-    width:100%;
+  .wishlistDiv {
+    width: 100%;
   }
 
-  .favoriteImg{
-    width:40vw;
+  .favoriteImg {
+    width: 40vw;
   }
 
-  .favoritePriceDiv{
-    height:100%;
+  .favoritePriceDiv {
+    height: 100%;
     margin-left: 1vw;
     align-items: flex-start;
     justify-content: space-between;
   }
 
-  .buttonAddToFavouritesP{
-    width:100%;
-    height:6vh;
+  .buttonAddToFavouritesP {
+    width: 100%;
+    height: 6vh;
     padding: 1vh 1vw;
   }
 
-  .removeWishlist{
-    font-size:11px;
+  .removeWishlist {
+    font-size: 11px;
   }
 }
