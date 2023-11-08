@@ -322,7 +322,7 @@ function ProfilePage({ showSuccessToast }) {
           <h2>Under Development ...</h2>
         </div>
       )}
-      {wishlistActive && viewportWidth <= 320 ? (
+      {wishlistActive && viewportWidth <= 360 ? (
         <div className="wishlistDiv">
           {filteredProducts.map((product) => {
             return (
@@ -346,7 +346,7 @@ function ProfilePage({ showSuccessToast }) {
                       removeProductAsFavorite(product._id);
                     }}
                   >
-                  <span className="removeWishlist">REMOVE FROM WISHLIST</span>
+                    <span className="removeWishlist">REMOVE FROM WISHLIST</span>
                   </button>
                 </div>
               </div>

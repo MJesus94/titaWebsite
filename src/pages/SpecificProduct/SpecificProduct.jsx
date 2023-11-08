@@ -109,7 +109,7 @@ function SpecificProduct({ showSuccessToast }) {
     updateProductDimensions();
   }, [oneProduct]);
 
-  if (viewportWidth <= 320) {
+  if (viewportWidth <= 360) {
     return (
       <>
         {oneProduct && (
@@ -181,7 +181,9 @@ function SpecificProduct({ showSuccessToast }) {
                           src="https://res.cloudinary.com/df3vc4osi/image/upload/v1698340755/titaWebsite/fullheart_icon_qq8kpw.png"
                           alt="heart"
                         />{" "}
-                        <span className="favoritesSpan">REMOVE FROM WISHLIST</span>
+                        <span className="favoritesSpan">
+                          REMOVE FROM WISHLIST
+                        </span>
                       </button>
                     ) : (
                       <button
