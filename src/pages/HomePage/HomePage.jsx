@@ -56,7 +56,6 @@ function HomePage({ showNavBar }) {
 
   const handleSlideClick = (id) => {
     navigate(`/product/${id}`);
-    showNavBar();
   };
 
   useEffect(() => {
