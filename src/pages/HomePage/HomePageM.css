@@ -6,9 +6,10 @@
   }
 }
 
-@media only screen and (max-width: 375px) {
+
+@media only screen and (max-width: 391px) and (min-width: 322px) {
   .addWidth {
-    min-width: 65vw;
+    min-width: 55vw;
   }
 
   .promoCode {
@@ -58,13 +59,13 @@
   }
 
   .itemCard {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    height: 56vh;
+    height: 52vh;
     background-color: white;
     border-radius: 4px;
     margin: 5px;
-    padding-bottom: 20px;
+    padding:8px;
     scroll-snap-align: center;
   }
 
@@ -81,21 +82,6 @@
     margin: 0 auto;
   }
 
-  .copyrightDiv {
-    font-size: 0.5rem;
-    width: 100vw;
-    height: 3vh;
-  }
-
-  .copyrightDiv > div {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-content: center;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-  }
 
   .mobileSTitle {
     margin: 4vh 0 3vh 1vh;

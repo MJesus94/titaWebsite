@@ -160,8 +160,16 @@ function ProfilePage({ showSuccessToast }) {
   useEffect(() => {
     if (activeUser) {
       console.log(activeUser);
-      setCity(activeUser.address.city);
-      setZipCode(activeUser.address.zipCode);
+      if (activeUser.address.city) {
+        setCity(activeUser.address.city);
+      } /*  else {
+        setCity("Introduza aqui a cidade onde vive");
+      } */
+      if (activeUser.address.zipCode) {
+        setZipCode(activeUser.address.zipCode);
+      } /* else {
+        setZipCode("2725-000");
+      } */
       setStreet(activeUser.address.street);
       setPhoneNumber(activeUser.phoneNumber);
       const namesArray = activeUser.name.split(" ");
@@ -198,7 +206,11 @@ function ProfilePage({ showSuccessToast }) {
     <div className="mainDiv">
       <div className="contentDiv">
         <div className="userNameDiv">
-          {names && <h2>Olá {`${names[0]} ${names[names.length - 1]}`}</h2>}
+          {names && names.length === 1 ? (
+            <h2>Olá {`${names[0]}`}</h2>
+          ) : (
+            <h2>Olá {`${names[0]} ${names[names.length - 1]}`}</h2>
+          )}
         </div>
         <div className="optionTitleDiv">
           <div className="rectStyle"></div>
@@ -229,7 +241,7 @@ function ProfilePage({ showSuccessToast }) {
           </li>
         </ul>
       </div>
-      {dadosPessoaisActive && activeUser && city && zipCode && (
+      {dadosPessoaisActive && activeUser && (
         <form className="personalInfo" onSubmit={handleUpdateProfileInfo}>
           <div className="changePersonalInfoForm">
             <div className="formLabel">
@@ -280,11 +292,12 @@ function ProfilePage({ showSuccessToast }) {
                 type="text"
                 name="street"
                 className="inputPersonalInfo"
-                value={
+                placeholder={
                   street === "Rua São Bernardo"
-                    ? "Introduza a sua morada (Rua/Travessa/Avenida)"
-                    : street
+                    ? "Indique aqui a sua Rua/Avenida/Praça"
+                    : ""
                 }
+                value={street === "Rua São Bernardo" ? "" : street}
                 onChange={handleStreet}
               ></input>
             </div>
@@ -297,6 +310,7 @@ function ProfilePage({ showSuccessToast }) {
                 name="zipCode"
                 maxLength="8"
                 className="inputPersonalInfo"
+                placeholder={!zipCode ? "2725-000" : ""}
                 value={zipCode}
                 onInput={handleZipCode}
               ></input>
@@ -309,6 +323,7 @@ function ProfilePage({ showSuccessToast }) {
                 type="text"
                 name="city"
                 className="inputPersonalInfo"
+                placeholder={!city ? "Indique aqui a cidade onde vive" : ""}
                 value={city}
                 onChange={handleCity}
               ></input>

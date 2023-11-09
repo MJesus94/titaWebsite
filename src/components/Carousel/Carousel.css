@@ -3,17 +3,16 @@
   position: relative;
 }
 
-.overlay{
+.overlay {
   position: absolute;
-    top:0%;
-    left:0%;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://res.cloudinary.com/df3vc4osi/image/upload/v1684496288/titaWebsite/overlay_eftwox.png');
-    background-repeat:repeat;
+  top: 0%;
+  left: 0%;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://res.cloudinary.com/df3vc4osi/image/upload/v1684496288/titaWebsite/overlay_eftwox.png");
+  background-repeat: repeat;
 }
-
 
 .leftArrow {
   position: absolute;
@@ -48,7 +47,7 @@
   margin-left: auto;
   display: flex;
   justify-content: center;
-  z-index:1 ;
+  z-index: 1;
 }
 
 .dashes {
@@ -78,7 +77,7 @@
   font-weight: 600;
   font-size: 3.5rem;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .slideOverflow {
@@ -90,20 +89,22 @@
   height: 100%;
   display: flex;
   transition: ease-out 1.5s;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-@media only screen and (max-width: 375px) {
-  .slideContainer{
+@media only screen and (max-width: 376px) {
+  .slideContainer {
     width: 100vw;
   }
 
-  .leftArrow, .rightArrow, .dashes {
+  .leftArrow,
+  .rightArrow {
     font-size: 23px;
   }
 
-  .leftArrow, .rightArrow {
-    top: 49%
+  .leftArrow,
+  .rightArrow {
+    top: 44%;
   }
 
   .title {
@@ -111,23 +112,24 @@
     font-size: 2rem;
   }
 
-  .logo{
+  .logo {
     width: 15vw;
   }
-
-  
 }
-@media only screen and (max-width: 425px) and (min-width: 376px) {
-  .slideContainer{
+@media only screen and (max-width: 425px) and (min-width: 377px) {
+  .slideContainer {
     width: 100vw;
   }
 
-  .leftArrow, .rightArrow, .dashes {
+  .leftArrow,
+  .rightArrow,
+  .dashes {
     font-size: 23px;
   }
 
-  .leftArrow, .rightArrow {
-    top: 47%
+  .leftArrow,
+  .rightArrow {
+    top: 47%;
   }
 
   .title {
@@ -135,9 +137,7 @@
     font-size: 2rem;
   }
 
-  .logo{
+  .logo {
     width: 15vw;
   }
-
-  
 }

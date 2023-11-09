@@ -1,6 +1,6 @@
 import "./HomePage.css";
 import "./HomePageM.css";
-import "./HomePageL.css";
+import "./HomePageS.css";
 import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -90,7 +90,7 @@ function HomePage({ showNavBar }) {
     }
   }, [allProducts]);
 
-  if (viewportWidth <= 425) {
+  if (viewportWidth <= 426) {
     return (
       <>
         <section>
@@ -131,7 +131,7 @@ function HomePage({ showNavBar }) {
                     <h2 className="mobileSTitle">{`${product.title}`}</h2>
                   )}
 
-                  <h5 className="mobileSPrice">{`${product.price} €`}</h5>
+                  <h4 className="mobileSPrice">{`${product.price} €`}</h4>
                 </div>
               ))}
             </div>

@@ -51,6 +51,7 @@
 
     .formBox{
         margin-top: 125px;
+        margin-left: 60px;
     }
 
     .form-group{
@@ -67,6 +68,6 @@
       }
 
     .buttonSignup{
-        margin-top: 75px;
+        margin: 50px 0 0 80px;
     }
 }
