@@ -109,12 +109,12 @@ header .nav-btn {
 
 @media only screen and (max-width: 425px) and (min-width: 376px) {
   .logo {
-    height: 6vh;
+    height: 7.5vh;
   }
 }
 
 @media only screen and (max-width: 768px) and (min-width: 426px) {
   .logo {
-    width: 7.5vw;
+    height: 7.5vw;
   }
 }

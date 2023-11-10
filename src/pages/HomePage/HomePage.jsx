@@ -8,7 +8,7 @@ import productService from "../../services/product.service";
 
 import Carousel from "../../components/Carousel/Carousel";
 
-function HomePage({ showNavBar }) {
+function HomePage() {
   const viewportWidth = window.innerWidth;
 
   const slides = [
@@ -27,8 +27,6 @@ function HomePage({ showNavBar }) {
   ];
 
   const [allProducts, setAllProducts] = useState([]);
-  const [imgWidth, setImgWidth] = useState(null);
-  const [imgHeight, setImgHeight] = useState(null);
 
   const getAllProducts = async () => {
     try {
@@ -183,9 +181,8 @@ function HomePage({ showNavBar }) {
                     src={product.imgUrl}
                     alt={product.title}
                   />
-                  {imgWidth > imgHeight ? (
-                    <h2 className="mobileSTitle">{product.title}</h2>
-                  ) : imgWidth < imgHeight ? (
+                  {product.dimensions &&
+                  product.dimensions.width < product.dimensions.height ? (
                     <h3 className="mobileSTitle">{product.title}</h3>
                   ) : (
                     <h2 className="mobileSTitle">{product.title}</h2>

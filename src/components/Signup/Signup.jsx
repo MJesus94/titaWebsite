@@ -53,7 +53,7 @@ function Signup({
     showErrorToast(errorMessage);
   }, [errorMessage]);
 
-  if (viewportWidth <= 425) {
+  if (viewportWidth <= 426) {
     return (
       <>
         <div className="form">

@@ -112,11 +112,8 @@
     font-size: 2rem;
   }
 
-  .logo {
-    width: 15vw;
-  }
 }
-@media only screen and (max-width: 425px) and (min-width: 377px) {
+@media only screen and (max-width: 424px) and (min-width: 377px) {
   .slideContainer {
     width: 100vw;
   }
@@ -137,7 +134,28 @@
     font-size: 2rem;
   }
 
-  .logo {
-    width: 15vw;
+}
+
+
+@media only screen and (max-width: 767px) and (min-width: 425px) {
+  .slideContainer {
+    width: 100vw;
   }
+
+  .leftArrow,
+  .rightArrow,
+  .dashes {
+    font-size: 23px;
+  }
+
+  .leftArrow,
+  .rightArrow {
+    top: 42%;
+  }
+
+  .title {
+    top: 37%;
+    font-size: 2rem;
+  }
+
 }

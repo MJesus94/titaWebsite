@@ -110,7 +110,7 @@ function SpecificProduct({ showSuccessToast }) {
     updateProductDimensions();
   }, [oneProduct]);
 
-  if (viewportWidth <= 391) {
+  if (viewportWidth <= 426) {
     return (
       <>
         {oneProduct && (
