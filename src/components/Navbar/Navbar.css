@@ -21,7 +21,7 @@ header {
   justify-content: space-between;
   height: 7.5vh;
   padding: 0 2rem;
-  background-color: var(--main2Color);
+  background-color: var(--mainColor);
   color: var(--textColor);
   border-bottom: 3px solid #ccc;
 }
