@@ -258,11 +258,15 @@
   }
 
   .favoritePriceDiv {
-    height: 100%;
+    min-height: 128px;
     width: 50%;
     margin-left: 1vw;
     align-items: flex-start;
     justify-content: space-between;
+  }
+
+  .favoritePriceDiv > h4 {
+    text-align: left;
   }
 
   .buttonAddToFavouritesP {
@@ -339,11 +343,16 @@
   }
 
   .favoritePriceDiv {
+    text-align: left;
     min-height: 172px;
     width: 50%;
     margin-left: 1vw;
     align-items: flex-start;
     justify-content: space-between;
+  }
+
+  .favoritePriceDiv > h4 {
+    text-align: left;
   }
 
   .buttonAddToFavouritesP {
