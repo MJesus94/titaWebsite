@@ -1,3 +1,9 @@
+@media only screen and (max-width: 376px) {
+  .loginFormBox {
+    margin: 185px 60px 0 60px;
+  }
+}
+
 @media only screen and (max-width: 391px) {
   @import url("https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap");
   .form {
