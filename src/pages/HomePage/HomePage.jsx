@@ -88,7 +88,7 @@ function HomePage() {
     }
   }, [allProducts]);
 
-  if (viewportWidth <= 426) {
+  if (viewportWidth <= 769) {
     return (
       <>
         <section>
@@ -137,7 +137,7 @@ function HomePage() {
         </section>
       </>
     );
-  } else if (viewportWidth <= 768) {
+  } else if (viewportWidth <= 1024) {
     return <></>;
   } else {
     return (

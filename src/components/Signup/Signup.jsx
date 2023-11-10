@@ -127,8 +127,6 @@ function Signup({
         </div>
       </>
     );
-  } else if (viewportWidth <= 768) {
-    return <></>;
   } else {
     return (
       <>

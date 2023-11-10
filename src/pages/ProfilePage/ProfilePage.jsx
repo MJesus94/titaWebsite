@@ -91,6 +91,7 @@ function ProfilePage({ showSuccessToast }) {
     } else if (index === 1) {
       setDadosPessoaisActive(false);
       setEncomendasActive(true);
+      setWishlistActive(false);
       setOptionTitle("As minhas encomendas");
     } else {
       setDadosPessoaisActive(false);
@@ -337,7 +338,7 @@ function ProfilePage({ showSuccessToast }) {
           <h2>Under Development ...</h2>
         </div>
       )}
-      {wishlistActive && viewportWidth <= 426 ? (
+      {wishlistActive && viewportWidth <= 769 ? (
         <div className="wishlistDiv">
           {filteredProducts.map((product) => {
             return (

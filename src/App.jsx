@@ -164,7 +164,7 @@ function App() {
           />
           <Route
             path="/product/:id"
-            element={<SpecificProduct showSuccessToast={showSuccessToast} />}
+            element={<SpecificProduct showSuccessToast={showSuccessToast} showErrorToast={showErrorToast}/>}
           />
           <Route
             path="/editProduct/:id"

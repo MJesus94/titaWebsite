@@ -5,7 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import productService from "../../services/product.service";
 import userService from "../../services/user.service";
 
-function SpecificProduct({ showSuccessToast }) {
+function SpecificProduct({ showSuccessToast, showErrorToast }) {
   const [oneProduct, setOneProduct] = useState(null);
   const [imgWidth, setImgWidth] = useState(null);
   const [imgHeight, setImgHeight] = useState(null);
@@ -38,11 +38,15 @@ function SpecificProduct({ showSuccessToast }) {
 
   const addProductAsFavorite = async () => {
     try {
-      const response = await productService.addAsFavourite(oneProduct._id);
-      showSuccessToast("Produto adicionado à wishlist com sucesso");
-      setIsFavorite(true);
+      if (!user) {
+        showErrorToast("Tem que efetuar o login primeiro");
+      } else {
+        const response = await productService.addAsFavourite(oneProduct._id);
+        showSuccessToast("Produto adicionado à wishlist com sucesso");
+        setIsFavorite(true);
+      }
     } catch (error) {
-      setErrorMessage("Failed to add as favourite");
+      showErrorToast("Failed to add as favourite");
     }
   };
 
@@ -110,7 +114,7 @@ function SpecificProduct({ showSuccessToast }) {
     updateProductDimensions();
   }, [oneProduct]);
 
-  if (viewportWidth <= 426) {
+  if (viewportWidth <= 769) {
     return (
       <>
         {oneProduct && (

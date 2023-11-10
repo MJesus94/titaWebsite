@@ -111,7 +111,6 @@
     top: 39%;
     font-size: 2rem;
   }
-
 }
 @media only screen and (max-width: 424px) and (min-width: 377px) {
   .slideContainer {
@@ -133,11 +132,9 @@
     top: 37%;
     font-size: 2rem;
   }
-
 }
 
-
-@media only screen and (max-width: 767px) and (min-width: 425px) {
+@media only screen and (max-width: 769px) and (min-width: 425px) {
   .slideContainer {
     width: 100vw;
   }
@@ -157,5 +154,4 @@
     top: 37%;
     font-size: 2rem;
   }
-
 }
