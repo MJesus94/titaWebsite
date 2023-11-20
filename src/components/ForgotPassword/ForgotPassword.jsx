@@ -145,12 +145,12 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
               />
             </div>
             <form onSubmit={handleForgotSubmit}>
-              <div className="form-group forgotFormGroupPos">
+              <div className="forgotPassFormGroup">
                 <label className="labelName" htmlFor="email">
                   Email
                 </label>
                 <input
-                  className="input"
+                  className="emailInput"
                   type="email"
                   name="email"
                   onChange={handleEmail}
@@ -177,14 +177,14 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
                 <h1>Confirm code</h1>
               </label>
               <img
-                className="exitCross"
+                className="closeCross"
                 src="https://res.cloudinary.com/df3vc4osi/image/upload/v1678934027/movie-gallery/images-removebg-preview_cbnsxm.png"
                 alt="exit"
                 onClick={toggleHiddenH}
               />
             </div>
             <form onSubmit={handleRecoveryPasswordCodeSubmit}>
-              <div className="form-group confirmFormGroupPos">
+              <div className="forgotPassFormGroup">
                 {otp.map((data, index) => {
                   return (
                     <>
@@ -215,16 +215,26 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
           {" "}
           <div className="gradientGrey"></div>
           <div className="form">
-            <div className="formHeader">
+            <div className="formHeaderResetPass">
               <h1>Reset Password</h1>
+              {viewportWidth <= 426 ? (
+                <img
+                  className="closeForm"
+                  src="https://res.cloudinary.com/df3vc4osi/image/upload/v1678934027/movie-gallery/images-removebg-preview_cbnsxm.png"
+                  alt="exit"
+                  onClick={toggleHiddenH}
+                />
+              ) : (
+                <></>
+              )}
             </div>
             <form onSubmit={handleResetPasswordSubmit}>
               <div className="form-group loginFormGroupPos">
-                <label className="line" htmlFor="password">
+                <label className="labelName" htmlFor="password">
                   Password
                 </label>
                 <input
-                  className="input"
+                  className="emailInput"
                   type="password"
                   name="password"
                   onChange={handlePassword}
@@ -240,11 +250,11 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
                   )}
               </div>
               <div className="form-group loginFormGroupPos">
-                <label className="line" htmlFor="password">
+                <label className="labelName" htmlFor="password">
                   Confirm Password
                 </label>
                 <input
-                  className="input"
+                  className="emailInput"
                   type="password"
                   name="password"
                   onChange={handleConfirmPassword}

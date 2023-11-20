@@ -187,12 +187,18 @@ function NewProducts() {
               </div>
               <form className="addProductForm" onSubmit={handleSubmit}>
                 <label
-                  className={`addProductLabel ${
-                    missingFields.includes("title") && "errorLabel"
-                  }`}
+                  className={
+                    category === "Pincéis" || category === "Panelas"
+                      ? `addTitleLabelPinceis addProductLabel ${
+                          missingFields.includes("title") && "errorLabel"
+                        }`
+                      : `addTitleLabel addProductLabel ${
+                          missingFields.includes("title") && "errorLabel"
+                        }`
+                  }
                   htmlFor="text"
                 >
-                  Title:
+                  Title
                 </label>
                 <input
                   className="addProductInput"
@@ -201,8 +207,15 @@ function NewProducts() {
                   value={title}
                   onChange={handleTitle}
                 />
-                <label className="addProductLabel" htmlFor="description">
-                  Description:
+                <label
+                  className={
+                    category === "Pincéis" || category === "Panelas"
+                      ? `addDescriptionLabelPinceis addProductLabel `
+                      : `addDescriptionLabel addProductLabel`
+                  }
+                  htmlFor="description"
+                >
+                  Description
                 </label>
                 <textarea
                   className="addProductInput"
@@ -213,12 +226,18 @@ function NewProducts() {
                   onChange={handleDescription}
                 />
                 <label
-                  className={`addProductLabel ${
-                    missingFields.includes("price") && "errorLabel"
-                  }`}
+                  className={
+                    category === "Pincéis" || category === "Panelas"
+                      ? `addPriceLabelPinceis addProductLabel ${
+                          missingFields.includes("title") && "errorLabel"
+                        }`
+                      : `addPriceLabel addProductLabel ${
+                          missingFields.includes("title") && "errorLabel"
+                        }`
+                  }
                   htmlFor="price"
                 >
-                  Price:
+                  Price
                 </label>
                 <input
                   className="addProductInput"
@@ -228,12 +247,12 @@ function NewProducts() {
                   onChange={handlePrice}
                 />
                 <label
-                  className={`addProductLabel ${
+                  className={`${
                     missingFields.includes("color") && "errorLabel"
                   }`}
                   htmlFor="color"
                 >
-                  Color:
+                  Color
                 </label>
                 <Select
                   closeMenuOnSelect={false}
@@ -243,21 +262,22 @@ function NewProducts() {
                   options={colourOptions}
                   onChange={handleSelectedColors}
                   value={selectedColors}
+                  className="selectColorInput"
                 />
-                <label className="addProductLabel" htmlFor="file">
-                  File:
+                <label className="" htmlFor="file">
+                  File
                 </label>
                 <input
                   type="file"
                   onChange={(e) => handleFileUpload(e)}
-                  className="addProductInput"
+                  className="addFileInput"
                 />
 
                 {category === "Pincéis" ? (
                   <>
                     {" "}
-                    <label className="addProductLabel" htmlFor="tema">
-                      Tema:
+                    <label className="addProductLabel addTemaLabelPinceis" htmlFor="tema">
+                      Tema
                     </label>
                     <input
                       className="addProductInput"
@@ -266,8 +286,8 @@ function NewProducts() {
                       value={tema}
                       onChange={handleTema}
                     />
-                    <label className="addProductLabel" htmlFor="formato">
-                      Formato:
+                    <label className="addProductLabel addFormatoLabelPinceis" htmlFor="formato">
+                      Formato
                     </label>
                     <input
                       className="addProductInput"
@@ -276,8 +296,8 @@ function NewProducts() {
                       value={formato}
                       onChange={handleFormato}
                     />
-                    <label className="addProductLabel" htmlFor="tamanho">
-                      Tamanho:
+                    <label className="addProductLabel addTamanhoLabelPinceis" htmlFor="tamanho">
+                      Tamanho
                     </label>
                     <input
                       className="addProductInput"
@@ -289,8 +309,8 @@ function NewProducts() {
                   </>
                 ) : category === "Panelas" ? (
                   <>
-                    <label className="addProductLabel" htmlFor="cobertura">
-                      Cobertura:
+                    <label className="addProductLabel addTemaLabelPinceis" htmlFor="cobertura">
+                      Cobertura
                     </label>
                     <input
                       className="addProductInput"
@@ -299,8 +319,8 @@ function NewProducts() {
                       value={cobertura}
                       onChange={handleCobertura}
                     />
-                    <label className="addProductLabel" htmlFor="formato">
-                      Formato:
+                    <label className="addProductLabel addFormatoLabelPinceis" htmlFor="formato">
+                      Formato
                     </label>
                     <input
                       className="addProductInput"
@@ -309,8 +329,8 @@ function NewProducts() {
                       value={formato}
                       onChange={handleFormato}
                     />
-                    <label className="addProductLabel" htmlFor="massa">
-                      Massa:
+                    <label className="addProductLabel addTamanhoLabelPinceis" htmlFor="massa">
+                      Massa
                     </label>
                     <input
                       className="addProductInput"
@@ -327,7 +347,7 @@ function NewProducts() {
                 {!loading ? (
                   <Button
                     variant="warning"
-                    className="disabledButton addProductLabel"
+                    className="disabledButton submitButtonNewP"
                     size="md"
                     type="submit"
                   >
@@ -336,7 +356,7 @@ function NewProducts() {
                 ) : (
                   <Button
                     variant="warning"
-                    className="disabledButton addProductLabel"
+                    className="disabledButton submitButtonDisabled"
                     size="md"
                     disabled
                   >
