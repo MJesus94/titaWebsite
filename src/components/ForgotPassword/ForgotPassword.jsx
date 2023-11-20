@@ -13,6 +13,8 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [error, setError] = useState(false);
 
+  const viewportWidth = window.innerWidth;
+
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -115,6 +117,7 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
   const backwards = () => {
     setSent(!sent);
   };
+
   return (
     <>
       {!sent && !confirmedCode ? (
@@ -129,9 +132,13 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
                 alt="backwards arrow"
                 onClick={toggleHiddenL}
               />
-              <h1>Forgot Password</h1>
+              {viewportWidth > 768 ? (
+                <h1>Forgot Password</h1>
+              ) : (
+                <h2>Forgot Password</h2>
+              )}
               <img
-                className="exitCross"
+                className="closeCross"
                 src="https://res.cloudinary.com/df3vc4osi/image/upload/v1678934027/movie-gallery/images-removebg-preview_cbnsxm.png"
                 alt="exit"
                 onClick={toggleHiddenH}
@@ -139,7 +146,7 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
             </div>
             <form onSubmit={handleForgotSubmit}>
               <div className="form-group forgotFormGroupPos">
-                <label className="line" htmlFor="email">
+                <label className="labelName" htmlFor="email">
                   Email
                 </label>
                 <input

@@ -162,6 +162,11 @@ function Login({
                 />
               )}
             </div>
+            <div className="forgotPasswordDiv">
+              <Link className="forgotPassword" onClick={toggleHiddenForgotForm}>
+                Forgot password?
+              </Link>
+            </div>
             <button className="buttonLogin buttonPos" type="submit">
               Login
             </button>

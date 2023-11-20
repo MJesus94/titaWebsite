@@ -67,7 +67,11 @@
   }
 
   .buttonPos {
-    margin: 40px auto 0 auto;
+    margin: 20px auto 0 auto;
+  }
+
+  .forgotPasswordDiv {
+    margin-top: 20px;
   }
 }
 
@@ -141,7 +145,11 @@
   }
 
   .buttonPos {
-    margin: 40px auto 0 auto;
+    margin: 20px auto 0 auto;
+  }
+
+  .forgotPasswordDiv {
+    margin-top: 20px;
   }
 }
 
@@ -214,6 +222,10 @@
   }
 
   .buttonPos {
-    margin: 40px auto 0 auto;
+    margin: 20px auto 0 auto;
+  }
+
+  .forgotPasswordDiv {
+    margin-top: 20px;
   }
 }
