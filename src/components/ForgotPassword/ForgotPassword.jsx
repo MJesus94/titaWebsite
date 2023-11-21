@@ -217,7 +217,7 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
           <div className="form">
             <div className="formHeaderResetPass">
               <h1>Reset Password</h1>
-              {viewportWidth <= 426 ? (
+              {viewportWidth <= 769 ? (
                 <img
                   className="closeForm"
                   src="https://res.cloudinary.com/df3vc4osi/image/upload/v1678934027/movie-gallery/images-removebg-preview_cbnsxm.png"

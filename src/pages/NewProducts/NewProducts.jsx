@@ -276,7 +276,10 @@ function NewProducts() {
                 {category === "Pincéis" ? (
                   <>
                     {" "}
-                    <label className="addProductLabel addTemaLabelPinceis" htmlFor="tema">
+                    <label
+                      className="addProductLabel addTemaLabelPinceis"
+                      htmlFor="tema"
+                    >
                       Tema
                     </label>
                     <input
@@ -285,8 +288,12 @@ function NewProducts() {
                       name="tema"
                       value={tema}
                       onChange={handleTema}
+                      placeholder="Animais/Botânica/Abstrato etc."
                     />
-                    <label className="addProductLabel addFormatoLabelPinceis" htmlFor="formato">
+                    <label
+                      className="addProductLabel addFormatoLabelPinceis"
+                      htmlFor="formato"
+                    >
                       Formato
                     </label>
                     <input
@@ -295,8 +302,12 @@ function NewProducts() {
                       name="formato"
                       value={formato}
                       onChange={handleFormato}
+                      placeholder="Formato Paisagem/Formato vertical/Quadrado/Panorama"
                     />
-                    <label className="addProductLabel addTamanhoLabelPinceis" htmlFor="tamanho">
+                    <label
+                      className="addProductLabel addTamanhoLabelPinceis"
+                      htmlFor="tamanho"
+                    >
                       Tamanho
                     </label>
                     <input
@@ -305,11 +316,15 @@ function NewProducts() {
                       name="tamanho"
                       value={tamanho}
                       onChange={handleTamanho}
+                      placeholder="100 x 130/120 x 160 etc."
                     />
                   </>
                 ) : category === "Panelas" ? (
                   <>
-                    <label className="addProductLabel addTemaLabelPinceis" htmlFor="cobertura">
+                    <label
+                      className="addProductLabel addTemaLabelPinceis"
+                      htmlFor="cobertura"
+                    >
                       Cobertura
                     </label>
                     <input
@@ -318,8 +333,12 @@ function NewProducts() {
                       name="cobertura"
                       value={cobertura}
                       onChange={handleCobertura}
+                      placeholder="Chocolate/Doce de Ovos etc."
                     />
-                    <label className="addProductLabel addFormatoLabelPinceis" htmlFor="formato">
+                    <label
+                      className="addProductLabel addFormatoLabelPinceis"
+                      htmlFor="formato"
+                    >
                       Formato
                     </label>
                     <input
@@ -328,8 +347,12 @@ function NewProducts() {
                       name="formato"
                       value={formato}
                       onChange={handleFormato}
+                      placeholder="Rectangular/Quadrado/Redondo etc."
                     />
-                    <label className="addProductLabel addTamanhoLabelPinceis" htmlFor="massa">
+                    <label
+                      className="addProductLabel addTamanhoLabelPinceis"
+                      htmlFor="massa"
+                    >
                       Massa
                     </label>
                     <input
@@ -338,6 +361,7 @@ function NewProducts() {
                       name="massa"
                       value={massa}
                       onChange={handleMassa}
+                      placeholder="Massa Chocolate/Massa Iogurte/Massa Laranja"
                     />
                   </>
                 ) : (

@@ -11,6 +11,7 @@ function SpecificProduct({ showSuccessToast, showErrorToast }) {
   const [imgHeight, setImgHeight] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [specsVisible, setSpecsVisible] = useState(false);
+  const [additionalInfoVisible, setAdditionalInfoVisible] = useState(false);
   const [user, setCurrentUser] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -62,6 +63,10 @@ function SpecificProduct({ showSuccessToast, showErrorToast }) {
 
   const turnSpecsAsVisible = () => {
     setSpecsVisible(!specsVisible);
+  };
+
+  const turnAdditionalInfoVisible = () => {
+    setAdditionalInfoVisible(!additionalInfoVisible);
   };
 
   const checkFavorite = () => {
@@ -244,6 +249,109 @@ function SpecificProduct({ showSuccessToast, showErrorToast }) {
                           </li>
                         </ul>
                       </div>
+                    )}
+                    {oneProduct.category === "Panelas" ? (
+                      <>
+                        <div
+                          className="prodSpec"
+                          onClick={() => {
+                            turnAdditionalInfoVisible();
+                          }}
+                        >
+                          <span className="specSpan">Informação Adicional</span>
+                          {!additionalInfoVisible ? (
+                            <img
+                              className="specArrow"
+                              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1699366743/titaWebsite/right_arrow_ymcged.png"
+                              alt="right arrow"
+                            />
+                          ) : (
+                            <img
+                              className="specArrow"
+                              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1699382307/titaWebsite/arrow_up-removebg-preview_frihnb.png"
+                              alt="arrow up"
+                            />
+                          )}
+                        </div>
+                        {additionalInfoVisible && (
+                          <div className="addInfoDivDisplay">
+                            <div className="additionalInfoDisplay">
+                              <div className="titleAddInfoDisplay">
+                                Formato:
+                              </div>
+                              <div className="InfoAttribute">
+                                {oneProduct.formato}
+                              </div>
+                            </div>
+                            <div className="additionalInfoDisplay">
+                              <div className="titleAddInfoDisplay">Massa:</div>
+                              <div className="InfoAttribute">
+                                {oneProduct.massa}
+                              </div>
+                            </div>
+                            <div className="additionalInfoDisplay">
+                              <div className="titleAddInfoDisplay">
+                                Cobertura:
+                              </div>
+                              <div className="InfoAttribute">
+                                {oneProduct.cobertura}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    ) : oneProduct.category === "Pincéis" ? (
+                      <>
+                        <div
+                          className="prodSpec"
+                          onClick={() => {
+                            turnAdditionalInfoVisible();
+                          }}
+                        >
+                          <span className="specSpan">Informação Adicional</span>
+                          {!additionalInfoVisible ? (
+                            <img
+                              className="specArrow"
+                              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1699366743/titaWebsite/right_arrow_ymcged.png"
+                              alt="right arrow"
+                            />
+                          ) : (
+                            <img
+                              className="specArrow"
+                              src="https://res.cloudinary.com/df3vc4osi/image/upload/v1699382307/titaWebsite/arrow_up-removebg-preview_frihnb.png"
+                              alt="arrow up"
+                            />
+                          )}
+                        </div>
+                        {additionalInfoVisible && (
+                          <div className="addInfoDivDisplay">
+                            <div className="additionalInfoDisplay">
+                              <div className="titleAddInfoDisplay">
+                                Tema:
+                              </div>
+                              <div className="InfoAttribute">
+                                {oneProduct.tema}
+                              </div>
+                            </div>
+                            <div className="additionalInfoDisplay">
+                              <div className="titleAddInfoDisplay">Formato:</div>
+                              <div className="InfoAttribute">
+                                {oneProduct.formato}
+                              </div>
+                            </div>
+                            <div className="additionalInfoDisplay">
+                              <div className="titleAddInfoDisplay">
+                                Tamanho:
+                              </div>
+                              <div className="InfoAttribute">
+                                {oneProduct.tamanho}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <></>
                     )}
                   </div>
                 </div>

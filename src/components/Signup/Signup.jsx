@@ -118,6 +118,7 @@ function Signup({
                 type="text"
                 name="name"
                 onChange={handleName}
+                placeholder="Primeiro e último nome"
               />
             </div>
             <button className="buttonSignup" type="submit">
@@ -143,7 +144,7 @@ function Signup({
               />
             </Link>
           </div>
-          <form onSubmit={handleSignupSubmit}>
+          <form onSubmit={handleSignupSubmit} className="formSignUpTablet">
             <div className="form-group signUpFormGroupPos">
               <label className="line" htmlFor="email">
                 Email
@@ -190,6 +191,7 @@ function Signup({
                 type="text"
                 name="name"
                 onChange={handleName}
+                placeholder="Primeiro e último nome"
               />
             </div>
             <button className="buttonSignup" type="submit">

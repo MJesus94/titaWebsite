@@ -3,6 +3,7 @@
   margin: 0 auto;
   columns: 4;
   column-gap:20px;
+  min-height:65vh;
 }
 
 

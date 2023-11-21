@@ -70,11 +70,15 @@
   .buttonSignup {
     margin: 50px auto 0 auto;
   }
+
+  .eyeIcon{
+    width:5vw;
+  }
 }
 
 @media only screen and (max-width: 769px) and (min-width: 426px) {
   .form {
-    width: 40vw;
+    width: 50vw;
     height: 65vh;
   }
 
@@ -84,5 +88,13 @@
 
   .eyeIcon {
     width: 2.5vw;
+  }
+
+  .buttonSignup{
+    margin-top:75px;
+  }
+
+  .formSignUpTablet{
+    margin-top:85px;
   }
 }

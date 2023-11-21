@@ -190,7 +190,7 @@ function Login({
               />
             </Link>
           </div>
-          <form onSubmit={handleLoginSubmit}>
+          <form onSubmit={handleLoginSubmit} className="formTablet">
             <div className="form-group loginFormGroupPos">
               <label className="line" htmlFor="email">
                 Email

@@ -1,5 +1,6 @@
 .main-section {
   width: 100vw;
+  min-height:70vh;
   background-color: rgb(245, 245, 245);
 }
 
@@ -163,6 +164,24 @@
   margin-right: 0.5vw;
 }
 
+.additionalInfoDisplay{
+  display: flex;
+  width:85%;
+  margin-left:25px;
+  margin-bottom:10px;
+  border-bottom: solid 1px lightgray ;
+}
+
+.titleAddInfoDisplay{
+  min-width:19vw;
+  text-align: start;
+}
+
+.addInfoDivDisplay{
+  margin-top:10px;
+}
+
+
 @media only screen and (max-width: 426px) {
   .productMobileCard {
     margin: auto 5vw;
@@ -245,6 +264,10 @@
 
   .ulDescription {
     width: 100%;
+  }
+
+  .InfoAttribute{
+    margin-left:25px;
   }
 }
 

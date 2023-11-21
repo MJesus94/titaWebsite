@@ -137,8 +137,6 @@ function HomePage() {
         </section>
       </>
     );
-  } else if (viewportWidth <= 1024) {
-    return <></>;
   } else {
     return (
       <>

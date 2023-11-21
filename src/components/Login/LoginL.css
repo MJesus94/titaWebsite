@@ -229,3 +229,10 @@
     margin-top: 20px;
   }
 }
+
+
+@media only screen and (max-width: 769px) and (min-width: 426px) {
+  .formTablet{
+    margin-top: 125px;
+  }
+}

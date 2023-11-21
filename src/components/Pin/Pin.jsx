@@ -19,6 +19,8 @@ function Pin({
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [productId, setProductId] = useState(false);
 
+  const viewportWidth = window.innerWidth;
+
   const deleteProduct = async (id) => {
     try {
       // Show the confirmation modal
@@ -85,7 +87,7 @@ function Pin({
   return (
     <>
       <div className="box">
-        {admin && (
+        {admin && viewportWidth > 1023 ? (
           <div className="configDiv">
             <img
               className="editButton"
@@ -109,6 +111,8 @@ function Pin({
               alt="delete button"
             />
           </div>
+        ) : (
+          <></>
         )}
         <img
           className="productImage"
