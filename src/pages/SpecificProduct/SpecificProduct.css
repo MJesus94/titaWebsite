@@ -341,7 +341,7 @@
   }
 }
 
-@media only screen and (max-width: 1025px) and (min-width: 769px) {
+@media only screen and (max-width: 1441px) and (min-width: 769px) {
   .addMargin{
     margin: 8vh 0;
   }
