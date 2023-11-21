@@ -317,11 +317,16 @@
 
   .moreHeight{
     height:unset;
-    max-height:20vh;
+    max-height:22vh;
     max-width:23vw;
   }
 
+  .itemCard{
+    margin: 0 auto;
+    height:22vh;
+  }
+
   .centerImg {
-    margin: 0 1.2vw;
+    margin: 0 auto;
   }
 }
