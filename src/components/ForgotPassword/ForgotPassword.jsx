@@ -169,7 +169,7 @@ function ForgotPassword({
         </>
       ) : sent ? (
         <>
-          <div className="gradientGrey"></div>
+          <div className="gradientGrey" onClick={toggleHiddenH}></div>
           <div className="form">
             <div className="formHeader">
               <img
@@ -218,7 +218,7 @@ function ForgotPassword({
       ) : confirmedCode ? (
         <>
           {" "}
-          <div className="gradientGrey"></div>
+          <div className="gradientGrey" onClick={toggleHiddenH}></div>
           <div className="form">
             <div className="formHeaderResetPass">
               <h1>Reset Password</h1>
