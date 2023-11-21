@@ -326,15 +326,15 @@ function SpecificProduct({ showSuccessToast, showErrorToast }) {
                         {additionalInfoVisible && (
                           <div className="addInfoDivDisplay">
                             <div className="additionalInfoDisplay">
-                              <div className="titleAddInfoDisplay">
-                                Tema:
-                              </div>
+                              <div className="titleAddInfoDisplay">Tema:</div>
                               <div className="InfoAttribute">
                                 {oneProduct.tema}
                               </div>
                             </div>
                             <div className="additionalInfoDisplay">
-                              <div className="titleAddInfoDisplay">Formato:</div>
+                              <div className="titleAddInfoDisplay">
+                                Formato:
+                              </div>
                               <div className="InfoAttribute">
                                 {oneProduct.formato}
                               </div>
@@ -447,15 +447,10 @@ function SpecificProduct({ showSuccessToast, showErrorToast }) {
               </div>
               <div className="imgUrlDisplayDiv">
                 {" "}
-                {imgWidth > imgHeight ? (
+                {oneProduct.dimensions &&
+                oneProduct.dimensions.width > oneProduct.dimensions.height ? (
                   <img
-                    className="imgUrlDisplay"
-                    src={oneProduct.imgUrl}
-                    alt={oneProduct.title}
-                  />
-                ) : imgWidth === imgHeight ? (
-                  <img
-                    className="imgUrlDisplay"
+                    className="imgUrlDisplay addMargin"
                     src={oneProduct.imgUrl}
                     alt={oneProduct.title}
                   />

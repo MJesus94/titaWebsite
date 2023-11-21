@@ -355,3 +355,9 @@
     width: 100%;
   }
 }
+
+@media only screen and (max-width: 1025px) and (min-width: 769px) {
+  .addMargin{
+    margin: 7vh 0;
+  }
+}
