@@ -228,7 +228,7 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
                 <></>
               )}
             </div>
-            <form onSubmit={handleResetPasswordSubmit}>
+            <form onSubmit={handleResetPasswordSubmit} className="resetPassForm">
               <div className="form-group loginFormGroupPos">
                 <label className="labelName" htmlFor="password">
                   Password
