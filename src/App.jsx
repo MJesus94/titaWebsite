@@ -119,6 +119,7 @@ function App() {
             toggleHiddenH={toggleHiddenH}
             toggleHiddenL={toggleHiddenL}
             showSuccessToast={showSuccessToast}
+            showErrorToast={showErrorToast}
           />
         )}
         <Routes>
@@ -164,7 +165,12 @@ function App() {
           />
           <Route
             path="/product/:id"
-            element={<SpecificProduct showSuccessToast={showSuccessToast} showErrorToast={showErrorToast}/>}
+            element={
+              <SpecificProduct
+                showSuccessToast={showSuccessToast}
+                showErrorToast={showErrorToast}
+              />
+            }
           />
           <Route
             path="/editProduct/:id"

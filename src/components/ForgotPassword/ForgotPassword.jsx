@@ -4,7 +4,12 @@ import { useState, React } from "react";
 
 import authService from "../../services/auth.service";
 
-function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
+function ForgotPassword({
+  toggleHiddenH,
+  showSuccessToast,
+  toggleHiddenL,
+  showErrorToast,
+}) {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [confirmedCode, setConfirmedCode] = useState(false);
@@ -39,9 +44,9 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
       }
     } catch (error) {
       if (error.response) {
-        setError(error.response.data.message);
+        showErrorToast(error.response.data.message);
       } else {
-        setError("An error occurred. Please try again later.");
+        showErrorToast("An error occurred. Please try again later.");
       }
     }
   };
@@ -64,9 +69,9 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
       }
     } catch (error) {
       if (error.response) {
-        setError(error.response.data.message);
+        showErrorToast(error.response.data.message);
       } else {
-        setError("An error occurred. Please try again later.");
+        showErrorToast("An error occurred. Please try again later.");
       }
     }
   };
@@ -85,9 +90,9 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
       }
     } catch (error) {
       if (error.response) {
-        setError(error.response.data.message);
+        showErrorToast(error.response.data.message);
       } else {
-        setError("An error occurred. Please try again later.");
+        showErrorToast("An error occurred. Please try again later.");
       }
     }
   };
@@ -228,7 +233,10 @@ function ForgotPassword({ toggleHiddenH, showSuccessToast, toggleHiddenL }) {
                 <></>
               )}
             </div>
-            <form onSubmit={handleResetPasswordSubmit} className="resetPassForm">
+            <form
+              onSubmit={handleResetPasswordSubmit}
+              className="resetPassForm"
+            >
               <div className="form-group loginFormGroupPos">
                 <label className="labelName" htmlFor="password">
                   Password
