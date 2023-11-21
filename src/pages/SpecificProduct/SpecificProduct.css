@@ -52,8 +52,7 @@
 .productDisplay {
   display: flex;
   margin: 0 auto;
-  /* min-width: 1439px;
-  max-width: 1440px; */
+  max-width:1440px;
 }
 
 .productDetails {
@@ -99,17 +98,6 @@
   cursor: pointer;
 }
 
-/* .buttonFavourites {
-  margin-bottom: 16px;
-  padding: 12px;
-  background-color: black;
-  color: white;
-  border-radius: 4px;
-  border: 1px solid black;
-  width: 17vw;
-  cursor: pointer;
-} */
-
 .buttonAddToFavourites:hover {
   background-color: black;
   color: white;
@@ -127,11 +115,8 @@
 
 .imgUrlDisplayDiv {
   padding: 9px 35px 35px 35px;
-  /* width: calc(1440px / 2); */
-  width: 50%; /* Adjust as needed */
+  width: 50%; 
   flex: 0 0 auto;
-  /* display: flex;
-  justify-content: center; */
 }
 
 .imgUrlDisplay {
