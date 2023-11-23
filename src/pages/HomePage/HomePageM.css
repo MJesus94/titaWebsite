@@ -403,7 +403,8 @@
   }
 
   .thematicDiv{
-    width:calc(40vw - 15px)
+    width:calc(40vw - 15px);
+    height:45vh;
   }
 
   .productPromo{
