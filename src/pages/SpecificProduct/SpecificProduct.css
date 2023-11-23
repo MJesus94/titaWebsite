@@ -368,6 +368,9 @@
     min-height:69.6vh;
   }
 
+  .productDisplay{
+    max-width:1350px;
+  }
   .addMargin{
     margin: 5vh 0 8vh 0;
   }
