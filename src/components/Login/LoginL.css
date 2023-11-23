@@ -238,6 +238,65 @@
 }
 
 
-@media only screen and (max-width: 1025px) and (min-width: 769px) {
+@media only screen and (max-width: 1441px) and (min-width: 1025px) {
 
+  .loginFormHeader {
+    display: flex;
+    justify-content: flex-end;
+    margin: 75px 0px 100px 0px;
+  }
+
+  .login {
+    position: absolute;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-color: rgb(240, 198, 145);
+    width: 75vw;
+    height: 37.5vh;
+    left: -100px;
+    top: -100px;
+  }
+
+  .login > h1 {
+    margin: 160px 0px 0px 65px;
+    color: white;
+    font-weight: 700;
+  }
+
+  .closeLogin {
+    position: absolute;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-color: rgb(228, 193, 151);
+    width: 50vw;
+    height: 25vh;
+    left: 30%;
+    top: -50px;
+    z-index: -1;
+  }
+
+  .loginFormBox {
+    margin: 225px 60px 0 60px;
+  }
+
+  .form-group {
+    margin-top: 25px;
+  }
+
+  .error-messageL {
+    z-index: 10;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+  }
+
+  .buttonPos {
+    margin: 6vh auto 0 auto;
+  }
+
+  .forgotPasswordDiv {
+    margin-top: 20px;
+  }
 }

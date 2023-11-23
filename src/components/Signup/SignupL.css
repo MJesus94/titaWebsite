@@ -100,10 +100,29 @@
 }
 
 
-@media only screen and (max-width: 1024px) and (min-width: 769px) {
+@media only screen and (max-width: 1025px) and (min-width: 769px) {
   .form{
     width:30vw;
     height:60vh;
   }
 
+}
+@media only screen and (max-width: 1441px) and (min-width: 1025px) {
+  .form{
+    width:30vw;
+    height:55vh;
+  }
+
+  .exitCross{
+    width:2vw;
+    height:3vh;
+  }
+
+  .eyeIcon{
+    width:2vw;
+  }
+  
+  .buttonSignup{
+    margin: 6vh auto 0 auto;
+  }
 }
