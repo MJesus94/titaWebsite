@@ -353,6 +353,9 @@
         height:4vh;
     }
 
+    .textAreaDescription{
+        padding-top:1vh;
+    }
     .nextButton{
         height:5vh;
         width:7vw;

@@ -218,7 +218,7 @@ function NewProducts() {
                   Description
                 </label>
                 <textarea
-                  className="addProductInput"
+                  className="addProductInput textAreaDescription"
                   rows={4}
                   cols={40}
                   name="description"
