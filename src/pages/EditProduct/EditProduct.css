@@ -39,11 +39,21 @@
 
 @media screen and (max-width:1025px) and (min-width:769px){
     .addProductLabel{
-        top:70%;
-        left:50%;
+        top:55%;
+        left:10%;
     }
 
     .editProductDisplay{
         padding:3vw;
     }
+}
+
+@media screen and (max-width:1441px) and (min-width:1025px){
+    .addProductLabel{
+        top:45%;
+        left:7%;
+        width:4vw;
+        height:3vh;
+    }
+
 }
