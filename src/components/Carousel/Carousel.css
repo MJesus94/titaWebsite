@@ -177,6 +177,7 @@
     font-size: 2rem;
   }
 }
+
 @media only screen and (max-width: 1441px) and (min-width: 1025px) {
   .slideContainer {
     width: 80vw;
@@ -195,6 +196,24 @@
 
   .title {
     top: 37%;
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 1920px) and (min-width: 1441px) {
+
+  .leftArrow,
+  .rightArrow,
+  .dashes {
+    font-size: 28px;
+  }
+
+  .leftArrow,
+  .rightArrow {
+    top: 48%;
+  }
+
+  .title {
     font-size: 3rem;
   }
 }
