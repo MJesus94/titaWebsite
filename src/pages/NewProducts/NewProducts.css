@@ -1,3 +1,7 @@
+.addProductSection{
+    min-height:70vh;
+}
+
 .formDiv{
     display: flex;
     flex-direction: column;
@@ -149,4 +153,194 @@
     .addTamanhoLabelPinceis{
         top:70.4%;
     }
+}
+
+@media only screen and (max-width: 1025px) and (min-width:769px) {
+    .addProductSection{
+        min-height:72vh;
+    }
+
+    .categoryInput{
+        width:20vw;
+        height:4vh;
+    }
+
+    .divCategoryInput{
+        height:60vh;
+        justify-content: space-evenly;
+        margin-top:2vh;
+    }
+
+    .nextButton{
+        width:8vw;
+        height:6vh;
+    }
+
+    .nextTextButton{
+        -webkit-text-stroke: 1px #F8F8F8;
+	    text-shadow: 0px 1px 4px #23430C;
+    }
+
+    .formDiv{
+        width:35vw;
+    }
+    .addProductLabel{
+        left:35%;
+    }
+
+    .addTitleLabel{
+        top:14.7%;
+    }
+
+    .addDescriptionLabel{
+        top:25.3%;
+    }
+
+    .addPriceLabel{
+        top:36%;
+    }
+
+    .selectColorInput{
+        margin:2vh 0;
+        width:14vw;
+    }
+
+    .addFileInput{
+        margin: 2vh 0;
+    }
+
+    .submitButtonNewP{
+        background-color: antiquewhite;
+        color:black;
+        border: solid 1px black;
+        height:5vh;
+        width:11vw;
+        margin-bottom:2vh;
+    }
+
+    .submitButtonDisabled{
+        color:rgba(0, 0, 0, 0.205);
+        border: solid 1px rgba(0, 0, 0, 0.356);
+        height:5vh;
+        width:11vw;
+        margin-bottom:2vh;
+    }
+
+    .addTitleLabelPinceis{
+        top:11%;
+    }
+
+    .addDescriptionLabelPinceis{
+        top:19.1%;
+    }
+
+    .addPriceLabelPinceis{
+        top:27.3%;
+    }
+
+    .addTemaLabelPinceis{
+        top:50.2%;
+    }
+
+    .addFormatoLabelPinceis{
+        top:58.3%;
+    }
+
+    .addTamanhoLabelPinceis{
+        top:66.5%;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 1441px) and (min-width:1025px) {
+    .divCategoryInput{
+        min-height:67vh;
+    }
+
+    .categoryInput{
+        height:4vh;
+    }
+
+    .nextButton{
+        height:5vh;
+        width:7vw;
+    }
+
+    .nextTextButton{
+        -webkit-text-stroke: 1px #F8F8F8;
+	    text-shadow: 0px 1px 4px #23430C;
+    }
+
+    .formDiv{
+        width:35vw;
+    }
+
+    .addProductLabel{
+        left:33.5%;
+    }
+
+    .addTitleLabel{
+        top:14.4%;
+    }
+
+    .addDescriptionLabel{
+        top:25%;
+    }
+
+    .addPriceLabel{
+        top:35.5%;
+    }
+
+    .selectColorInput{
+        margin:2vh 0;
+        width:14vw;
+    }
+
+    .addFileInput{
+        margin: 2vh 0;
+    }
+
+    .submitButtonNewP{
+        background-color: antiquewhite;
+        color:black;
+        border: solid 1px black;
+        height:5vh;
+        width:11vw;
+        margin-bottom:2vh;
+    }
+
+    .submitButtonDisabled{
+        color:rgba(0, 0, 0, 0.205);
+        border: solid 1px rgba(0, 0, 0, 0.356);
+        height:5vh;
+        width:11vw;
+        margin-bottom:2vh;
+    }
+
+    .addTitleLabelPinceis{
+        top:11%;
+    }
+
+    .addDescriptionLabelPinceis{
+        top:18.9%;
+    }
+
+    .addPriceLabelPinceis{
+        top:26.9%;
+    }
+
+    .addTemaLabelPinceis{
+        top:49.5%;
+    }
+
+    .addFormatoLabelPinceis{
+        top:57.6%;
+    }
+
+    .addTamanhoLabelPinceis{
+        top:65.5%;
+    }
+
 }

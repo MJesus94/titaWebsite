@@ -174,7 +174,7 @@ function NewProducts() {
                 <option value="Panelas">Panelas</option>
               </select>
               <button className="nextButton" onClick={advance}>
-                Next
+                <span className="nextTextButton">Next</span>
               </button>
             </div>
           </>

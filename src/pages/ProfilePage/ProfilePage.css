@@ -162,6 +162,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin: 0 2vw;
+  flex-grow:1;
 }
 
 .favoritePriceDiv {
@@ -363,5 +364,63 @@
 
   .removeWishlist {
     font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 1025px) and (min-width: 769px) {
+
+  .userNameDiv{
+    display: flex;
+    align-items: center;
+  }
+
+  .optionTitleDiv{
+    align-items: center;
+  }
+
+  .mainDiv{
+    min-height:75vh;
+  }
+
+  .formLabel{
+    flex-grow:1;
+  }
+
+  .wishlistDiv{
+    flex-grow:1;
+  }
+
+  .favoriteTitleDiv{
+    text-align:left;
+    flex-grow:1;
+  }
+}
+
+@media only screen and (max-width: 1441px) and (min-width: 1025px) {
+
+  .userNameDiv{
+    display: flex;
+    align-items: center;
+  }
+
+  .optionTitleDiv{
+    align-items: center;
+  }
+
+  .mainDiv{
+    min-height:75vh;
+  }
+
+  .formLabel{
+    flex-grow:1;
+  }
+
+  .wishlistDiv{
+    flex-grow:1;
+  }
+
+  .favoriteTitleDiv{
+    text-align:left;
+    flex-grow:1;
   }
 }

@@ -223,10 +223,10 @@ function EditProduct({ showSuccessToast }) {
             </ol>
           </div>
           <form onSubmit={handleEditSubmit}>
-            <div className="productDisplay">
+            <div className="productDisplay editProductDisplay">
               <div className="productInformation">
                 <div className="productDetails">
-                  <div>
+                  <div className="editPriceTitleDiv">
                     <label htmlFor="text">Title</label>
                     <input
                       type="text"
@@ -235,9 +235,10 @@ function EditProduct({ showSuccessToast }) {
                       id="title"
                       value={editedTitle}
                       onChange={handleEditedTitle}
+                      className="editInputs"
                     />
                   </div>
-                  <div>
+                  <div className="editPriceTitleDiv">
                     <label htmlFor="price">Price</label>
                     <input
                       type="number"
@@ -246,10 +247,11 @@ function EditProduct({ showSuccessToast }) {
                       value={editedPrice}
                       onChange={handleEditedPrice}
                       placeholder={oneProduct.price}
+                      className="editInputs"
                     />
                   </div>
                 </div>
-                <div className="buttonsDiv">
+                {/* <div className="buttonsDiv">
                   <button className="buttonAddToCart">
                     <span>ADICIONAR AO CARRINHO</span>
                   </button>
@@ -261,7 +263,7 @@ function EditProduct({ showSuccessToast }) {
                     />{" "}
                     ADD TO WISHLIST
                   </button>
-                </div>
+                </div> */}
               </div>
               <div className="imgUrlDisplayDiv">
                 {" "}
@@ -285,7 +287,7 @@ function EditProduct({ showSuccessToast }) {
                   />
                 )}
               </div>
-              <div className="alignment">
+              <div className="alignment editPriceTitleDiv">
                 <label htmlFor="description">Description</label>
                 <textarea
                   placeholder={oneProduct.description}
@@ -293,6 +295,7 @@ function EditProduct({ showSuccessToast }) {
                   id="description"
                   value={editedDescription}
                   onChange={handleEditedDescription}
+                  className="editInputs"
                 />
                 <label htmlFor="color">Color</label>
                 <Select
@@ -304,67 +307,85 @@ function EditProduct({ showSuccessToast }) {
                   options={colourOptions}
                   onChange={handleSelectedColors}
                   value={editedSelectedColors}
+                  className="editInputs"
                 />
                 {oneProduct.category === "Pincéis" ? (
                   <>
-                    <label htmlFor="tema">Tema</label>
-                    <input
-                      type="text"
-                      name="tema"
-                      id="tema"
-                      value={editedTema}
-                      onChange={handleEditedTema}
-                      placeholder={oneProduct.tema}
-                    />
-                    <label htmlFor="formato">Formato</label>
-                    <input
-                      type="text"
-                      name="formato"
-                      id="formato"
-                      value={editedFormato}
-                      onChange={handleEditedFormato}
-                      placeholder={oneProduct.formato}
-                    />
-                    <label htmlFor="tamanho">Tamanho</label>
-                    <input
-                      type="text"
-                      name="tamanho"
-                      id="tamanho"
-                      value={editedTamanho}
-                      onChange={handleEditedTamanho}
-                      placeholder={oneProduct.tamanho}
-                    />
+                    <div className="editPriceTitleDiv">
+                      <label htmlFor="tema">Tema</label>
+                      <input
+                        type="text"
+                        name="tema"
+                        id="tema"
+                        value={editedTema}
+                        onChange={handleEditedTema}
+                        placeholder={oneProduct.tema}
+                        className="editInputs"
+                      />
+                    </div>
+                    <div className="editPriceTitleDiv">
+                      <label htmlFor="formato">Formato</label>
+                      <input
+                        type="text"
+                        name="formato"
+                        id="formato"
+                        value={editedFormato}
+                        onChange={handleEditedFormato}
+                        placeholder={oneProduct.formato}
+                        className="editInputs"
+                      />
+                    </div>
+                    <div className="editPriceTitleDiv">
+                      <label htmlFor="tamanho">Tamanho</label>
+                      <input
+                        type="text"
+                        name="tamanho"
+                        id="tamanho"
+                        value={editedTamanho}
+                        onChange={handleEditedTamanho}
+                        placeholder={oneProduct.tamanho}
+                        className="editInputs"
+                      />
+                    </div>
                   </>
                 ) : oneProduct.category === "Panelas" ? (
                   <>
-                    {" "}
-                    <label htmlFor="massa">Massa</label>
-                    <input
-                      type="text"
-                      name="massa"
-                      id="massa"
-                      value={editedMassa}
-                      onChange={handleEditedMassa}
-                      placeholder={oneProduct.massa}
-                    />
-                    <label htmlFor="formato">Formato</label>
-                    <input
-                      type="text"
-                      name="formato"
-                      id="formato"
-                      value={editedFormato}
-                      onChange={handleEditedFormato}
-                      placeholder={oneProduct.formato}
-                    />
-                    <label htmlFor="cobertura">Cobertura</label>
-                    <input
-                      type="text"
-                      name="cobertura"
-                      id="cobertura"
-                      value={editedCobertura}
-                      onChange={handleEditedCobertura}
-                      placeholder={oneProduct.cobertura}
-                    />{" "}
+                    <div className="editPriceTitleDiv">
+                      <label htmlFor="massa">Massa</label>
+                      <input
+                        type="text"
+                        name="massa"
+                        id="massa"
+                        value={editedMassa}
+                        onChange={handleEditedMassa}
+                        placeholder={oneProduct.massa}
+                        className="editInputs"
+                      />
+                    </div>
+                    <div className="editPriceTitleDiv">
+                      <label htmlFor="formato">Formato</label>
+                      <input
+                        type="text"
+                        name="formato"
+                        id="formato"
+                        value={editedFormato}
+                        onChange={handleEditedFormato}
+                        placeholder={oneProduct.formato}
+                        className="editInputs"
+                      />
+                    </div>
+                    <div className="editPriceTitleDiv">
+                      <label htmlFor="cobertura">Cobertura</label>
+                      <input
+                        type="text"
+                        name="cobertura"
+                        id="cobertura"
+                        value={editedCobertura}
+                        onChange={handleEditedCobertura}
+                        placeholder={oneProduct.cobertura}
+                        className="editInputs"
+                      />
+                    </div>
                   </>
                 ) : (
                   <></>

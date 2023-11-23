@@ -475,6 +475,33 @@ function SpecificProduct({ showSuccessToast, showErrorToast }) {
                       )
                     )}
                   </li>
+                  {oneProduct.category === "Pinceis" ? (
+                    <>
+                      <li>
+                        <span>Tema:</span> {oneProduct.tema}
+                      </li>
+                      <li>
+                        <span>Formato:</span> {oneProduct.formato}
+                      </li>
+                      <li>
+                        <span>Tamanho:</span> {oneProduct.tamanho}
+                      </li>
+                    </>
+                  ) : oneProduct.category === "Panelas" ? (
+                    <>
+                      <li>
+                        <span>Massa:</span> {oneProduct.massa}
+                      </li>
+                      <li>
+                        <span>Formato:</span> {oneProduct.formato}
+                      </li>
+                      <li>
+                        <span>Cobertura:</span> {oneProduct.cobertura}
+                      </li>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                 </ul>
               </div>
             </div>

@@ -73,8 +73,8 @@ function Carousel({ slides }) {
       containerWidth = `${slides.length * viewportWidth}px`;
       containerTransform = `translateX(${-(currentIndex * viewportWidth)}px)`;
     } else {
-      containerWidth = `${slides.length * 75}vw`;
-      containerTransform = `translateX(${-(currentIndex * 75)}vw)`;
+      containerWidth = `${slides.length * 80}vw`;
+      containerTransform = `translateX(${-(currentIndex * 80)}vw)`;
     }
 
     return {

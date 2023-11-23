@@ -51,6 +51,8 @@
 
 .productDisplay {
   display: flex;
+  justify-content: space-between;
+  padding:1vw;
   margin: 0 auto;
   max-width:1440px;
 }
@@ -116,7 +118,7 @@
 .imgUrlDisplayDiv {
   padding: 9px 35px 35px 35px;
   width: 50%; 
-  flex: 0 0 auto;
+  flex-grow:1
 }
 
 .imgUrlDisplay {
@@ -124,9 +126,9 @@
 }
 
 .descriptionDiv {
-  margin-top: 110px;
-  width: 50%; /* Adjust as needed */
-  flex: 0 0 auto;
+  margin-top: 80px;
+  width:20vw;
+  /* width: 50%;  */   
 }
 
 .descriptionDiv > div {
@@ -341,10 +343,38 @@
   }
 }
 
-@media only screen and (max-width: 1441px) and (min-width: 769px) {
+@media only screen and (max-width: 1025px) and (min-width: 769px) {
   .addMargin{
     margin: 8vh 0;
   }
 
   .productTitle{text-align: start;}
+
+  .productInformation{
+    margin:55px 55px 55px 25px;
+  }
+
+  .buttonAddToFavourites{
+    width:19vw;
+  }
+
+  .descriptionDiv{
+    margin-top:10vh;
+  }
+}
+
+@media only screen and (max-width: 1441px) and (min-width: 1025px) {
+  .addMargin{
+    margin: 8vh 0;
+  }
+
+  .productTitle{text-align: start;}
+
+  .productInformation{
+    margin:55px 55px 55px 25px;
+  }
+
+  .buttonAddToFavourites{
+    width:19vw;
+  }
 }

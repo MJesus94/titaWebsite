@@ -330,3 +330,52 @@
     margin: 0 1.4vw;
   }
 }
+
+@media only screen and (max-width: 1441px) and (min-width: 1025px) {
+  .containerCarousel{
+    max-width:80vw;
+  }
+
+  hr{
+    width:80vw;
+  }
+
+  .mainContainer{
+    max-width:80vw;
+  }
+
+  .mainTextDiv{
+    width:calc(40vw - 15px);
+  }
+
+  .mainTextDiv > h2 {
+    font-size: 4rem;
+  }
+
+  .thematicDiv{
+    width:calc(40vw - 15px)
+  }
+
+  .productPromo{
+    width:calc(80vw - 30px);
+    height:calc(42vh - 15px);
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: unset;
+  }
+
+  .moreHeight{
+    height:unset;
+    max-height:27vh;
+    max-width:23vw;
+  }
+
+  .itemCard{
+    margin: 0 auto;
+    height:22vh;
+  }
+
+  .centerImg {
+    margin: 0 1.4vw;
+  }
+}

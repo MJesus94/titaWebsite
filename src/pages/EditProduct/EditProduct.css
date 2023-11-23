@@ -26,3 +26,24 @@
     right:0%;
     top:0%;
 }
+
+.editPriceTitleDiv{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.editInputs{
+    margin: 2vh 0;
+}
+
+@media screen and (max-width:1025px) and (min-width:769px){
+    .addProductLabel{
+        top:70%;
+        left:50%;
+    }
+
+    .editProductDisplay{
+        padding:3vw;
+    }
+}

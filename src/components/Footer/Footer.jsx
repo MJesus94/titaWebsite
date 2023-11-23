@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 
 function Footer() {
+  const [contactsVisible, setContactsVisible] = useState(false);
+
+  const setContactsAsVisible = () => {
+    setContactsVisible(!contactsVisible);
+  };
   return (
     <footer>
       <ul>
         <li>
-          <h2>Quem nós somos</h2>
+          <h2 className="whoWeAreTitle">Quem nós somos</h2>
         </li>
         <li>
-          <h2>Contactos</h2>
+          <h2 onClick={setContactsAsVisible}>Contactos</h2>
+          {contactsVisible ? (
+            <ul className="contacts">
+              <li>
+                <span className="contactsFooter">999 999 999</span>
+              </li>
+              <li>
+                <span className="contactsFooter">fonzie@gmail.com</span>
+              </li>
+            </ul>
+          ) : (
+            <></>
+          )}
         </li>
       </ul>
       <div className="copyrightDiv">
