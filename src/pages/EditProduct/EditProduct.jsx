@@ -235,7 +235,7 @@ function EditProduct({ showSuccessToast }) {
                       id="title"
                       value={editedTitle}
                       onChange={handleEditedTitle}
-                      className="editInputs"
+                      className="editInputs inputSizes"
                     />
                   </div>
                   <div className="editPriceTitleDiv">
@@ -247,7 +247,7 @@ function EditProduct({ showSuccessToast }) {
                       value={editedPrice}
                       onChange={handleEditedPrice}
                       placeholder={oneProduct.price}
-                      className="editInputs"
+                      className="editInputs inputSizes"
                     />
                   </div>
                 </div>
@@ -295,7 +295,7 @@ function EditProduct({ showSuccessToast }) {
                   id="description"
                   value={editedDescription}
                   onChange={handleEditedDescription}
-                  className="editInputs"
+                  className="editInputs inputSizes"
                 />
                 <label htmlFor="color">Color</label>
                 <Select
@@ -320,7 +320,7 @@ function EditProduct({ showSuccessToast }) {
                         value={editedTema}
                         onChange={handleEditedTema}
                         placeholder={oneProduct.tema}
-                        className="editInputs"
+                        className="editInputs inputSizes"
                       />
                     </div>
                     <div className="editPriceTitleDiv">
@@ -332,7 +332,7 @@ function EditProduct({ showSuccessToast }) {
                         value={editedFormato}
                         onChange={handleEditedFormato}
                         placeholder={oneProduct.formato}
-                        className="editInputs"
+                        className="editInputs inputSizes"
                       />
                     </div>
                     <div className="editPriceTitleDiv">
@@ -344,7 +344,7 @@ function EditProduct({ showSuccessToast }) {
                         value={editedTamanho}
                         onChange={handleEditedTamanho}
                         placeholder={oneProduct.tamanho}
-                        className="editInputs"
+                        className="editInputs inputSizes"
                       />
                     </div>
                   </>
@@ -359,7 +359,7 @@ function EditProduct({ showSuccessToast }) {
                         value={editedMassa}
                         onChange={handleEditedMassa}
                         placeholder={oneProduct.massa}
-                        className="editInputs"
+                        className="editInputs inputSizes"
                       />
                     </div>
                     <div className="editPriceTitleDiv">
@@ -371,7 +371,7 @@ function EditProduct({ showSuccessToast }) {
                         value={editedFormato}
                         onChange={handleEditedFormato}
                         placeholder={oneProduct.formato}
-                        className="editInputs"
+                        className="editInputs inputSizes"
                       />
                     </div>
                     <div className="editPriceTitleDiv">
@@ -383,7 +383,7 @@ function EditProduct({ showSuccessToast }) {
                         value={editedCobertura}
                         onChange={handleEditedCobertura}
                         placeholder={oneProduct.cobertura}
-                        className="editInputs"
+                        className="editInputs inputSizes"
                       />
                     </div>
                   </>
