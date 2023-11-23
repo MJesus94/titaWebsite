@@ -364,6 +364,10 @@
 }
 
 @media only screen and (max-width: 1441px) and (min-width: 1025px) {
+  .main-section{
+    min-height:67vh;
+  }
+
   .addMargin{
     margin: 5vh 0 8vh 0;
   }
