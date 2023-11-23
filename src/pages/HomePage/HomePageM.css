@@ -392,6 +392,7 @@
 
   .mainTextDiv > h2{
     font-size: 6.3rem;
+    margin: 0 auto;
   }
 
   .mainContainer{
@@ -399,6 +400,8 @@
   }
 
   .mainTextDiv{
+    display: flex;
+    align-items: center;
     width:calc(40vw - 15px);
   }
 
