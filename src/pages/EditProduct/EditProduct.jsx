@@ -392,7 +392,7 @@ function EditProduct({ showSuccessToast }) {
                 )}
                 <Button
                   variant="warning"
-                  className="addProductLabel"
+                  className="submitEditButton"
                   size="md"
                   type="submit"
                 >
