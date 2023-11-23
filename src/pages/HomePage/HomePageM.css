@@ -340,16 +340,16 @@
     width:80vw;
   }
 
+  .mainTextDiv > h2{
+    font-size: 6rem;
+  }
+
   .mainContainer{
     max-width:80vw;
   }
 
   .mainTextDiv{
     width:calc(40vw - 15px);
-  }
-
-  .mainTextDiv > h2 {
-    font-size: 4rem;
   }
 
   .thematicDiv{
