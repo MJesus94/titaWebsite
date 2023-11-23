@@ -177,3 +177,24 @@
     font-size: 2rem;
   }
 }
+@media only screen and (max-width: 1441px) and (min-width: 1025px) {
+  .slideContainer {
+    width: 80vw;
+  }
+
+  .leftArrow,
+  .rightArrow,
+  .dashes {
+    font-size: 30px;
+  }
+
+  .leftArrow,
+  .rightArrow {
+    top: 42%;
+  }
+
+  .title {
+    top: 37%;
+    font-size: 3rem;
+  }
+}
