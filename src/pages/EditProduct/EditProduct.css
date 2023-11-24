@@ -42,6 +42,17 @@
     .editProductDisplay{
         padding:3vw;
     }
+
+    .editInputs{
+        height: 5.5vh;
+        width: 20vw;
+    }
+
+    .submitEditButton{
+        width:6vw;
+        height:5vh;
+    }
+
 }
 
 @media screen and (max-width:1441px) and (min-width:1025px){
