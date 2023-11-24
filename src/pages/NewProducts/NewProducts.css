@@ -69,7 +69,97 @@
     margin-bottom: 50px;
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 420px) and (min-width:321px){
+
+    .divCategoryInput{
+        min-height:75vh;
+    }
+
+    .categoryInput{
+        margin:0;
+        width:40vw;
+        height:8vh;
+    }
+
+    .textAreaDescription{
+        padding-top:1vh;
+    }
+
+    .nextButton{
+        margin:0;
+        width:25vw;
+        height:6vh;
+    }
+
+    .addProductSection{
+        min-height:75vh;
+    }
+
+    .formDiv{
+        width:75vw;
+    }
+
+    .addTitleLabel{
+        top:15.4%;
+    }
+    
+    .addDescriptionLabel{
+        top:26.8%;
+    }
+
+    .addPriceLabel{
+        top:37.8%;
+    }
+
+    .selectColorInput{
+        margin:20px 0;
+    }
+    
+    .addFileInput{
+        margin: 20px 0;
+    }
+
+    .submitButtonNewP{
+        background-color: antiquewhite;
+        color:black;
+        border: solid 1px black;
+        height:4vh;
+        width:16vw;
+    }
+
+    .submitButtonDisabled{
+        color:rgba(0, 0, 0, 0.205);
+        border: solid 1px rgba(0, 0, 0, 0.356);
+        height:4vh;
+        width:16vw;
+    }
+
+    .addTitleLabelPinceis{
+        top:11.2%;
+    }
+
+    .addDescriptionLabelPinceis{
+        top:19.4%;
+    }
+
+    .addPriceLabelPinceis{
+        top:27.5%;
+    }
+
+    .addTemaLabelPinceis{
+        top:52.5%;
+    }
+
+    .addFormatoLabelPinceis{
+        top:60.9%;
+    }
+
+    .addTamanhoLabelPinceis{
+        top:69.5%;
+    }
+}
+
+@media only screen and (max-width: 769px) and (min-width:420px){
 
     .divCategoryInput{
         min-height:75vh;
