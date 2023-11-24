@@ -13,11 +13,12 @@ function Linhas({ admin, showSuccessToast, showErrorToast }) {
   const getAllProducts = async () => {
     try {
       const response = await productService.findAllProducts();
-      console.log(response.data.productLinhas);
       setAllProducts(response.data.productLinhas);
       setLoading(false);
+      if (!response) {
+        showErrorToast("Pedido esgotou o tempo, por favor atualize a página");
+      }
     } catch (error) {
-      showErrorToast("Pedido esgotou o tempo, por favor atualize a página");
       setLoading(false);
     }
   };
