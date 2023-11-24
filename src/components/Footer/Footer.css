@@ -125,5 +125,9 @@ footer > ul > li > h2{
   footer > ul > li > h2  {
     font-size: 1rem;
   }
+
+  footer{
+    height:19vh;
+  }
 }
 
