@@ -373,6 +373,7 @@
   .personalInfo{
     height:70vh;
   }
+
   .userNameDiv{
     display: flex;
     align-items: center;
@@ -397,6 +398,10 @@
   .favoriteTitleDiv{
     text-align:left;
     flex-grow:1;
+  }
+
+  .changePersonalInfoForm{
+    height:70%;
   }
 }
 
