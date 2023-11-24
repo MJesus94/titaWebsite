@@ -369,6 +369,10 @@
 
 @media only screen and (max-width: 1025px) and (min-width: 769px) {
 
+
+  .personalInfo{
+    height:70vh;
+  }
   .userNameDiv{
     display: flex;
     align-items: center;
