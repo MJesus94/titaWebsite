@@ -403,6 +403,15 @@
   .changePersonalInfoForm{
     height:70%;
   }
+
+  .inputPersonalInfo{
+    height:9vh;
+  }
+
+  .buttonAddToFavouritesP{
+    padding: 8px;
+    width:18vw;
+  }
 }
 
 @media only screen and (max-width: 1441px) and (min-width: 1025px) {
