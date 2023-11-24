@@ -104,15 +104,15 @@
     }
 
     .addTitleLabel{
-        top:13%;
+        top:13.3%;
     }
     
     .addDescriptionLabel{
-        top:24%;
+        top:24.4%;
     }
 
     .addPriceLabel{
-        top:35%;
+        top:35.7%;
     }
 
     .selectColorInput{
@@ -147,19 +147,19 @@
     }
 
     .addPriceLabelPinceis{
-        top:26.5%;
+        top:26.8%;
     }
 
     .addTemaLabelPinceis{
-        top:50%;
+        top:51%;
     }
 
     .addFormatoLabelPinceis{
-        top:59%;
+        top:59.5%;
     }
 
     .addTamanhoLabelPinceis{
-        top:66%;
+        top:67.3%;
     }
 }
 
