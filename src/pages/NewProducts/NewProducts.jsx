@@ -302,7 +302,7 @@ function NewProducts() {
                       name="formato"
                       value={formato}
                       onChange={handleFormato}
-                      placeholder="Formato Paisagem/Formato vertical/Quadrado/Panorama"
+                      placeholder="Paisagem/Vertical/Quadrado/Panorama"
                     />
                     <label
                       className="addProductLabel addTamanhoLabelPinceis"
