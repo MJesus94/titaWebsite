@@ -148,6 +148,7 @@ function EditProduct({ showSuccessToast }) {
   const getOneProduct = async () => {
     try {
       const response = await productService.findOneProduct(id);
+      console.log(response.data);
       setOneProduct(response.data);
       setLoading(false);
     } catch (error) {
