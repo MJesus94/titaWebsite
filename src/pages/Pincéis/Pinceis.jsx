@@ -6,7 +6,7 @@ import productService from "../../services/product.service";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Pinceis({ admin, showSuccessToast }) {
+function Pinceis({ admin, showSuccessToast, showErrorToast }) {
   const [pinceisProducts, setPinceisProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -15,9 +15,12 @@ function Pinceis({ admin, showSuccessToast }) {
       const response = await productService.findAllProducts();
       setPinceisProducts(response.data.productPinceis);
       setLoading(false);
+      if (!response.data.productPinceis) {
+        showErrorToast("Pedido esgotou o tempo, por favor atualize a página");
+      }
     } catch (error) {
       setLoading(false);
-      
+      showErrorToast("An error occurred. Please refresh the page.");
     }
   };
 

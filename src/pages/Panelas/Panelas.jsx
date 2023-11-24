@@ -6,7 +6,7 @@ import productService from "../../services/product.service";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Panelas({ admin, showSuccessToast }) {
+function Panelas({ admin, showSuccessToast, showErrorToast }) {
   const [panelasProducts, setPanelasProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -15,8 +15,12 @@ function Panelas({ admin, showSuccessToast }) {
       const response = await productService.findAllProducts();
       setPanelasProducts(response.data.productPanelas);
       setLoading(false);
+      if (!response.data.productPanelas) {
+        showErrorToast("Pedido esgotou o tempo, por favor atualize a página");
+      }
     } catch (error) {
       setLoading(false);
+      showErrorToast("An error occurred. Please refresh the page.");
     }
   };
 
