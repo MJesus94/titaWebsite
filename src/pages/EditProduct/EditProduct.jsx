@@ -1,4 +1,5 @@
 import "../SpecificProduct/SpecificProduct.css";
+import Loading from "../../components/Loading/Loading";
 import "./EditProduct.css";
 
 import { colourOptions } from "../../Assets/Data";
@@ -16,6 +17,7 @@ function EditProduct({ showSuccessToast }) {
   const animatedComponents = makeAnimated();
 
   const [oneProduct, setOneProduct] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [imgWidth, setImgWidth] = useState(false);
   const [imgHeight, setImgHeight] = useState(false);
   const [editedTitle, setEditedTitle] = useState("");
@@ -147,7 +149,10 @@ function EditProduct({ showSuccessToast }) {
     try {
       const response = await productService.findOneProduct(id);
       setOneProduct(response.data);
-    } catch (error) {}
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -183,6 +188,7 @@ function EditProduct({ showSuccessToast }) {
 
   return (
     <>
+      {loading && <Loading />}
       {oneProduct && (
         <section className="main-section">
           <div className="infoContainer">
