@@ -17,7 +17,7 @@ function Linhas({ admin, showSuccessToast, showErrorToast }) {
       setAllProducts(response.data.productLinhas);
       console.log("2", response.data.productLinhas);
       setLoading(false);
-      if (!response) {
+      if (!response.data.productLinhas) {
         console.log("3");
         // Ensure that showErrorToast is still in the correct scope
         showErrorToast("Pedido esgotou o tempo, por favor atualize a página");
