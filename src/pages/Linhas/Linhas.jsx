@@ -16,10 +16,13 @@ function Linhas({ admin, showSuccessToast, showErrorToast }) {
       setAllProducts(response.data.productLinhas);
       setLoading(false);
       if (!response) {
+        // Ensure that showErrorToast is still in the correct scope
         showErrorToast("Pedido esgotou o tempo, por favor atualize a página");
       }
     } catch (error) {
       setLoading(false);
+      // Ensure that showErrorToast is still in the correct scope
+      showErrorToast("An error occurred. Please refresh the page.");
     }
   };
 
