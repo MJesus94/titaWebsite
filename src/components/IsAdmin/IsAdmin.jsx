@@ -37,6 +37,7 @@ function IsAdmin({ children, showErrorToast }) {
         const response = await userService.getCurrentUser();
 
         setAdmin(response.data.admin);
+        if (!admin) return <Navigate to="/" />;
       } catch (error) {
         showErrorToast("Tem que efetuar o Login para poder ver esta página");
       }
@@ -44,8 +45,6 @@ function IsAdmin({ children, showErrorToast }) {
 
     currentUser();
   }, []);
-
-  if (!admin) return <Navigate to="/" />;
 
   return children;
 }
