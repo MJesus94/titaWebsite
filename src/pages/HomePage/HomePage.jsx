@@ -49,6 +49,7 @@ function HomePage() {
       combinedArrayWithDates.sort((a, b) => b.createdAt - a.createdAt);
 
       setAllProducts(combinedArrayWithDates);
+      setLoading(false);
     } catch (error) {}
   };
 
@@ -83,7 +84,6 @@ function HomePage() {
       );
 
       setAllProducts(productsWithDimensions);
-      setLoading(false);
     };
 
     if (allProducts.length > 0) {
