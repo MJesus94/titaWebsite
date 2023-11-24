@@ -184,6 +184,11 @@
     .formDiv{
         width:35vw;
     }
+
+    .addProductInput{
+        height:3vh;
+    }
+
     .addProductLabel{
         left:35%;
     }
