@@ -176,7 +176,7 @@ function App() {
             path="/editProduct/:id"
             element={
               <IsAdmin showErrorToast={showErrorToast}>
-                <EditProduct showSuccessToast={showSuccessToast} />
+                <EditProduct showSuccessToast={showSuccessToast}  showErrorToast={showErrorToast}/>
               </IsAdmin>
             }
           />

@@ -11,7 +11,7 @@ import makeAnimated from "react-select/animated";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import productService from "../../services/product.service";
 
-function EditProduct({ showSuccessToast }) {
+function EditProduct({ showSuccessToast, showErrorToast }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const animatedComponents = makeAnimated();
@@ -148,9 +148,11 @@ function EditProduct({ showSuccessToast }) {
   const getOneProduct = async () => {
     try {
       const response = await productService.findOneProduct(id);
-      console.log(response.data);
       setOneProduct(response.data);
       setLoading(false);
+      if (!response.data.category) {
+        showErrorToast("Pedido esgotou o tempo, por favor atualize a página");
+      }
     } catch (error) {
       setLoading(false);
     }
