@@ -13,9 +13,12 @@ function Linhas({ admin, showSuccessToast, showErrorToast }) {
   const getAllProducts = async () => {
     try {
       const response = await productService.findAllProducts();
+      console.log("1", response);
       setAllProducts(response.data.productLinhas);
+      console.log("2", response.data.productLinhas);
       setLoading(false);
       if (!response) {
+        console.log("3");
         // Ensure that showErrorToast is still in the correct scope
         showErrorToast("Pedido esgotou o tempo, por favor atualize a página");
       }
