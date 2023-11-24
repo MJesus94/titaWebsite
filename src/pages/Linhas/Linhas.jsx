@@ -6,7 +6,7 @@ import productService from "../../services/product.service";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function Linhas({ admin, showSuccessToast }) {
+function Linhas({ admin, showSuccessToast, showErrorToast }) {
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -17,6 +17,7 @@ function Linhas({ admin, showSuccessToast }) {
       setAllProducts(response.data.productLinhas);
       setLoading(false);
     } catch (error) {
+      showErrorToast("Pedido esgotou o tempo, por favor atualize a página");
       setLoading(false);
     }
   };

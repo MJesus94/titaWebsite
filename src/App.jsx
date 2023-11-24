@@ -140,19 +140,19 @@ function App() {
           <Route
             path="/Linhas"
             element={
-              <Linhas admin={admin} showSuccessToast={showSuccessToast} />
+              <Linhas admin={admin} showSuccessToast={showSuccessToast} showErrorToast={showErrorToast}/>
             }
           />
           <Route
             path="/Pinceis"
             element={
-              <Pinceis admin={admin} showSuccessToast={showSuccessToast} />
+              <Pinceis admin={admin} showSuccessToast={showSuccessToast} showErrorToast={showErrorToast}/>
             }
           />
           <Route
             path="/Panelas"
             element={
-              <Panelas admin={admin} showSuccessToast={showSuccessToast} />
+              <Panelas admin={admin} showSuccessToast={showSuccessToast} showErrorToast={showErrorToast}/>
             }
           />
           <Route
