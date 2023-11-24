@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/auth.context";
 import { Navigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
 
-function IsPrivate({ children }) {
+function IsPrivate({ children, showErrorToast }) {
   const { isLoggedIn, isLoading } = useContext(AuthContext);
 
   // If the authentication is still loading ⏳
@@ -13,6 +13,8 @@ function IsPrivate({ children }) {
 
   if (!isLoggedIn) {
     // If the user is not logged in navigate to the login page ❌
+
+    showErrorToast("Tem que efetuar o Login para poder ver esta página");
     return <Navigate to="/" />;
   }
   // If the user is logged in, allow to see the page ✅

@@ -1,5 +1,6 @@
 import "../Linhas/Linhas.css";
 import Pin from "../../components/Pin/Pin";
+import Loading from "../../components/Loading/Loading";
 import productService from "../../services/product.service";
 
 import { React, useState, useEffect } from "react";
@@ -7,12 +8,16 @@ import { Link } from "react-router-dom";
 
 function Panelas({ admin, showSuccessToast }) {
   const [panelasProducts, setPanelasProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getAllProducts = async () => {
     try {
       const response = await productService.findAllProducts();
       setPanelasProducts(response.data.productPanelas);
-    } catch (error) {}
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -21,6 +26,7 @@ function Panelas({ admin, showSuccessToast }) {
 
   return (
     <section className="main-section">
+      {loading && <Loading />}
       <div className="infoContainer">
         <ol className="routePath">
           <li>

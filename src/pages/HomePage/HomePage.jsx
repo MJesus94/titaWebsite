@@ -7,8 +7,10 @@ import { useNavigate } from "react-router-dom";
 import productService from "../../services/product.service";
 
 import Carousel from "../../components/Carousel/Carousel";
+import Loading from "../../components/Loading/Loading";
 
 function HomePage() {
+  const [loading, setLoading] = useState(true);
   const viewportWidth = window.innerWidth;
 
   const slides = [
@@ -81,6 +83,7 @@ function HomePage() {
       );
 
       setAllProducts(productsWithDimensions);
+      setLoading(false);
     };
 
     if (allProducts.length > 0) {
@@ -92,6 +95,7 @@ function HomePage() {
     return (
       <>
         <section>
+          {loading && <Loading />}
           <div className="containerCarousel">
             <Carousel slides={slides} />
           </div>
@@ -141,6 +145,7 @@ function HomePage() {
     return (
       <>
         <section>
+          {loading && <Loading />}
           <div className="containerCarousel">
             <Carousel slides={slides} />
           </div>

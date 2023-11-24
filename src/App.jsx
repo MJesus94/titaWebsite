@@ -132,7 +132,7 @@ function App() {
           <Route
             path="/profile"
             element={
-              <IsPrivate>
+              <IsPrivate showErrorToast={showErrorToast}>
                 <ProfilePage showSuccessToast={showSuccessToast} />
               </IsPrivate>
             }
@@ -158,7 +158,7 @@ function App() {
           <Route
             path="/NewProduct"
             element={
-              <IsAdmin>
+              <IsAdmin showErrorToast={showErrorToast}>
                 <NewProducts />
               </IsAdmin>
             }
@@ -175,7 +175,7 @@ function App() {
           <Route
             path="/editProduct/:id"
             element={
-              <IsAdmin>
+              <IsAdmin showErrorToast={showErrorToast}>
                 <EditProduct showSuccessToast={showSuccessToast} />
               </IsAdmin>
             }

@@ -1,5 +1,6 @@
 import "../Linhas/Linhas.css";
 import Pin from "../../components/Pin/Pin";
+import Loading from "../../components/Loading/Loading";
 import productService from "../../services/product.service";
 
 import { React, useState, useEffect } from "react";
@@ -7,12 +8,17 @@ import { Link } from "react-router-dom";
 
 function Pinceis({ admin, showSuccessToast }) {
   const [pinceisProducts, setPinceisProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getAllProducts = async () => {
     try {
       const response = await productService.findAllProducts();
       setPinceisProducts(response.data.productPinceis);
-    } catch (error) {}
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      
+    }
   };
 
   useEffect(() => {
@@ -21,6 +27,7 @@ function Pinceis({ admin, showSuccessToast }) {
 
   return (
     <section className="main-section">
+      {loading && <Loading />}
       <div className="infoContainer">
         <ol className="routePath">
           <li>

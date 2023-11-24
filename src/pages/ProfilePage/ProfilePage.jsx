@@ -3,8 +3,10 @@ import userService from "../../services/user.service";
 import productService from "../../services/product.service";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 
 function ProfilePage({ showSuccessToast }) {
+  const [loading, setLoading] = useState(true);
   const [activeMenuItem, setActiveMenuItem] = useState(0);
   const [dadosPessoaisActive, setDadosPessoaisActive] = useState(true);
   const [encomendasActive, setEncomendasActive] = useState(false);
@@ -110,6 +112,7 @@ function ProfilePage({ showSuccessToast }) {
     try {
       const response = await userService.getCurrentUser();
       setActiveUser(response.data);
+      setLoading(false);
     } catch (error) {
       console.log("error");
     }
@@ -126,6 +129,7 @@ function ProfilePage({ showSuccessToast }) {
       console.log(mergedArray);
 
       setAllProducts(mergedArray);
+      setLoading(false);
     } catch (error) {}
   };
 
@@ -205,6 +209,7 @@ function ProfilePage({ showSuccessToast }) {
 
   return (
     <div className="mainDiv">
+    {loading && <Loading />}
       <div className="contentDiv">
         <div className="userNameDiv">
           {names && names.length === 1 ? (

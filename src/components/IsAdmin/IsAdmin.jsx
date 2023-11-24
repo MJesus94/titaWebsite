@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import userService from "../../services/user.service";
 import { Navigate } from "react-router-dom";
 
-function IsAdmin({ children }) {
+/* function IsAdmin({ children, showErrorToast }) {
   const [admin, setAdmin] = useState(false);
 
   const currentUser = async () => {
@@ -24,6 +24,30 @@ function IsAdmin({ children }) {
   }, []);
 
   if (admin) return children;
+}
+
+export default IsAdmin; */
+
+function IsAdmin({ children, showErrorToast }) {
+  const [admin, setAdmin] = useState(false);
+
+  useEffect(() => {
+    const currentUser = async () => {
+      try {
+        const response = await userService.getCurrentUser();
+
+        setAdmin(response.data.admin);
+      } catch (error) {
+        showErrorToast("Tem que efetuar o Login para poder ver esta página");
+      }
+    };
+
+    currentUser();
+  }, []);
+
+  if (!admin) return <Navigate to="/" />;
+
+  return children;
 }
 
 export default IsAdmin;
