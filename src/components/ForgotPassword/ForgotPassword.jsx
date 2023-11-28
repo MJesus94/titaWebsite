@@ -39,7 +39,6 @@ function ForgotPassword({
       const response = await authService.sendPasswordResetCode(requestBody);
       if (response.data.sent) {
         setSent(response.data.sent);
-        console.log(response.data.sent);
         showSuccessToast("Email was sent");
       }
     } catch (error) {
