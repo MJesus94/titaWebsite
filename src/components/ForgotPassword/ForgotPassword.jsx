@@ -149,7 +149,7 @@ function ForgotPassword({
                 onClick={toggleHiddenH}
               />
             </div>
-            <form onSubmit={handleForgotSubmit}>
+            <form onSubmit={handleForgotSubmit} className="formForgotPassword">
               <div className="forgotPassFormGroup">
                 <label className="labelName" htmlFor="email">
                   Email
